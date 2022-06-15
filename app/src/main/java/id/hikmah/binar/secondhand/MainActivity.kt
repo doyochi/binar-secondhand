@@ -8,5 +8,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
-    //ini coba ngepush
+
+    //ini notes
+    //ini juga notes
 }
