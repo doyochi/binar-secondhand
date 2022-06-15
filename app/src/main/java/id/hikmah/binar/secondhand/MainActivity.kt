@@ -10,4 +10,5 @@ class MainActivity : AppCompatActivity() {
     }
 
     //ini notes
+    //ini juga notes
 }
