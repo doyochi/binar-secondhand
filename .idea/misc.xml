@@ -5,7 +5,11 @@
       <map>
         <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/bg_button_edit.xml" value="0.167" />
         <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/bg_frame_seller.xml" value="0.167" />
-        <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/layout/fragment_sale_list.xml" value="0.5" />
+        <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/ic_box_product.xml" value="0.167" />
+        <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/ic_box_product_clicked.xml" value="0.167" />
+        <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/ic_heart_favorite.xml" value="0.167" />
+        <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/ic_heart_favorite_clicked.xml" value="0.167" />
+        <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/layout/fragment_sale_list.xml" value="0.33" />
         <entry key="..\:/Final Project/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
       </map>
     </option>
