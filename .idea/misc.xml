@@ -7,14 +7,21 @@
         <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/bg_frame_seller.xml" value="0.167" />
         <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/ic_box_product.xml" value="0.167" />
         <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/ic_box_product_clicked.xml" value="0.167" />
+        <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/ic_box_product_unclicked.xml" value="0.167" />
+        <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/ic_dollar_sign_sold.xml" value="0.167" />
+        <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/ic_dollar_sign_sold_clicked.xml" value="0.167" />
+        <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/ic_dollar_sign_sold_unclicked.xml" value="0.167" />
         <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/ic_heart_favorite.xml" value="0.167" />
         <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/ic_heart_favorite_clicked.xml" value="0.167" />
-        <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/layout/fragment_sale_list.xml" value="0.33" />
+        <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/drawable/ic_heart_favorite_unclicked.xml" value="0.167" />
+        <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/layout/favorite_list.xml" value="0.2234375" />
+        <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/layout/fragment_sale_list.xml" value="0.5" />
+        <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/layout/product_list.xml" value="0.22" />
         <entry key="..\:/Final Project/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

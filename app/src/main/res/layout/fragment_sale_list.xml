@@ -104,11 +104,11 @@
 
     <HorizontalScrollView
         android:id="@+id/scroll_sale_list"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/frame_penjual"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="16dp">
         
        <androidx.constraintlayout.widget.ConstraintLayout
            android:layout_width="wrap_content"
@@ -121,9 +121,9 @@
                app:layout_constraintTop_toTopOf="parent"
                app:layout_constraintBottom_toBottomOf="parent"
                app:layout_constraintStart_toStartOf="parent"
-               android:layout_marginStart="25dp"
-               app:cardCornerRadius="5dp"
-               android:backgroundTint="#D3D3D3">
+               android:layout_marginStart="20dp"
+               app:cardCornerRadius="8dp"
+               android:backgroundTint="#E2D4F0">
 
                <androidx.constraintlayout.widget.ConstraintLayout
                    android:layout_width="match_parent"
@@ -133,7 +133,7 @@
                        android:id="@+id/iv_scroll_box"
                        android:layout_width="25dp"
                        android:layout_height="25dp"
-                       android:src="@drawable/ic_box_product_unclicked"
+                       android:src="@drawable/ic_box_unclicked"
                        app:layout_constraintTop_toTopOf="parent"
                        app:layout_constraintBottom_toBottomOf="parent"
                        app:layout_constraintStart_toStartOf="parent"
@@ -144,6 +144,7 @@
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:text="Produk"
+                       android:textSize="14sp"
                        android:textColor="@color/black"
                        app:layout_constraintTop_toTopOf="parent"
                        app:layout_constraintBottom_toBottomOf="parent"
@@ -162,8 +163,8 @@
                app:layout_constraintBottom_toBottomOf="parent"
                app:layout_constraintStart_toEndOf="@id/cv_scroll_product"
                android:layout_marginStart="25dp"
-               app:cardCornerRadius="5dp"
-               android:backgroundTint="#D3D3D3">
+               app:cardCornerRadius="8dp"
+               android:backgroundTint="#E2D4F0">
 
                <androidx.constraintlayout.widget.ConstraintLayout
                    android:layout_width="match_parent"
@@ -173,7 +174,7 @@
                        android:id="@+id/iv_scroll_favorite"
                        android:layout_width="25dp"
                        android:layout_height="25dp"
-                       android:src="@drawable/ic_heart_favorite_unclicked"
+                       android:src="@drawable/ic_heart_unclicked"
                        app:layout_constraintTop_toTopOf="parent"
                        app:layout_constraintBottom_toBottomOf="parent"
                        app:layout_constraintStart_toStartOf="parent"
@@ -184,6 +185,7 @@
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:text="Diminati"
+                       android:textSize="14sp"
                        android:textColor="@color/black"
                        app:layout_constraintTop_toTopOf="parent"
                        app:layout_constraintBottom_toBottomOf="parent"
@@ -202,8 +204,8 @@
                app:layout_constraintBottom_toBottomOf="parent"
                app:layout_constraintStart_toEndOf="@id/cv_scroll_favorite"
                android:layout_marginStart="25dp"
-               app:cardCornerRadius="5dp"
-               android:backgroundTint="@color/light_gray">
+               app:cardCornerRadius="8dp"
+               android:backgroundTint="#E2D4F0">
 
                <androidx.constraintlayout.widget.ConstraintLayout
                    android:layout_width="match_parent"
@@ -213,7 +215,7 @@
                        android:id="@+id/iv_scroll_sold"
                        android:layout_width="25dp"
                        android:layout_height="25dp"
-                       android:src="@drawable/ic_heart_favorite_unclicked"
+                       android:src="@drawable/ic_dollar_sign_unclicked"
                        app:layout_constraintTop_toTopOf="parent"
                        app:layout_constraintBottom_toBottomOf="parent"
                        app:layout_constraintStart_toStartOf="parent"
@@ -223,12 +225,13 @@
                        android:id="@+id/tv_scroll_sold"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="Diminati"
+                       android:text="Terjual"
+                       android:textSize="14sp"
                        android:textColor="@color/black"
                        app:layout_constraintTop_toTopOf="parent"
                        app:layout_constraintBottom_toBottomOf="parent"
                        app:layout_constraintEnd_toEndOf="parent"
-                       android:layout_marginEnd="10dp" />
+                       android:layout_marginEnd="20dp" />
 
                </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -238,8 +241,13 @@
         
     </HorizontalScrollView>
 
-
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_sale_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/scroll_sale_list"
+        android:layout_marginTop="24dp"
+        tools:listitem="@layout/product_list"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
