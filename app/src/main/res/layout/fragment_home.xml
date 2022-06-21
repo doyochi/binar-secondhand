@@ -130,7 +130,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:layout_marginHorizontal="15dp"
                         />
-                    <androidx.core.widget.NestedScrollView
+                    <HorizontalScrollView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp">
@@ -213,9 +213,9 @@
                                     android:textSize="14sp"
                                     android:textColor="@color/black"/>
                             </LinearLayout>
-                            <!--Filter Kendaraan-->
+                            <!--Filter Elektronik-->
                             <LinearLayout
-                                android:id="@+id/btn_filter_fashion"
+                                android:id="@+id/btn_filter_elektronik"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintLeft_toRightOf="@id/btn_filter_kendaraan"
@@ -234,12 +234,37 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/poppins_regular"
                                     android:layout_marginHorizontal="5dp"
-                                    android:text="Fashion"
+                                    android:text="Elektronik"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/black"/>
+                            </LinearLayout>
+                            <!--Filter Kesehatan-->
+                            <LinearLayout
+                                android:id="@+id/btn_filter_kesehatan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintLeft_toRightOf="@id/btn_filter_elektronik"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:background="@drawable/secondary_rounded"
+                                android:orientation="horizontal"
+                                android:padding="12dp"
+                                android:layout_marginHorizontal="10dp">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_search_black"
+                                    android:layout_marginHorizontal="5dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_regular"
+                                    android:layout_marginHorizontal="5dp"
+                                    android:text="Kesehatan"
                                     android:textSize="14sp"
                                     android:textColor="@color/black"/>
                             </LinearLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.core.widget.NestedScrollView>
+                    </HorizontalScrollView>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
