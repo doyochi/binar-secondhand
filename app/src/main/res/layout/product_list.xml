@@ -22,13 +22,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!--if data is empty, the visibility will be going visible-->
+            <!-- xml if data is empty, a view group for add another product-->
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone"
-                android:background="@drawable/bg_add_product">
+                android:background="@drawable/rounded_field_stroke_dash">
 
                 <ImageView
                     android:id="@+id/iv_empty_data"
@@ -38,15 +38,16 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:src="@drawable/ic_plus" />
+                    android:src="@drawable/ic_fi_plus" />
 
                 <TextView
                     android:id="@+id/tv_empty_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tambah Produk"
+                    android:fontFamily="@font/poppins_reguler"
                     android:textSize="12sp"
-                    android:textColor="#8A8A8A"
+                    android:textColor="@color/NEUTRAL03"
                     app:layout_constraintTop_toBottomOf="@id/iv_empty_data"
                     android:layout_marginTop="8dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -92,8 +93,9 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginTop="8dp"
                     android:text="Jam Tangan Casio"
+                    android:fontFamily="@font/poppins_reguler"
                     android:gravity="top"
-                    android:textColor="#151515"/>
+                    android:textColor="@color/NEUTRAL05"/>
 
                 <TextView
                     android:id="@+id/tv_product_type"
@@ -104,8 +106,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginTop="4dp"
                     android:text="Aksesoris"
+                    android:fontFamily="@font/poppins_reguler"
                     android:textSize="11sp"
-                    android:textColor="#8A8A8A"
+                    android:textColor="@color/NEUTRAL03"
                     android:gravity="top"/>
 
                 <TextView
@@ -117,8 +120,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginTop="8dp"
                     android:text="Rp 250.000"
+                    android:fontFamily="@font/poppins_reguler"
                     android:textSize="14sp"
-                    android:textColor="#151515"/>
+                    android:textColor="@color/NEUTRAL05"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
