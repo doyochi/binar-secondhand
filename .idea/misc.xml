@@ -21,6 +21,19 @@
         <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/layout/fragment_sale_list.xml" value="0.5" />
         <entry key="..\:/AndroidThings/binar-secondhand/app/src/main/res/layout/product_list.xml" value="0.5" />
         <entry key="..\:/Final Project/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/btn_primary_normal_default.xml" value="0.1445" />
+        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/btn_secondary_normal_default.xml" value="0.1445" />
+        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/ic_fi_plus.xml" value="0.1445" />
+        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/rounded_field.xml" value="0.184" />
+        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/rounded_field_solid.xml" value="0.181" />
+        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/rounded_field_stroke.xml" value="0.1445" />
+        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/rounded_field_stroke_dash.xml" value="0.1445" />
+        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/style_spinner_kategori.xml" value="0.184" />
+        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/font/poppins.xml" value="0.23645833333333333" />
+        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/font/poppins_medium.xml" value="0.23645833333333333" />
+        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/layout/color_spinner.xml" value="0.12916666666666668" />
+        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/layout/detail_produk.xml" value="0.5" />
+        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/layout/spinner_list.xml" value="0.12916666666666668" />
       </map>
     </option>
   </component>
