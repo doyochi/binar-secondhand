@@ -126,7 +126,7 @@
                app:layout_constraintStart_toStartOf="parent"
                android:layout_marginStart="20dp"
                app:cardCornerRadius="8dp"
-               android:backgroundTint="#E2D4F0"
+               android:backgroundTint="@color/PURPLE01"
                android:clickable="true">
 
                <androidx.constraintlayout.widget.ConstraintLayout
@@ -169,7 +169,7 @@
                app:layout_constraintStart_toEndOf="@id/cv_scroll_product"
                android:layout_marginStart="25dp"
                app:cardCornerRadius="8dp"
-               android:backgroundTint="#E2D4F0"
+               android:backgroundTint="@color/PURPLE01"
                android:clickable="true">
 
                <androidx.constraintlayout.widget.ConstraintLayout
@@ -212,7 +212,7 @@
                app:layout_constraintStart_toEndOf="@id/cv_scroll_favorite"
                android:layout_marginStart="25dp"
                app:cardCornerRadius="8dp"
-               android:backgroundTint="#E2D4F0"
+               android:backgroundTint="@color/PURPLE01"
                android:clickable="true">
 
                <androidx.constraintlayout.widget.ConstraintLayout
