@@ -17,7 +17,7 @@
         android:src="@drawable/ic_fi_arrow_left"/>
 
     <TextView
-        android:id="@+id/detailProduk_tv"
+        android:id="@+id/infoAkun_tv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,30 +28,43 @@
         android:layout_gravity="center"
         android:fontFamily="@font/poppins_medium"
         android:gravity="center"
-        android:text="Lengkapi Detail Produk"
+        android:text="Lengkapi Info Akun"
         android:textColor="@color/NEUTRAL05"
         android:textSize="14sp"
         android:lineSpacingExtra="-1sp"/>
 
-    <TextView
-        android:id="@+id/namaProduk_tv"
+    <ImageView
+        android:id="@+id/foto_akun"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/back_btn"
+        app:layout_constraintTop_toTopOf="@id/infoAkun_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/rounded_field_solid"
+        android:backgroundTint="@color/PURPLE01"
+        android:src="@drawable/ic_fi_camera"
+        android:padding="36dp"/>
+
+    <TextView
+        android:id="@+id/nama_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/foto_akun"
         android:layout_width="wrap_content"
         android:layout_height="18dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="24dp"
         android:layout_marginLeft="16dp"
         android:gravity="top"
-        android:text="Nama Produk"
+        android:text="Nama*"
         android:textColor="@color/NEUTRAL05"
         android:textSize="12sp"
         android:fontFamily="@font/poppins_reguler"
         />
 
     <EditText
-        android:id="@+id/namaProduk_et"
-        app:layout_constraintStart_toStartOf="@id/namaProduk_tv"
-        app:layout_constraintTop_toBottomOf="@id/namaProduk_tv"
+        android:id="@+id/nama_et"
+        app:layout_constraintStart_toStartOf="@id/nama_tv"
+        app:layout_constraintTop_toBottomOf="@id/nama_tv"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="4dp"
@@ -61,57 +74,27 @@
         android:textSize="14dp"
         android:textColorHint="@color/NEUTRAL03"
         android:background="@drawable/rounded_field_stroke"
-        android:hint="Nama Produk"/>
+        android:hint="Nama"/>
 
     <TextView
-        android:id="@+id/hargaProduk_tv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/namaProduk_et"
-        android:layout_width="wrap_content"
-        android:layout_height="18dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:gravity="top"
-        android:text="Harga Produk"
-        android:textColor="@color/NEUTRAL05"
-        android:textSize="12sp"
-        android:fontFamily="@font/poppins_reguler"
-        />
-
-    <EditText
-        android:id="@+id/hargaProduk_et"
-        app:layout_constraintStart_toStartOf="@id/hargaProduk_tv"
-        app:layout_constraintTop_toBottomOf="@id/hargaProduk_tv"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:paddingLeft="16dp"
-        android:textSize="14dp"
-        android:textColorHint="@color/NEUTRAL03"
-        android:background="@drawable/rounded_field_stroke"
-        android:hint="RP 0,00"/>
-
-    <TextView
-        android:id="@+id/kategori_tv"
+        android:id="@+id/kota_tv"
         android:layout_width="wrap_content"
         android:layout_height="18dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_reguler"
         android:gravity="top"
-        android:text="Kategori"
+        android:text="Kota*"
         android:textColor="@color/NEUTRAL05"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/hargaProduk_et" />
+        app:layout_constraintTop_toBottomOf="@id/nama_et" />
 
     <Spinner
-        android:id="@+id/kategori_spinner"
+        android:id="@+id/kota_spinner"
         android:layout_width="match_parent"
-        app:layout_constraintStart_toStartOf="@id/kategori_tv"
-        app:layout_constraintTop_toBottomOf="@id/kategori_tv"
+        app:layout_constraintStart_toStartOf="@id/kota_tv"
+        app:layout_constraintTop_toBottomOf="@id/kota_tv"
         android:layout_height="48dp"
         android:layout_marginTop="4dp"
         android:layout_marginRight="16dp"
@@ -121,23 +104,23 @@
         android:spinnerMode="dropdown" />
 
     <TextView
-        android:id="@+id/deskripsi_tv"
+        android:id="@+id/alamat_tv"
         android:layout_width="wrap_content"
         android:layout_height="18dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_reguler"
         android:gravity="top"
-        android:text="Deskripsi"
+        android:text="Alamat*"
         android:textColor="@color/NEUTRAL05"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/kategori_spinner" />
+        app:layout_constraintTop_toBottomOf="@id/kota_spinner" />
 
     <EditText
-        android:id="@+id/deskripsi_et"
+        android:id="@+id/alamat_et"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/deskripsi_tv"
+        app:layout_constraintTop_toBottomOf="@id/alamat_tv"
         android:gravity="top|left"
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -152,61 +135,49 @@
         android:hint="Contoh: Jalan Ikan Paus 69"/>
 
     <TextView
-        android:id="@+id/foto_produk_tv"
+        android:id="@+id/nomorHp_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/alamat_et"
         android:layout_width="wrap_content"
         android:layout_height="18dp"
+        android:layout_marginTop="24dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/poppins_reguler"
         android:gravity="top"
-        android:text="Foto Produk"
+        android:text="Nomor Handphone*"
         android:textColor="@color/NEUTRAL05"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/deskripsi_et" />
+        android:fontFamily="@font/poppins_reguler"
+        />
 
-    <ImageView
-        android:id="@+id/foto"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/foto_produk_tv"
+    <EditText
+        android:id="@+id/nomorHp_et"
+        app:layout_constraintStart_toStartOf="@id/nomorHp_tv"
+        app:layout_constraintTop_toBottomOf="@id/nomorHp_tv"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_field_stroke_dash"
-        android:src="@drawable/ic_fi_plus"
-        android:padding="36dp"/>
+        android:paddingLeft="16dp"
+        android:textSize="14dp"
+        android:textColorHint="@color/NEUTRAL03"
+        android:background="@drawable/rounded_field_stroke"
+        android:hint="contoh: +628123456789"/>
     
     <TextView
-        android:id="@+id/btn_preview"
-        android:layout_width="156dp"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/btn_secondary_normal_default"
-        android:text="Preview"
-        android:textColor="@color/black"
-        android:textAllCaps="false"
-        android:fontFamily="@font/poppins_medium"
-        android:textSize="14dp"/>
-
-    <TextView
-        android:id="@+id/btn_terbitkan"
-        android:layout_width="156dp"
-        android:layout_height="48dp"
-        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/btn_primary_normal_default"
-        android:text="Terbitkan"
-        android:textColor="@color/NEUTRAL01"
-        android:textAllCaps="false"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="center"
+        android:text="Simpan"
+        android:textSize="14sp"
         android:fontFamily="@font/poppins_medium"
-        android:textSize="14dp"/>
+        android:textColor="@color/NEUTRAL01"
+        android:background="@drawable/btn_primary_normal_default"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
