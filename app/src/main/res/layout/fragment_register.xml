@@ -170,6 +170,8 @@
         android:text="Masuk di sini"
         android:textAlignment="center"
         android:textColor="@color/PURPLE04"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:clickable="true"
+        android:background="?android:selectableItemBackground"/>
 
 </RelativeLayout>
