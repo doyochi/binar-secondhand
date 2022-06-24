@@ -95,14 +95,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Diskon Hingga"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/poppins_reguler"
                         android:textSize="10sp"
                         android:textColor="@color/black"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="60%"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/poppins_reguler"
                         android:textSize="18sp"
                         android:textColor="@color/DANGER"
                         android:textStyle="bold"/>
@@ -157,7 +157,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_regular"
+                                    android:fontFamily="@font/poppins_reguler"
                                     android:layout_marginHorizontal="5dp"
                                     android:text="Semua"
                                     android:textSize="14sp"
@@ -182,7 +182,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_regular"
+                                    android:fontFamily="@font/poppins_reguler"
                                     android:layout_marginHorizontal="5dp"
                                     android:text="Hobi"
                                     android:textSize="14sp"
@@ -207,7 +207,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_regular"
+                                    android:fontFamily="@font/poppins_reguler"
                                     android:layout_marginHorizontal="5dp"
                                     android:text="Kendaraan"
                                     android:textSize="14sp"
@@ -232,7 +232,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_regular"
+                                    android:fontFamily="@font/poppins_reguler"
                                     android:layout_marginHorizontal="5dp"
                                     android:text="Elektronik"
                                     android:textSize="14sp"
@@ -257,7 +257,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_regular"
+                                    android:fontFamily="@font/poppins_reguler"
                                     android:layout_marginHorizontal="5dp"
                                     android:text="Kesehatan"
                                     android:textSize="14sp"
