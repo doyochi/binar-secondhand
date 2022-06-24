@@ -18,6 +18,7 @@
     <TextView
         android:layout_width="296dp"
         android:layout_height="20dp"
+        android:fontFamily="@font/poppins_bold"
         android:text="Masukkan Harga Tawarmu"
         android:layout_marginTop="20dp"
 
@@ -26,15 +27,14 @@
 
     <TextView
         android:layout_width="296dp"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
+        android:fontFamily="@font/poppins_reguler"
         android:text="Harga tawaranmu akan diketahui penjual, jika penjual cocok kamu akan segera dihubungi penjual."
-        android:layout_marginTop="5dp"
         android:layout_gravity="center" />
     <androidx.cardview.widget.CardView
         android:layout_width="296dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
-        android:layout_marginTop="5dp"
         app:cardCornerRadius="10dp">
         <ImageView
             android:layout_width="48dp"
@@ -47,6 +47,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="80dp"
             android:layout_marginTop="18dp"
+            android:fontFamily="@font/poppins_bold"
             android:text="Jam Tangan casio"
             android:textStyle="bold"/>
         <TextView
@@ -54,6 +55,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="80dp"
             android:layout_marginTop="42dp"
+            android:fontFamily="@font/poppins_reguler"
             android:text="Rp. 250.000"/>
     </androidx.cardview.widget.CardView>
 
@@ -62,7 +64,7 @@
         android:layout_height="18dp"
         android:text="Harga Tawar"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"/>
+        android:fontFamily="@font/poppins_bold" />
 
    <androidx.cardview.widget.CardView
        android:layout_width="296dp"

@@ -3,24 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Final Project/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
-        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/btn_primary_normal_default.xml" value="0.1445" />
-        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/btn_secondary_normal_default.xml" value="0.1445" />
-        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/ic_fi_plus.xml" value="0.1445" />
-        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/rounded_field.xml" value="0.184" />
-        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/rounded_field_solid.xml" value="0.181" />
-        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/rounded_field_stroke.xml" value="0.1445" />
-        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/rounded_field_stroke_dash.xml" value="0.1445" />
-        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/drawable/style_spinner_kategori.xml" value="0.184" />
-        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/font/poppins.xml" value="0.23645833333333333" />
-        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/font/poppins_medium.xml" value="0.23645833333333333" />
-        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/layout/color_spinner.xml" value="0.12916666666666668" />
-        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/layout/detail_produk.xml" value="0.5" />
-        <entry key="..\:/Kuliah/Binar/binar-secondhand/app/src/main/res/layout/spinner_list.xml" value="0.12916666666666668" />
+        <entry key="..\:/binar-secondhand/app/src/main/res/layout/bottom_sheet.xml" value="0.358695652173913" />
+        <entry key="..\:/binar-secondhand/app/src/main/res/layout/fragment_buyer10.xml" value="0.358695652173913" />
+        <entry key="..\:/binar-secondhand/app/src/main/res/layout/fragment_buyer6.xml" value="0.25" />
+        <entry key="..\:/binar-secondhand/app/src/main/res/layout/notif_dialog.xml" value="0.358695652173913" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
