@@ -42,7 +42,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:text="Cari di Second Hand"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/poppins_reguler"
                     app:layout_constraintLeft_toLeftOf="parent"
                     />
 

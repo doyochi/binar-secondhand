@@ -3,11 +3,96 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/buyer6">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/buyer6"
         android:name="id.hikmah.binar.secondhand.Buyer6"
         android:label="fragment_buyer6"
-        tools:layout="@layout/fragment_buyer6" />
+        tools:layout="@layout/fragment_buyer6" >
+        <action
+            android:id="@+id/action_buyer6_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="id.hikmah.binar.secondhand.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="id.hikmah.binar.secondhand.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="id.hikmah.binar.secondhand.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_akunSayaFragment"
+            app:destination="@id/akunSayaFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_infoPenawarFragment"
+            app:destination="@id/infoPenawarFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_saleListFragment"
+            app:destination="@id/saleListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_buyer6"
+            app:destination="@id/buyer6" />
+    </fragment>
+    <fragment
+        android:id="@+id/akunSayaFragment"
+        android:name="id.hikmah.binar.secondhand.AkunSayaFragment"
+        android:label="fragment_akun_saya"
+        tools:layout="@layout/fragment_akun_saya" >
+        <action
+            android:id="@+id/action_akunSayaFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="id.hikmah.binar.secondhand.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" >
+        <action
+            android:id="@+id/action_notificationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoPenawarFragment"
+        android:name="id.hikmah.binar.secondhand.InfoPenawarFragment"
+        android:label="fragment_info_penawar"
+        tools:layout="@layout/fragment_info_penawar" >
+        <action
+            android:id="@+id/action_infoPenawarFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/saleListFragment"
+        android:name="id.hikmah.binar.secondhand.SaleListFragment"
+        android:label="fragment_sale_list"
+        tools:layout="@layout/fragment_sale_list" >
+        <action
+            android:id="@+id/action_saleListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
