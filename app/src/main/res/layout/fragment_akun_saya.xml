@@ -164,4 +164,15 @@
         android:textColor="@color/NEUTRAL03"
         android:layout_marginTop="16dp"/>
 
+    <!--footer-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_notification">
+        <include layout="@layout/layout_navbar"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

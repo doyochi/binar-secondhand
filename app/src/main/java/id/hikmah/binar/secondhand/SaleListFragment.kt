@@ -5,15 +5,57 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import id.hikmah.binar.secondhand.databinding.FragmentHomeBinding
+import id.hikmah.binar.secondhand.databinding.FragmentSaleListBinding
+import kotlinx.android.synthetic.main.layout_navbar.view.*
 
 class SaleListFragment : Fragment() {
+
+    private var _binding: FragmentSaleListBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sale_list, container, false)
+        _binding = FragmentSaleListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        moveToDaftarJual()
+        moveToJual()
+        moveToNotif()
+        moveToHome()
+
+    }
+
+    private fun moveToHome() {
+        binding.footer.footer_home.setOnClickListener{
+            findNavController().navigate(R.id.action_saleListFragment_to_homeFragment)
+        }
+    }
+
+    private fun moveToNotif() {
+        binding.footer.footer_home.setOnClickListener{
+            findNavController().navigate(R.id.action_homeFragment_to_notificationFragment)
+        }
+    }
+
+    private fun moveToJual() {
+        binding.footer.footer_jual.setOnClickListener{
+            findNavController().navigate(R.id.action_homeFragment_to_detailProdukFragment)
+        }
+    }
+
+    private fun moveToDaftarJual() {
+        binding.footer.footer_daftar_jual.setOnClickListener{
+            findNavController().navigate(R.id.action_homeFragment_to_saleListFragment)
+        }
     }
 
 
