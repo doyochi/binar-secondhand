@@ -8,7 +8,7 @@ import android.widget.Spinner
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.detail_produk)
+        setContentView(R.layout.info_akun)
 
 //        val arrayAdapter: ArrayAdapter<*>
 //        val arrayList = arrayListOf<String>("Brand New In Box","Brand New Open Box","Second")
