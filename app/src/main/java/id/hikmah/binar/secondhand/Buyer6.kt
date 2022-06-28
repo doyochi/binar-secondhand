@@ -54,8 +54,8 @@ class Buyer6 : Fragment() {
         view_pager2.adapter = ViewPagerAdapter(imagesList)
         view_pager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
-        val indicator = binding.indicator.findViewById<CircleIndicator3>(R.id.indicator)
-        indicator.setViewPager(view_pager2)
+        val circleIndicator = binding.circleIndicator.findViewById<CircleIndicator3>(R.id.circle_indicator)
+        circleIndicator.setViewPager(view_pager2)
 
         val bottomSheetFragment = BottomSheetFragment()
         binding.btnTertarik.setOnClickListener {

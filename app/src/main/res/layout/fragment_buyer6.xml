@@ -7,20 +7,36 @@
     android:layout_height="match_parent"
     tools:context=".Buyer6">
 
-    <!--
-    <me.relex.circleindicator.CircleIndicator3
-        android:id="@+id/indicator"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_marginTop="240dp"
-        android:layout_height="30dp"/>
--->
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager2"
-        android:layout_width="match_parent"
-        android:layout_height="340dp"/>
+        android:layout_height="300dp">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_fi_arrow_left"
+            app:fabSize="mini"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/backa_arrow" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager2"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:background="@drawable/background_jam" />
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/circle_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/transparent"
+            android:layout_marginTop="250dp"/>
+
+    </FrameLayout>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cv_item_info"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_gravity="center"
