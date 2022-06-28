@@ -130,6 +130,9 @@
         <action
             android:id="@+id/action_saleListFragment_to_akunSayaFragment"
             app:destination="@id/akunSayaFragment" />
+        <action
+            android:id="@+id/action_saleListFragment_to_detailProdukFragment"
+            app:destination="@id/detailProdukFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailProdukFragment"
@@ -141,5 +144,8 @@
         <action
             android:id="@+id/action_detailProdukFragment_to_notificationFragment"
             app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_detailProdukFragment_to_saleListFragment"
+            app:destination="@id/saleListFragment" />
     </fragment>
 </navigation>
