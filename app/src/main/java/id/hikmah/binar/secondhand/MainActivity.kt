@@ -2,10 +2,11 @@ package id.hikmah.binar.secondhand
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import id.hikmah.binar.secondhand.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.info_akun)
@@ -22,7 +23,4 @@ class MainActivity : AppCompatActivity() {
 //        }
 //        spinner.adapter = arrayAdapter
     }
-
-    //ini notes
-    //ini juga notes
 }

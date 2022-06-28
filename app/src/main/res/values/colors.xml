@@ -25,4 +25,5 @@
     <color name="SUCCESS">#73CA5C</color>
     <color name="WARNING">#F9CC00</color>
     <color name="DANGER">#FA2C5A</color>
+    <color name="ORANGE_GRADIENT">#FFE9C9</color>
 </resources>
