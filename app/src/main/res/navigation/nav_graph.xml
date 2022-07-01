@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_homeFragment_to_buyer6"
             app:destination="@id/buyer6" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailProdukFragment"
+            app:destination="@id/detailProdukFragment" />
     </fragment>
     <fragment
         android:id="@+id/akunSayaFragment"
@@ -67,6 +70,15 @@
         <action
             android:id="@+id/action_akunSayaFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_akunSayaFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_akunSayaFragment_to_detailProdukFragment"
+            app:destination="@id/detailProdukFragment" />
+        <action
+            android:id="@+id/action_akunSayaFragment_to_saleListFragment"
+            app:destination="@id/saleListFragment" />
     </fragment>
     <fragment
         android:id="@+id/notificationFragment"
@@ -76,6 +88,18 @@
         <action
             android:id="@+id/action_notificationFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_notificationFragment_to_detailProdukFragment"
+            app:destination="@id/detailProdukFragment" />
+        <action
+            android:id="@+id/action_notificationFragment_to_saleListFragment"
+            app:destination="@id/saleListFragment" />
+        <action
+            android:id="@+id/action_notificationFragment_to_saleListFragment2"
+            app:destination="@id/saleListFragment" />
+        <action
+            android:id="@+id/action_notificationFragment_to_akunSayaFragment"
+            app:destination="@id/akunSayaFragment" />
     </fragment>
     <fragment
         android:id="@+id/infoPenawarFragment"
@@ -85,6 +109,9 @@
         <action
             android:id="@+id/action_infoPenawarFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_infoPenawarFragment_to_saleListFragment"
+            app:destination="@id/saleListFragment" />
     </fragment>
     <fragment
         android:id="@+id/saleListFragment"
@@ -94,5 +121,25 @@
         <action
             android:id="@+id/action_saleListFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_saleListFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_saleListFragment_to_infoPenawarFragment"
+            app:destination="@id/infoPenawarFragment" />
+        <action
+            android:id="@+id/action_saleListFragment_to_akunSayaFragment"
+            app:destination="@id/akunSayaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailProdukFragment"
+        android:name="id.hikmah.binar.secondhand.DetailProdukFragment"
+        android:label="DetailProdukFragment" >
+        <action
+            android:id="@+id/action_detailProdukFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_detailProdukFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
     </fragment>
 </navigation>

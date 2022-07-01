@@ -6,14 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import id.hikmah.binar.secondhand.databinding.FragmentBuyer6Binding
 import kotlinx.android.synthetic.main.bottom_sheet.*
 import kotlinx.android.synthetic.main.fragment_buyer6.*
@@ -54,8 +48,8 @@ class Buyer6 : Fragment() {
         view_pager2.adapter = ViewPagerAdapter(imagesList)
         view_pager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
-        val indicator = binding.indicator.findViewById<CircleIndicator3>(R.id.indicator)
-        indicator.setViewPager(view_pager2)
+//        val indicator = binding.indicator.findViewById<CircleIndicator3>(R.id.indicator)
+//        indicator.setViewPager(view_pager2)
 
         val bottomSheetFragment = BottomSheetFragment()
         binding.btnTertarik.setOnClickListener {
