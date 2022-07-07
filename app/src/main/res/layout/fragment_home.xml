@@ -276,6 +276,14 @@
                 android:layout_marginTop="16dp"
                 tools:listitem="@layout/item_data">
             </androidx.recyclerview.widget.RecyclerView>
+            <ProgressBar
+                android:id="@+id/pb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
         </LinearLayout>
 
     </ScrollView>
