@@ -8,7 +8,7 @@ fun String.toDateFavorite(): String? {
         return "-"
     }
 
-    val inputPattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    val inputPattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 
     val outputPattern = "dd MMM, HH:mm"
 

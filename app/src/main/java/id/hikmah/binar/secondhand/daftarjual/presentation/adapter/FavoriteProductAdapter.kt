@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import id.hikmah.binar.secondhand.daftarjual.data.remote.dto.notification.FavoriteProductDtoItem
+import id.hikmah.binar.secondhand.daftarjual.helper.toDateFavorite
 import id.hikmah.binar.secondhand.databinding.FavoriteListBinding
 
 class FavoriteProductAdapter: RecyclerView.Adapter<FavoriteProductAdapter.FavoriteProductViewHolder>() {
@@ -43,7 +44,11 @@ class FavoriteProductAdapter: RecyclerView.Adapter<FavoriteProductAdapter.Favori
 
             binding.tvProductInformation.text = "Ditawar Rp ${items.bidPrice}"
 
-            binding.tvDateProduct.text = items.transactionDate
+            if (items.transactionDate != null) {
+                binding.tvDateProduct.text = items.transactionDate.toDateFavorite().toString()
+            } else {
+                binding.tvDateProduct.text = ""
+            }
         }
     }
 
