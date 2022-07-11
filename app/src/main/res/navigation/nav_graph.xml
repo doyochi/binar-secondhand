@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/buyer6">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/buyer6"
-        android:name="id.hikmah.binar.secondhand.Buyer6"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.Buyer6"
         android:label="fragment_buyer6"
         tools:layout="@layout/fragment_buyer6" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="id.hikmah.binar.secondhand.LoginFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="id.hikmah.binar.secondhand.RegisterFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="id.hikmah.binar.secondhand.HomeFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -64,7 +64,7 @@
     </fragment>
     <fragment
         android:id="@+id/akunSayaFragment"
-        android:name="id.hikmah.binar.secondhand.AkunSayaFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.AkunSayaFragment"
         android:label="fragment_akun_saya"
         tools:layout="@layout/fragment_akun_saya" >
         <action
@@ -82,7 +82,7 @@
     </fragment>
     <fragment
         android:id="@+id/notificationFragment"
-        android:name="id.hikmah.binar.secondhand.NotificationFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" >
         <action
@@ -103,7 +103,7 @@
     </fragment>
     <fragment
         android:id="@+id/infoPenawarFragment"
-        android:name="id.hikmah.binar.secondhand.InfoPenawarFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.InfoPenawarFragment"
         android:label="fragment_info_penawar"
         tools:layout="@layout/fragment_info_penawar" >
         <action
@@ -115,7 +115,7 @@
     </fragment>
     <fragment
         android:id="@+id/saleListFragment"
-        android:name="id.hikmah.binar.secondhand.daftarjual.presentation.fragments.SaleListFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.SaleListFragment"
         android:label="fragment_sale_list"
         tools:layout="@layout/fragment_sale_list" >
         <action
@@ -136,7 +136,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailProdukFragment"
-        android:name="id.hikmah.binar.secondhand.DetailProdukFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.DetailProdukFragment"
         android:label="DetailProdukFragment" >
         <action
             android:id="@+id/action_detailProdukFragment_to_homeFragment"

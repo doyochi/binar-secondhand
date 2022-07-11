@@ -4,9 +4,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import id.hikmah.binar.secondhand.daftarjual.data.remote.client.SaleListApi
-import id.hikmah.binar.secondhand.daftarjual.data.remote.client.SaleListClient
-import id.hikmah.binar.secondhand.daftarjual.data.repository.SaleListRepository
+import id.hikmah.binar.secondhand.data.remote.service.ApiClient
+import id.hikmah.binar.secondhand.data.remote.service.ApiService
+import id.hikmah.binar.secondhand.data.repository.SaleListRepository
 import javax.inject.Singleton
 
 @Module
@@ -15,13 +15,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideApiService(): SaleListApi {
-        return SaleListClient.instance
-    }
+    fun provideApiService() : ApiService = ApiClient.instance
 
     @Provides
     @Singleton
-    fun provideRepositoryProductSeller(api: SaleListApi) : SaleListRepository {
+    fun provideRepositoryProductSeller(api: ApiService) : SaleListRepository {
         return SaleListRepository(api)
     }
 }
