@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bottom_sheet_dialog"
-    >
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        >
+    android:layout_height="400dp"
+    android:id="@+id/BottomSheet"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/card_back_white">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_elips"
@@ -49,6 +45,7 @@
                 android:layout_marginTop="10dp"
                 android:hint="Harga tawaranmu akan diketahui penjual, jika penjual cocok kamu akan segera dihubungi penjual."
                 android:fontFamily="@font/poppins_reguler"
+                android:textColor="@color/black"
                 android:text=""
                 android:textStyle="bold"
                 android:textSize="16sp"/>
@@ -131,6 +128,7 @@
                 android:textSize="14sp"/>
 
             <EditText
+                android:id="@+id/et_harga"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/bg_button_edit"
@@ -141,9 +139,9 @@
                 android:paddingEnd="20dp"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_item_bid"
+                android:id="@+id/btn_kirim"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:layout_marginTop="10dp"
                 android:hint="Kirim"
                 android:textColorHint="@color/white"
@@ -155,9 +153,4 @@
                 android:layout_gravity="center|bottom"/>
 
         </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

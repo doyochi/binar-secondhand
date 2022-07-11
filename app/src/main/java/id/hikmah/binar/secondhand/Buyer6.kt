@@ -1,20 +1,20 @@
 package id.hikmah.binar.secondhand
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.inflate
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
+import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.snackbar.Snackbar
 import id.hikmah.binar.secondhand.databinding.FragmentBuyer6Binding
+import id.hikmah.binar.secondhand.databinding.LayoutNavbarBinding
 import kotlinx.android.synthetic.main.bottom_sheet.*
 import kotlinx.android.synthetic.main.fragment_buyer6.*
 import me.relex.circleindicator.CircleIndicator3
@@ -38,7 +38,7 @@ class Buyer6 : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding = binding
+        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,11 +57,29 @@ class Buyer6 : Fragment() {
         val circleIndicator = binding.circleIndicator.findViewById<CircleIndicator3>(R.id.circle_indicator)
         circleIndicator.setViewPager(view_pager2)
 
-        val bottomSheetFragment = BottomSheetFragment()
+        val bottomSheetFragment = BottomSheetFragment{
+            val clickable = binding.btnTertarik
+            binding.btnTertarik.text = "Menunggu Respon Penjual"
+                binding.btnTertarik.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.NEUTRAL03))
+                clickable.isClickable=false
+                val buyer6Fragment = binding.frameLayout
+                val position = binding.coordinatLayout
+
+                val customView = LayoutInflater.from(requireContext()).inflate(R.layout.notif_dialog, null)
+                val snackbar = Snackbar.make(buyer6Fragment," ",Snackbar.LENGTH_LONG)
+                snackbar.view.setBackgroundColor(Color.TRANSPARENT)
+                val snackbarLayout = snackbar.view as Snackbar.SnackbarLayout
+                snackbarLayout.setPadding(0,0,0,0)
+
+                customView.findViewById<ImageButton>(R.id.btn_snackbar_close).setOnClickListener{
+                    snackbar.dismiss()
+                }
+                snackbarLayout.addView(customView)
+                snackbar.setAnchorView(position).show()
+        }
         binding.btnTertarik.setOnClickListener {
             bottomSheetFragment.show(parentFragmentManager, "BottomSheetDialog")
         }
-
     }
 
 

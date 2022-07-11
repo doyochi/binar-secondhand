@@ -14,16 +14,22 @@
         <entry key="..\:/binar-secondhand/app/src/main/res/drawable/et_border.xml" value="0.102" />
         <entry key="..\:/binar-secondhand/app/src/main/res/drawable/ic_akun.xml" value="0.242" />
         <entry key="..\:/binar-secondhand/app/src/main/res/drawable/ic_fi_arrow_left.xml" value="0.242" />
+        <entry key="..\:/binar-secondhand/app/src/main/res/drawable/ic_fi_chevron_down.xml" value="0.242" />
+        <entry key="..\:/binar-secondhand/app/src/main/res/drawable/ic_fi_log_out.xml" value="0.242" />
+        <entry key="..\:/binar-secondhand/app/src/main/res/drawable/ic_fi_plus.xml" value="0.242" />
+        <entry key="..\:/binar-secondhand/app/src/main/res/drawable/ic_fi_x.xml" value="0.242" />
         <entry key="..\:/binar-secondhand/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/binar-secondhand/app/src/main/res/layout/bottom_sheet.xml" value="0.358695652173913" />
         <entry key="..\:/binar-secondhand/app/src/main/res/layout/card_daftar_produk.xml" value="0.5" />
         <entry key="..\:/binar-secondhand/app/src/main/res/layout/card_daftar_produk_ditawar.xml" value="0.2015625" />
         <entry key="..\:/binar-secondhand/app/src/main/res/layout/card_daftar_produk_diterima.xml" value="0.2015625" />
         <entry key="..\:/binar-secondhand/app/src/main/res/layout/card_info_penawar.xml" value="0.2015625" />
+        <entry key="..\:/binar-secondhand/app/src/main/res/layout/card_perbarui_status_produk.xml" value="0.2916666666666667" />
         <entry key="..\:/binar-secondhand/app/src/main/res/layout/color_spinner_list.xml" value="0.358695652173913" />
         <entry key="..\:/binar-secondhand/app/src/main/res/layout/detail_produk.xml" value="0.358695652173913" />
         <entry key="..\:/binar-secondhand/app/src/main/res/layout/fragment_buyer10.xml" value="0.358695652173913" />
         <entry key="..\:/binar-secondhand/app/src/main/res/layout/fragment_buyer6.xml" value="0.25" />
+        <entry key="..\:/binar-secondhand/app/src/main/res/layout/fragment_notification.xml" value="0.26992753623188404" />
         <entry key="..\:/binar-secondhand/app/src/main/res/layout/info_akun.xml" value="0.358695652173913" />
         <entry key="..\:/binar-secondhand/app/src/main/res/layout/item_page.xml" value="0.358695652173913" />
         <entry key="..\:/binar-secondhand/app/src/main/res/layout/notif_dialog.xml" value="0.358695652173913" />
@@ -31,7 +37,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

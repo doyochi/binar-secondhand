@@ -7,9 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".Buyer6">
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="150dp"
+        android:id="@+id/coordinatLayout">
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="360dp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_btn_back"
@@ -124,7 +132,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="382dp"
-        android:layout_height="150dp"
+        android:layout_height="250dp"
         android:layout_row="3"
         android:layout_gravity="center"
         android:layout_marginStart="16dp"
@@ -148,23 +156,25 @@
         <TextView
             android:id="@+id/deskripsi"
             android:layout_width="wrap_content"
-            android:layout_height="155dp"
+            android:layout_height="150dp"
             android:layout_row="3"
             android:layout_marginStart="10dp"
             android:layout_marginTop="35dp"
-            android:scrollbars="vertical"
             android:fontFamily="@font/poppins_reguler"
+            android:scrollbars="vertical"
             android:textSize="18dp" />
     </androidx.cardview.widget.CardView>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_tertarik"
-        android:layout_width="328dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="650dp"
-        android:background="@drawable/btn_primary_normal_default"
-        android:text="Saya Tertarik dan Ingin Nego" />
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="680dp"
+        android:layout_marginEnd="10dp"
+        android:text="Saya Tertarik dan Ingin Nego"
+        app:cornerRadius="15dp" />
 
 
 </RelativeLayout>
