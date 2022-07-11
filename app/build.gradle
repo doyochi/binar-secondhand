@@ -22,7 +22,14 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "BASE_URL", baseUrl
+            buildConfigField "String", "ACCESS_TOKEN", accessToken
+        }
         release {
+            buildConfigField "String", "BASE_URL", baseUrl
+            buildConfigField "String", "ACCESS_TOKEN", accessToken
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

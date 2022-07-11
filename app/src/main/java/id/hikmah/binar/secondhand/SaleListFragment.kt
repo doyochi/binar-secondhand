@@ -27,10 +27,10 @@ class SaleListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        moveToDaftarJual()
         moveToJual()
         moveToNotif()
         moveToHome()
+        moveToAkun()
 
     }
 
@@ -41,20 +41,20 @@ class SaleListFragment : Fragment() {
     }
 
     private fun moveToNotif() {
-        binding.footer.footer_home.setOnClickListener{
-            findNavController().navigate(R.id.action_homeFragment_to_notificationFragment)
+        binding.footer.footer_notif.setOnClickListener{
+            findNavController().navigate(R.id.action_saleListFragment_to_notificationFragment)
         }
     }
 
     private fun moveToJual() {
         binding.footer.footer_jual.setOnClickListener{
-            findNavController().navigate(R.id.action_homeFragment_to_detailProdukFragment)
+            findNavController().navigate(R.id.action_saleListFragment_to_detailProdukFragment)
         }
     }
 
-    private fun moveToDaftarJual() {
-        binding.footer.footer_daftar_jual.setOnClickListener{
-            findNavController().navigate(R.id.action_homeFragment_to_saleListFragment)
+    private fun moveToAkun() {
+        binding.footer.footer_akun.setOnClickListener{
+            findNavController().navigate(R.id.action_saleListFragment_to_akunSayaFragment)
         }
     }
 

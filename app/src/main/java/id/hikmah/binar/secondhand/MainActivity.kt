@@ -2,14 +2,14 @@ package id.hikmah.binar.secondhand
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import id.hikmah.binar.secondhand.databinding.ActivityMainBinding
-
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.info_akun)
+        setContentView(R.layout.activity_main)
+//        setContentView(R.layout.info_akun)
 
 //        val arrayAdapter: ArrayAdapter<*>
 //        val arrayList = arrayListOf<String>("Brand New In Box","Brand New Open Box","Second")
@@ -23,4 +23,7 @@ class MainActivity : AppCompatActivity() {
 //        }
 //        spinner.adapter = arrayAdapter
     }
+
+    //ini notes
+    //ini juga notes
 }
