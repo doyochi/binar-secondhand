@@ -36,6 +36,7 @@ class FavoriteProductAdapter: RecyclerView.Adapter<FavoriteProductAdapter.Favori
         fun bind(items: FavoriteProductDtoItem) {
             Glide.with(itemView.context)
                 .load(items.imageUrl)
+                .override(500,500)
                 .into(binding.ivProduct)
 
             binding.tvProductTitle.text = items.productName
@@ -45,7 +46,7 @@ class FavoriteProductAdapter: RecyclerView.Adapter<FavoriteProductAdapter.Favori
             binding.tvProductInformation.text = "Ditawar Rp ${items.bidPrice}"
 
             if (items.transactionDate != null) {
-                binding.tvDateProduct.text = items.transactionDate.toDateFavorite().toString()
+                binding.tvDateProduct.text = items.transactionDate.toDateFavorite()
             } else {
                 binding.tvDateProduct.text = ""
             }
