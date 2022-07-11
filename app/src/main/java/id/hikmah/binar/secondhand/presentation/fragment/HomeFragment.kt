@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import id.hikmah.binar.secondhand.BuildConfig
 import id.hikmah.binar.secondhand.R
 import id.hikmah.binar.secondhand.data.remote.model.ProductItem
@@ -85,7 +85,7 @@ class HomeFragment : Fragment() {
         }
         binding.apply {
             rvData.adapter = productAdapter
-            rvData.layoutManager = LinearLayoutManager(requireContext())
+            rvData.layoutManager = GridLayoutManager(requireContext(), 2)
         }
     }
 
