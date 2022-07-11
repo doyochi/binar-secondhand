@@ -115,7 +115,7 @@
     </fragment>
     <fragment
         android:id="@+id/saleListFragment"
-        android:name="id.hikmah.binar.secondhand.SaleListFragment"
+        android:name="id.hikmah.binar.secondhand.daftarjual.presentation.fragments.SaleListFragment"
         android:label="fragment_sale_list"
         tools:layout="@layout/fragment_sale_list" >
         <action
