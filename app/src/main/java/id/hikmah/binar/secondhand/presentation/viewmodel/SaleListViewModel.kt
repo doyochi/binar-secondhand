@@ -29,29 +29,29 @@ class SaleListViewModel @Inject constructor(
         stateOfCardClicked.value = 3
     }
 
-        fun fetchFavoriteProduct() = liveData(Dispatchers.IO) {
+        fun fetchFavoriteProduct(accessToken: String) = liveData(Dispatchers.IO) {
             emit(Resource.loading(null))
             try {
-                emit(Resource.success(data = repository.getFavoriteProduct()))
+                emit(Resource.success(data = repository.getFavoriteProduct(accessToken)))
             } catch (e: Exception) {
                 emit(Resource.error(null, message = e.message ?: "Error Occurred"))
             }
         }
 
-    fun fetchUsersDetails() = liveData(Dispatchers.IO) {
+    fun fetchUsersDetails(accessToken: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(null))
         try {
-            emit(Resource.success(data = repository.fetchUsers()))
+            emit(Resource.success(data = repository.fetchUsers(accessToken)))
         } catch (e: Exception) {
             emit(Resource.error(null, e.message ?: "Error Occurred"))
         }
     }
 
-    fun fetchProductSeller() = liveData(Dispatchers.IO) {
+    fun fetchProductSeller(accessToken: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(null))
 
         try {
-            emit(Resource.success(data = repository.fetchProductSeller()))
+            emit(Resource.success(data = repository.fetchProductSeller(accessToken)))
         } catch (e: Exception) {
             emit(Resource.error(null, e.message ?: "Error Occurred"))
         }

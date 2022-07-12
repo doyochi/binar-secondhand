@@ -1,4 +1,4 @@
-package id.hikmah.binar.secondhand.daftarjual.presentation.adapter
+package id.hikmah.binar.secondhand.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import id.hikmah.binar.secondhand.daftarjual.data.remote.dto.notification.FavoriteProductDtoItem
+import id.hikmah.binar.secondhand.data.remote.model.notification.FavoriteProductDtoItem
 import id.hikmah.binar.secondhand.databinding.FavoriteListBinding
 import id.hikmah.binar.secondhand.helper.toDateFavorite
 
-class FavoriteProductAdapter: RecyclerView.Adapter<FavoriteProductAdapter.FavoriteProductViewHolder>() {
+class FavoriteProductAdapter(private val onClickListener: (id: Int) -> Unit): RecyclerView.Adapter<FavoriteProductAdapter.FavoriteProductViewHolder>() {
 
     private val diffCallBack = object : DiffUtil.ItemCallback<FavoriteProductDtoItem>() {
         override fun areItemsTheSame(
@@ -34,17 +34,25 @@ class FavoriteProductAdapter: RecyclerView.Adapter<FavoriteProductAdapter.Favori
 
     inner class FavoriteProductViewHolder(private val binding: FavoriteListBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(items: FavoriteProductDtoItem) {
-            Glide.with(itemView.context)
-                .load(items.imageUrl)
-                .into(binding.ivProduct)
 
-            binding.tvProductTitle.text = items.productName
+            if (!items.transactionDate.isNullOrEmpty()){
+                Glide.with(itemView.context)
+                    .load(items.imageUrl)
+                    .into(binding.ivProduct)
 
-            binding.tvProductPrice.text = "Rp ${items.product.basePrice}"
+                binding.tvProductTitle.text = items.productName
 
-            binding.tvProductInformation.text = "Ditawar Rp ${items.bidPrice}"
+                binding.tvProductPrice.text = "Rp ${items.productFav.basePrice}"
 
-            binding.tvDateProduct.text = items.transactionDate
+                binding.tvProductInformation.text = "Ditawar Rp ${items.bidPrice}"
+
+                binding.tvDateProduct.text = items.transactionDate.toDateFavorite()
+
+                binding.containerPenawaranP.setOnClickListener {
+                    onClickListener.invoke(items.id)
+                }
+            }
+
         }
     }
 

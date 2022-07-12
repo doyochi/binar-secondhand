@@ -25,8 +25,8 @@ class SaleListFragment : Fragment() {
     private var _binding: FragmentSaleListBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var favoriteProductAdapter: FavoriteProductAdapter
-    private lateinit var productListAdapter: ProductListAdapter
+    private val favoriteProductAdapter by lazy { FavoriteProductAdapter(::onClickItemFavorite) }
+    private val productListAdapter by lazy { ProductListAdapter() }
 
     private val viewModel: SaleListViewModel by viewModels()
 
@@ -39,6 +39,7 @@ class SaleListFragment : Fragment() {
         return binding.root
     }
 
+    private val accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5kb2VAbWFpbC5jb20iLCJpYXQiOjE2NTY1MDUxMzd9.qD5QoTM_tPgpbGoxgCdmLT3zKrFH1eQy5xMcAvQuWpw"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,18 +56,15 @@ class SaleListFragment : Fragment() {
 
         fetchUsers()
 
-
-
         bottomNavBar()
         cardOnClick()
         cvClicked()
-
 
     }
 
     //Info Seller
     private fun fetchUsers(){
-        viewModel.fetchUsersDetails().observe(viewLifecycleOwner) {result ->
+        viewModel.fetchUsersDetails(accessToken).observe(viewLifecycleOwner) {result ->
             when(result.status) {
                 Status.LOADING -> {
 
@@ -171,14 +169,13 @@ class SaleListFragment : Fragment() {
     //Favorite
     private fun initRecyclerViewFavorite() {
         binding.rvSaleList.apply {
-            favoriteProductAdapter = FavoriteProductAdapter()
             layoutManager = LinearLayoutManager(requireContext())
             adapter = favoriteProductAdapter
         }
     }
 
     private fun submitFavoriteProduct() {
-        viewModel.fetchFavoriteProduct().observe(viewLifecycleOwner) { resource ->
+        viewModel.fetchFavoriteProduct(accessToken).observe(viewLifecycleOwner) { resource ->
 
             when(resource.status) {
 
@@ -199,17 +196,20 @@ class SaleListFragment : Fragment() {
         }
     }
 
+    private fun onClickItemFavorite(id: Int) {
+        findNavController().navigate(SaleListFragmentDirections.actionSaleListFragmentToInfoPenawarFragment(id))
+    }
+
     //Product
     private fun initRecyclerViewProductSeller() {
         binding.rvSaleList.apply {
-            productListAdapter = ProductListAdapter()
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = productListAdapter
         }
     }
 
     private fun submitProductSeller() {
-        viewModel.fetchProductSeller().observe(viewLifecycleOwner) {result ->
+        viewModel.fetchProductSeller(accessToken).observe(viewLifecycleOwner) {result ->
             when(result.status){
 
                 Status.LOADING -> {
@@ -233,7 +233,6 @@ class SaleListFragment : Fragment() {
 
     //Footer
     private fun bottomNavBar(){
-        moveToDaftarJual()
         moveToJual()
         moveToNotif()
         moveToHome()
@@ -248,25 +247,19 @@ class SaleListFragment : Fragment() {
 
     private fun moveToNotif() {
         binding.footer.footer_home.setOnClickListener{
-            findNavController().navigate(R.id.action_homeFragment_to_notificationFragment)
+            findNavController().navigate(R.id.action_saleListFragment_to_notificationFragment)
         }
     }
 
     private fun moveToJual() {
         binding.footer.footer_jual.setOnClickListener{
-            findNavController().navigate(R.id.action_homeFragment_to_detailProdukFragment)
-        }
-    }
-
-    private fun moveToDaftarJual() {
-        binding.footer.footer_daftar_jual.setOnClickListener{
-            findNavController().navigate(R.id.action_homeFragment_to_saleListFragment)
+            findNavController().navigate(R.id.action_saleListFragment_to_detailProdukFragment)
         }
     }
 
     private fun moveToAkun() {
         binding.footer.footer_akun.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_akunSayaFragment)
+            findNavController().navigate(R.id.action_saleListFragment_to_akunSayaFragment)
         }
     }
 }

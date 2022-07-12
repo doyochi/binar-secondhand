@@ -112,6 +112,10 @@
         <action
             android:id="@+id/action_infoPenawarFragment_to_saleListFragment"
             app:destination="@id/saleListFragment" />
+        <argument
+            android:name="itemId"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/saleListFragment"
