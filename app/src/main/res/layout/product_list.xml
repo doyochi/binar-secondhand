@@ -54,7 +54,7 @@
                     app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-            
+
             <!-- Item List on RecyclerView if the data is not empty -->
 
             <androidx.constraintlayout.widget.ConstraintLayout

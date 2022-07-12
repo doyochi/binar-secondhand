@@ -9,7 +9,10 @@
         <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/drawable/btn_secondary_normal_default.xml" value="0.1905" />
         <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/drawable/card_back_white.xml" value="0.1905" />
         <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/drawable/ic_arrow_left.xml" value="0.1905" />
+        <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/drawable/ic_box_clicked.xml" value="0.13" />
+        <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/drawable/ic_dollar_sign_clicked.xml" value="0.13" />
         <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/drawable/ic_fi_arrow_left.xml" value="0.1905" />
+        <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/drawable/ic_heart_clicked.xml" value="0.13" />
         <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/drawable/ic_home.xml" value="0.115" />
         <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/drawable/layout_navbar.xml" value="0.1905" />
         <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/drawable/line_devider.xml" value="0.1905" />
@@ -43,11 +46,13 @@
         <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/layout/fragment_register.xml" value="0.2109375" />
         <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/layout/fragment_sale_list.xml" value="0.2" />
         <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/layout/info_akun.xml" value="0.2109375" />
-        <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/layout/item_data.xml" value="0.4" />
+        <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/layout/item_data.xml" value="0.2" />
+        <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/layout/item_page.xml" value="0.18489583333333334" />
         <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/layout/layout_navbar.xml" value="0.25" />
         <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/layout/notif_dialog.xml" value="0.176" />
         <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/layout/notification_list.xml" value="0.2109375" />
         <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/layout/product_list.xml" value="0.2109375" />
+        <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/layout/tes.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/HP/Documents/StudiIndependen_Android/finalProject/binar-secondhand/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1905" />
       </map>
     </option>
