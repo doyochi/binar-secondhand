@@ -9,6 +9,7 @@ import dagger.hilt.components.SingletonComponent
 import id.hikmah.binar.secondhand.data.local.TestDatabase
 import id.hikmah.binar.secondhand.data.remote.service.ApiClient
 import id.hikmah.binar.secondhand.data.remote.service.ApiService
+import id.hikmah.binar.secondhand.data.repository.LoginRepository
 import id.hikmah.binar.secondhand.data.repository.RegisterRepository
 import id.hikmah.binar.secondhand.data.repository.SaleListRepository
 import javax.inject.Singleton
@@ -31,6 +32,12 @@ object AppModule {
     @Singleton
     fun provideRepositoryRegister(api: ApiService) : RegisterRepository {
         return RegisterRepository(api)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRepositoryLogin(api: ApiService) : LoginRepository {
+        return LoginRepository(api)
     }
 
     @Provides

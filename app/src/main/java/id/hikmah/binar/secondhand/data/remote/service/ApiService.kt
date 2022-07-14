@@ -1,5 +1,7 @@
 package id.hikmah.binar.secondhand.data.remote.service
 
+import id.hikmah.binar.secondhand.data.remote.model.LoginInfo
+import id.hikmah.binar.secondhand.data.remote.model.LoginResponse
 import id.hikmah.binar.secondhand.data.remote.model.Product
 import id.hikmah.binar.secondhand.data.remote.model.User
 import id.hikmah.binar.secondhand.data.remote.model.notification.FavoriteProductDto
@@ -32,4 +34,7 @@ interface ApiService {
     suspend fun registerAccount(@Body body: RequestBody)
 
     //Login
+    @Headers("Content-Type: application/json")
+    @POST("auth/login")
+    suspend fun loginAccount(@Body loginInfo: LoginInfo): LoginResponse
 }
