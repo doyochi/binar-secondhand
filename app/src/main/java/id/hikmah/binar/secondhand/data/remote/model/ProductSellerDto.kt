@@ -1,13 +1,12 @@
-package id.hikmah.binar.secondhand.data.remote.model.product
+package id.hikmah.binar.secondhand.data.remote.model
 
 
 import com.google.gson.annotations.SerializedName
-import id.hikmah.binar.secondhand.data.remote.model.Category
 
-data class ProductSellerDtoItem(
+data class ProductSellerDto(
     @SerializedName("base_price")
     val basePrice: Int,
-    @SerializedName("categories")
+    @SerializedName("Categories")
     val categories: List<Category>,
     @SerializedName("created_at")
     val createdAt: String,
