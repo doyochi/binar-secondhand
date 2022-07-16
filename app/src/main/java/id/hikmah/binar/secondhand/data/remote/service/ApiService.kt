@@ -3,7 +3,7 @@ package id.hikmah.binar.secondhand.data.remote.service
 import id.hikmah.binar.secondhand.data.remote.model.Product
 import id.hikmah.binar.secondhand.data.remote.model.User
 import id.hikmah.binar.secondhand.data.remote.model.notification.FavoriteProductDto
-import id.hikmah.binar.secondhand.data.remote.model.product.ProductSellerDto
+import id.hikmah.binar.secondhand.data.remote.model.dto.ProductSellerDto
 import retrofit2.http.*
 
 interface ApiService {

@@ -118,6 +118,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
+                android:id="@+id/title_tawar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -127,16 +128,28 @@
                 android:text=""
                 android:textSize="14sp"/>
 
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_harga"
+                app:layout_constraintTop_toBottomOf="@id/title_tawar"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_button_edit"
+                android:layout_height="wrap_content"
                 android:hint="Rp 0,00"
-                android:textSize="11sp"
-                android:layout_gravity="center"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
+                app:boxCornerRadiusBottomStart="@dimen/corner_radius_textfield"
+                app:boxCornerRadiusBottomEnd="@dimen/corner_radius_textfield"
+                app:boxCornerRadiusTopEnd="@dimen/corner_radius_textfield"
+                app:boxCornerRadiusTopStart="@dimen/corner_radius_textfield"
+                app:boxStrokeColor="@color/PURPLE04"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:fontFamily="@font/poppins_reguler"
+                    android:textSize="@dimen/text_size_textfield"
+                    android:inputType="number"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_kirim"
@@ -153,4 +166,11 @@
                 android:layout_gravity="center|bottom"/>
 
         </LinearLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/cl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

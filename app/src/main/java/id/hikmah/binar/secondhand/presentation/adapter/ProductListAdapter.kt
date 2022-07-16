@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import id.hikmah.binar.secondhand.data.remote.model.product.ProductSellerDtoItem
+import id.hikmah.binar.secondhand.data.remote.model.dto.ProductSellerDtoItem
 import id.hikmah.binar.secondhand.databinding.ProductListBinding
 
 class ProductListAdapter: RecyclerView.Adapter<ProductListAdapter.ProductListViewHolder>() {
