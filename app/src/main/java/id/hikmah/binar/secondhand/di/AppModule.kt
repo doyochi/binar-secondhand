@@ -6,12 +6,14 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import id.hikmah.binar.secondhand.data.local.TestDatabase
+import id.hikmah.binar.secondhand.data.local.LocalDatabase
 import id.hikmah.binar.secondhand.data.remote.service.ApiClient
 import id.hikmah.binar.secondhand.data.remote.service.ApiService
+import id.hikmah.binar.secondhand.data.repository.InfoPenawarRepository
 import id.hikmah.binar.secondhand.data.repository.LoginRepository
 import id.hikmah.binar.secondhand.data.repository.RegisterRepository
 import id.hikmah.binar.secondhand.data.repository.SaleListRepository
+import id.hikmah.binar.secondhand.helper.Authenticator
 import javax.inject.Singleton
 
 @Module
@@ -24,9 +26,17 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRepositoryProductSeller(api: ApiService) : SaleListRepository {
-        return SaleListRepository(api)
+    fun provideRepositoryProductSeller(api: ApiService, authenticator: Authenticator) : SaleListRepository {
+        return SaleListRepository(api, authenticator)
     }
+
+    @Provides
+    @Singleton
+    fun provideAuthenticator(app: Application) = Authenticator(app)
+
+    @Provides
+    @Singleton
+    fun provideInfoPenawarRepository(api: ApiService) = InfoPenawarRepository(api)
 
     @Provides
     @Singleton
@@ -36,16 +46,16 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRepositoryLogin(api: ApiService) : LoginRepository {
-        return LoginRepository(api)
+    fun provideRepositoryLogin(api: ApiService, authenticator: Authenticator) : LoginRepository {
+        return LoginRepository(api, authenticator)
     }
 
     @Provides
     @Singleton
-    fun provideTestDatabase(app: Application) : TestDatabase {
+    fun provideTestDatabase(app: Application) : LocalDatabase {
         return Room.databaseBuilder(
             app,
-            TestDatabase::class.java,
+            LocalDatabase::class.java,
             "test.db"
         ).build()
     }

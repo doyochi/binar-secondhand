@@ -44,10 +44,7 @@ class SaleListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.cvScrollFavorite.setOnClickListener {
-            initRecyclerViewFavorite()
-            submitFavoriteProduct()
-        }
+        viewModel.getAccessToken()
 
         binding.cvScrollProduct.setOnClickListener {
             initRecyclerViewProductSeller()
@@ -64,21 +61,21 @@ class SaleListFragment : Fragment() {
 
     //Info Seller
     private fun fetchUsers(){
-        viewModel.fetchUsersDetails(accessToken).observe(viewLifecycleOwner) {result ->
-            when(result.status) {
-                Status.LOADING -> {
+        viewModel.accessToken.value?.let {
+            viewModel.fetchUsersDetails(it).observe(viewLifecycleOwner) { result ->
+                when(result.status) {
+                    Status.LOADING -> {}
+
+                    Status.SUCCESS -> {
+                        binding.tvSellerName.text = result.data?.fullName
+                        binding.tvSellerCity.text = result.data?.city
+                    }
+
+                    Status.ERROR -> {
+
+                    }
 
                 }
-
-                Status.SUCCESS -> {
-                    binding.tvSellerName.text = result.data?.fullName
-                    binding.tvSellerCity.text = result.data?.city
-                }
-
-                Status.ERROR -> {
-
-                }
-
             }
         }
     }
@@ -209,23 +206,23 @@ class SaleListFragment : Fragment() {
     }
 
     private fun submitProductSeller() {
-        viewModel.fetchProductSeller(accessToken).observe(viewLifecycleOwner) {result ->
-            when(result.status){
+        viewModel.accessToken.value?.let {
+            viewModel.fetchProductSeller(it).observe(viewLifecycleOwner) { result ->
+                when(result.status){
 
-                Status.LOADING -> {
+                    Status.LOADING -> {}
 
-                }
+                    Status.SUCCESS -> {
+                        productListAdapter.submitListProduct(result.data!!)
+                    }
 
-                Status.SUCCESS -> {
-                    productListAdapter.submitListProduct(result.data!!)
-                }
+                    Status.ERROR -> {
 
-                Status.ERROR -> {
+                    }
 
                 }
 
             }
-
         }
     }
     //End
