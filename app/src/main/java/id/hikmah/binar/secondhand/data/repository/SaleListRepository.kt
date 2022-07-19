@@ -1,13 +1,11 @@
 package id.hikmah.binar.secondhand.data.repository
 
 import id.hikmah.binar.secondhand.data.remote.service.ApiService
-import id.hikmah.binar.secondhand.helper.Authenticator
 
 class SaleListRepository(
-    private val api: ApiService,
-    private val auth: Authenticator
+    private val api: ApiService
 ) {
-    suspend fun fetchFavoriteProduct(accessToken: String) = api.fetchSellerOrderFavorite(getHeaderMap(accessToken))
+
     suspend fun fetchUsers(accessToken: String) = api.getUser(accessToken)
     suspend fun fetchProductSeller(accessToken: String) = api.fetchSellerProduct(getHeaderMap(accessToken))
 
@@ -19,6 +17,4 @@ class SaleListRepository(
         headerMap["access_token"] = accessToken
         return headerMap
     }
-
-    suspend fun getAccessToken() = auth.getAccessToken()
 }

@@ -1,10 +1,7 @@
 package id.hikmah.binar.secondhand.helper.mapper
 
-import id.hikmah.binar.secondhand.data.local.FavoriteProductEntity
+import ProductSellerDto
 import id.hikmah.binar.secondhand.data.local.ProductSellerEntity
-import id.hikmah.binar.secondhand.data.remote.model.ProductSellerDto
-import id.hikmah.binar.secondhand.data.remote.model.sellerorder.SellerOrderDto
-import id.hikmah.binar.secondhand.domain.FavoriteProduct
 import id.hikmah.binar.secondhand.domain.ProductSeller
 
 fun ProductSellerDto.toProductSellerEntity() : ProductSellerEntity {
@@ -32,52 +29,22 @@ fun ProductSellerDto.toProductSellerEntity() : ProductSellerEntity {
         productName = this.name,
         productCategory = categories,
         productPrice = this.basePrice,
+        productDescription = this.description,
+        location = this.location,
+        userId = this.userId,
         id = this.id
     )
 }
 
 fun ProductSellerEntity.toProductSeller() : ProductSeller {
     return ProductSeller(
+        productDescription = this.productDescription,
+        userId = this.userId,
+        location = this.location,
         productImage = this.productImage,
         productName = this.productName,
         productPrice = this.productPrice,
         productCategories = this.productCategory,
         productId = this.id
-    )
-}
-
-fun SellerOrderDto.toFavoriteProductEntity() : FavoriteProductEntity {
-    return FavoriteProductEntity(
-        productImage = this.product.imageUrl,
-        productName = this.productName,
-        productPrice = this.product.basePrice,
-        productBidPrice = this.price,
-        id = this.id,
-        productTransactionDate = this.transactionDate,
-        buyerId = this.buyerId
-    )
-}
-
-fun FavoriteProductEntity.toFavoriteProduct() : FavoriteProduct {
-    return FavoriteProduct(
-        productName = this.productName,
-        productImage = this.productImage,
-        productTransactionDate = this.productTransactionDate,
-        productBidPrice = this.productBidPrice,
-        productPrice = this.productPrice,
-        id = this.id,
-        buyerId = this.buyerId
-    )
-}
-
-fun FavoriteProduct.toFavoriteProductEntity() : FavoriteProductEntity {
-    return FavoriteProductEntity(
-        productName = this.productName,
-        productImage = this.productImage,
-        productPrice = this.productPrice,
-        productBidPrice = this.productBidPrice,
-        productTransactionDate = this.productTransactionDate,
-        id = this.id,
-        buyerId = this.buyerId
     )
 }

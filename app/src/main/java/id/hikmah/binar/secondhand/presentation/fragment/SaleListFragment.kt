@@ -9,14 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.hikmah.binar.secondhand.R
+import id.hikmah.binar.secondhand.data.repository.DatastoreViewModel
 import id.hikmah.binar.secondhand.databinding.FragmentSaleListBinding
 import id.hikmah.binar.secondhand.helper.Status
 import id.hikmah.binar.secondhand.presentation.adapter.FavoriteProductAdapter
 import id.hikmah.binar.secondhand.presentation.adapter.ProductListAdapter
-import id.hikmah.binar.secondhand.presentation.viewmodel.SaleListViewModel
+import id.hikmah.binar.secondhand.presentation.viewmodel.ProductSellerDetailsViewModel
 import kotlinx.android.synthetic.main.layout_navbar.view.*
 
 @AndroidEntryPoint
@@ -28,7 +28,8 @@ class SaleListFragment : Fragment() {
     private val favoriteProductAdapter by lazy { FavoriteProductAdapter(::onClickItemFavorite) }
     private val productListAdapter by lazy { ProductListAdapter() }
 
-    private val viewModel: SaleListViewModel by viewModels()
+    private val viewModel: ProductSellerDetailsViewModel by viewModels()
+    private val dataStore: DatastoreViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,22 +40,18 @@ class SaleListFragment : Fragment() {
         return binding.root
     }
 
-    private val accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5kb2VAbWFpbC5jb20iLCJpYXQiOjE2NTY1MDUxMzd9.qD5QoTM_tPgpbGoxgCdmLT3zKrFH1eQy5xMcAvQuWpw"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getAccessToken()
-
-        binding.cvScrollProduct.setOnClickListener {
-            initRecyclerViewProductSeller()
-            submitProductSeller()
+        dataStore.getAccessToken().observe(viewLifecycleOwner) { key ->
+            cardOnClick(key)
         }
 
         fetchUsers()
 
         bottomNavBar()
-        cardOnClick()
+
         cvClicked()
 
     }
@@ -84,18 +81,24 @@ class SaleListFragment : Fragment() {
 
     //Scroll View
 
-    private fun cardOnClick() {
+    private fun cardOnClick(accessToken: String) {
         viewModel.stateOfCardClicked.observe(viewLifecycleOwner) {
-            if(it == 1){
-                binding.cvScrollProduct.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
-                    R.color.PURPLE04
-                ))
+            if (it == 1) {
+                binding.cvScrollProduct.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.PURPLE04
+                    )
+                )
                 binding.ivScrollBox.setImageResource(R.drawable.ic_box_clicked)
-                binding.tvScrollProduct.setTextColor(ContextCompat.getColor(requireContext(),
-                    R.color.NEUTRAL01
-                ))
+                binding.tvScrollProduct.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.NEUTRAL01
+                    )
+                )
                 initRecyclerViewProductSeller()
-                submitProductSeller()
+                submitProductSeller(accessToken)
             } else {
                 binding.cvScrollProduct.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
                     R.color.PURPLE01
@@ -107,15 +110,21 @@ class SaleListFragment : Fragment() {
                 }
 
             if (it == 2) {
-                binding.cvScrollFavorite.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
-                    R.color.PURPLE04
-                ))
+                binding.cvScrollFavorite.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.PURPLE04
+                    )
+                )
                 binding.ivScrollFavorite.setImageResource(R.drawable.ic_heart_clicked)
-                binding.tvScrollFavorite.setTextColor(ContextCompat.getColor(requireContext(),
-                    R.color.NEUTRAL01
-                ))
-                initRecyclerViewFavorite()
-                submitFavoriteProduct()
+                binding.tvScrollFavorite.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.NEUTRAL01
+                    )
+                )
+//                initRecyclerViewFavorite()
+//                submitFavoriteProduct()
             } else {
                 binding.cvScrollFavorite.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
                     R.color.PURPLE01
@@ -164,37 +173,41 @@ class SaleListFragment : Fragment() {
     //RecyclerView
 
     //Favorite
-    private fun initRecyclerViewFavorite() {
-        binding.rvSaleList.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = favoriteProductAdapter
-        }
-    }
-
-    private fun submitFavoriteProduct() {
-        viewModel.fetchFavoriteProduct(accessToken).observe(viewLifecycleOwner) { resource ->
-
-            when(resource.status) {
-
-                Status.LOADING -> {
-
-                }
-
-                Status.SUCCESS -> {
-                    favoriteProductAdapter.submitData(resource.data!!)
-                }
-
-                Status.ERROR -> {
-
-                }
-
-            }
-
-        }
-    }
+//    private fun initRecyclerViewFavorite() {
+//        binding.rvSaleList.apply {
+//            layoutManager = LinearLayoutManager(requireContext())
+//            adapter = favoriteProductAdapter
+//        }
+//    }
+//
+//    private fun submitFavoriteProduct() {
+//        viewModel.fetchFavoriteProduct(accessToken).observe(viewLifecycleOwner) { resource ->
+//
+//            when(resource.status) {
+//
+//                Status.LOADING -> {
+//
+//                }
+//
+//                Status.SUCCESS -> {
+//                    favoriteProductAdapter.submitData(resource.data!!)
+//                }
+//
+//                Status.ERROR -> {
+//
+//                }
+//
+//            }
+//
+//        }
+//    }
 
     private fun onClickItemFavorite(id: Int) {
-        findNavController().navigate(SaleListFragmentDirections.actionSaleListFragmentToInfoPenawarFragment(id))
+        findNavController().navigate(
+            SaleListFragmentDirections.actionSaleListFragmentToInfoPenawarFragment(
+                id
+            )
+        )
     }
 
     //Product
@@ -205,25 +218,24 @@ class SaleListFragment : Fragment() {
         }
     }
 
-    private fun submitProductSeller() {
-        viewModel.accessToken.value?.let {
-            viewModel.fetchProductSeller(it).observe(viewLifecycleOwner) { result ->
-                when(result.status){
+    private fun submitProductSeller(accessToken: String) {
+        viewModel.fetchProductSeller(accessToken).observe(viewLifecycleOwner) { result ->
+            when (result.status) {
 
-                    Status.LOADING -> {}
+                Status.LOADING -> {}
 
-                    Status.SUCCESS -> {
-                        productListAdapter.submitListProduct(result.data!!)
-                    }
+                Status.SUCCESS -> {
+                    productListAdapter.submitListProduct(result.data!!)
+                }
 
-                    Status.ERROR -> {
-
-                    }
+                Status.ERROR -> {
 
                 }
 
             }
-        }
+
+            }
+
     }
     //End
 
