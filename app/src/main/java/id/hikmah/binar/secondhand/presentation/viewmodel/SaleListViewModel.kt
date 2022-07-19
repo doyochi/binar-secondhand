@@ -38,6 +38,15 @@ class SaleListViewModel @Inject constructor(
             }
         }
 
+        fun fetchSoldProduct() = liveData(Dispatchers.IO) {
+            emit(Resource.loading(null))
+            try {
+                emit(Resource.success(data = repository.getSoldProduct()))
+            } catch (e: Exception) {
+                emit(Resource.error(null, message = e.message ?: "Error Occurred"))
+            }
+        }
+
     fun fetchUsersDetails() = liveData(Dispatchers.IO) {
         emit(Resource.loading(null))
         try {

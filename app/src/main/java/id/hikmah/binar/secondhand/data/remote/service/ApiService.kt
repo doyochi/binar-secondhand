@@ -3,6 +3,7 @@ package id.hikmah.binar.secondhand.data.remote.service
 import id.hikmah.binar.secondhand.data.remote.model.Product
 import id.hikmah.binar.secondhand.data.remote.model.User
 import id.hikmah.binar.secondhand.data.remote.model.notification.FavoriteProductDto
+import id.hikmah.binar.secondhand.data.remote.model.notification.SoldProductDto
 import id.hikmah.binar.secondhand.data.remote.model.product.ProductSellerDto
 import retrofit2.http.*
 
@@ -24,4 +25,8 @@ interface ApiService {
 
     @GET("seller/product")
     suspend fun fetchSellerProduct(@HeaderMap header: Map<String, String>): ProductSellerDto
+
+    //Get Sold list product
+    @GET("history")
+    suspend fun fetchSoldProduct(@HeaderMap header: Map<String, String>): SoldProductDto
 }

@@ -16,6 +16,7 @@ import id.hikmah.binar.secondhand.databinding.FragmentSaleListBinding
 import id.hikmah.binar.secondhand.helper.Status
 import id.hikmah.binar.secondhand.presentation.adapter.FavoriteProductAdapter
 import id.hikmah.binar.secondhand.presentation.adapter.ProductListAdapter
+import id.hikmah.binar.secondhand.presentation.adapter.SoldProductAdapter
 import id.hikmah.binar.secondhand.presentation.viewmodel.SaleListViewModel
 import kotlinx.android.synthetic.main.layout_navbar.view.*
 
@@ -26,6 +27,7 @@ class SaleListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var favoriteProductAdapter: FavoriteProductAdapter
+    private lateinit var soldProductAdapter: SoldProductAdapter
     private lateinit var productListAdapter: ProductListAdapter
 
     private val viewModel: SaleListViewModel by viewModels()
@@ -46,6 +48,11 @@ class SaleListFragment : Fragment() {
         binding.cvScrollFavorite.setOnClickListener {
             initRecyclerViewFavorite()
             submitFavoriteProduct()
+        }
+
+        binding.cvScrollSold.setOnClickListener {
+            initRecyclerViewSold()
+            submitSoldProduct()
         }
 
         binding.cvScrollProduct.setOnClickListener {
@@ -139,6 +146,8 @@ class SaleListFragment : Fragment() {
                 binding.tvScrollSold.setTextColor(ContextCompat.getColor(requireContext(),
                     R.color.NEUTRAL01
                 ))
+                initRecyclerViewSold()
+                submitSoldProduct()
             } else {
                 binding.cvScrollSold.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
                     R.color.PURPLE01
@@ -218,6 +227,37 @@ class SaleListFragment : Fragment() {
 
                 Status.SUCCESS -> {
                     productListAdapter.submitListProduct(result.data!!)
+                }
+
+                Status.ERROR -> {
+
+                }
+
+            }
+
+        }
+    }
+
+    //Favorite
+    private fun initRecyclerViewSold() {
+        binding.rvSaleList.apply {
+            soldProductAdapter = SoldProductAdapter()
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = soldProductAdapter
+        }
+    }
+
+    private fun submitSoldProduct() {
+        viewModel.fetchSoldProduct().observe(viewLifecycleOwner) { resource ->
+
+            when(resource.status) {
+
+                Status.LOADING -> {
+
+                }
+
+                Status.SUCCESS -> {
+                    soldProductAdapter.submitData(resource.data!!)
                 }
 
                 Status.ERROR -> {
