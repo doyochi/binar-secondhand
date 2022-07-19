@@ -6,9 +6,10 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class DatastoreViewModel(private val pref: DatastoreManager) : ViewModel() {
+class DatastoreViewModel @Inject constructor(private val pref: DatastoreManager) : ViewModel() {
 
     fun saveLoginState(value: Boolean) {
         viewModelScope.launch {

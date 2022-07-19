@@ -6,6 +6,7 @@ import id.hikmah.binar.secondhand.data.remote.model.LoginResponse
 import id.hikmah.binar.secondhand.data.remote.model.Product
 import id.hikmah.binar.secondhand.data.remote.model.User
 import id.hikmah.binar.secondhand.data.remote.model.notification.FavoriteProductDto
+import id.hikmah.binar.secondhand.data.remote.model.sellerorder.SellerOrderDto
 import okhttp3.RequestBody
 import retrofit2.http.*
 
@@ -43,7 +44,7 @@ interface ApiService {
     suspend fun fetchOrderById(
         @HeaderMap header: Map<String, String>,
         @Path("id") id: Int
-    )
+    ): List<SellerOrderDto>
 
     //Register
     @POST("auth/register")

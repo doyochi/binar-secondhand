@@ -21,13 +21,9 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRepositoryProductSeller(api: ApiService, authenticator: Authenticator) : SaleListRepository {
-        return SaleListRepository(api, authenticator)
+    fun provideRepositoryProductSeller(api: ApiService): SaleListRepository {
+        return SaleListRepository(api)
     }
-
-    @Provides
-    @Singleton
-    fun provideAuthenticator(app: Application) = Authenticator(app)
 
     @Provides
     @Singleton
@@ -41,14 +37,14 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRepositoryLogin(api: ApiService, authenticator: Authenticator): LoginRepository {
-        return LoginRepository(api, authenticator)
+    fun provideRepositoryLogin(api: ApiService): LoginRepository {
+        return LoginRepository(api)
     }
 
     @Provides
     @Singleton
-    fun provideTestDatabase(app: Application): DatabaseSecondHand? {
-        return DatabaseSecondHand.getInstance(app)
+    fun provideTestDatabase(app: Application): DatabaseSecondHand {
+        return DatabaseSecondHand.getInstance(app)!!
     }
 
     @Provides

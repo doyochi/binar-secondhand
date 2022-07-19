@@ -58,20 +58,15 @@ class SaleListFragment : Fragment() {
 
     //Info Seller
     private fun fetchUsers(){
-        viewModel.accessToken.value?.let {
-            viewModel.fetchUsersDetails(it).observe(viewLifecycleOwner) { result ->
-                when(result.status) {
+        dataStore.getAccessToken().observe(viewLifecycleOwner) { accessToken ->
+            viewModel.fetchUsersDetails(accessToken).observe(viewLifecycleOwner) { result ->
+                when (result.status) {
                     Status.LOADING -> {}
-
                     Status.SUCCESS -> {
                         binding.tvSellerName.text = result.data?.fullName
                         binding.tvSellerCity.text = result.data?.city
                     }
-
-                    Status.ERROR -> {
-
-                    }
-
+                    Status.ERROR -> {}
                 }
             }
         }
