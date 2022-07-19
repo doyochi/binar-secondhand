@@ -1,19 +1,14 @@
 package id.hikmah.binar.secondhand.di
 
 import android.app.Application
-import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import id.hikmah.binar.secondhand.data.local.LocalDatabase
 import id.hikmah.binar.secondhand.data.remote.service.ApiClient
 import id.hikmah.binar.secondhand.data.remote.service.ApiService
-import id.hikmah.binar.secondhand.data.repository.InfoPenawarRepository
-import id.hikmah.binar.secondhand.data.repository.LoginRepository
-import id.hikmah.binar.secondhand.data.repository.RegisterRepository
-import id.hikmah.binar.secondhand.data.repository.SaleListRepository
-import id.hikmah.binar.secondhand.helper.Authenticator
+import id.hikmah.binar.secondhand.data.remote.service.DatabaseSecondHand
+import id.hikmah.binar.secondhand.data.repository.*
 import javax.inject.Singleton
 
 @Module
@@ -46,17 +41,19 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRepositoryLogin(api: ApiService, authenticator: Authenticator) : LoginRepository {
+    fun provideRepositoryLogin(api: ApiService, authenticator: Authenticator): LoginRepository {
         return LoginRepository(api, authenticator)
     }
 
     @Provides
     @Singleton
-    fun provideTestDatabase(app: Application) : LocalDatabase {
-        return Room.databaseBuilder(
-            app,
-            LocalDatabase::class.java,
-            "test.db"
-        ).build()
+    fun provideTestDatabase(app: Application): DatabaseSecondHand? {
+        return DatabaseSecondHand.getInstance(app)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDataStoreManager(app: Application): DatastoreManager {
+        return DatastoreManager(app)
     }
 }
