@@ -1,6 +1,5 @@
 package id.hikmah.binar.secondhand.presentation.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,9 +14,6 @@ import javax.inject.Inject
 class RegisterViewModel @Inject constructor(
     private val repository: RegisterRepository
 ) : ViewModel() {
-
-    var dataError = MutableLiveData<String>()
-        private set
 
     fun registerAccount(
         fullName: String,

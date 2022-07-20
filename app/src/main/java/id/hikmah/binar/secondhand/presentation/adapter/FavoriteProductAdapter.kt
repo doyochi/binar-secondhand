@@ -6,23 +6,23 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import id.hikmah.binar.secondhand.data.remote.model.notification.FavoriteProductDtoItem
 import id.hikmah.binar.secondhand.databinding.FavoriteListBinding
+import id.hikmah.binar.secondhand.domain.FavoriteProduct
 import id.hikmah.binar.secondhand.helper.toDateFavorite
 
 class FavoriteProductAdapter(private val onClickListener: (id: Int) -> Unit): RecyclerView.Adapter<FavoriteProductAdapter.FavoriteProductViewHolder>() {
 
-    private val diffCallBack = object : DiffUtil.ItemCallback<FavoriteProductDtoItem>() {
+    private val diffCallBack = object : DiffUtil.ItemCallback<FavoriteProduct>() {
         override fun areItemsTheSame(
-            oldItem: FavoriteProductDtoItem,
-            newItem: FavoriteProductDtoItem
+            oldItem: FavoriteProduct,
+            newItem: FavoriteProduct
         ): Boolean {
             return newItem == oldItem
         }
 
         override fun areContentsTheSame(
-            oldItem: FavoriteProductDtoItem,
-            newItem: FavoriteProductDtoItem
+            oldItem: FavoriteProduct,
+            newItem: FavoriteProduct
         ): Boolean {
             return newItem.hashCode() == oldItem.hashCode()
         }
@@ -30,23 +30,23 @@ class FavoriteProductAdapter(private val onClickListener: (id: Int) -> Unit): Re
 
     private val differ = AsyncListDiffer(this, diffCallBack)
 
-    fun submitData(item: List<FavoriteProductDtoItem>) = differ.submitList(item)
+    fun submitData(item: List<FavoriteProduct>) = differ.submitList(item)
 
     inner class FavoriteProductViewHolder(private val binding: FavoriteListBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(items: FavoriteProductDtoItem) {
+        fun bind(items: FavoriteProduct) {
 
-            if (!items.transactionDate.isNullOrEmpty()){
+            if (!items.productTransactionDate.isNullOrEmpty()) {
                 Glide.with(itemView.context)
-                    .load(items.imageUrl)
+                    .load(items.productImage)
                     .into(binding.ivProduct)
 
                 binding.tvProductTitle.text = items.productName
 
-                binding.tvProductPrice.text = "Rp ${items.productFav.basePrice}"
+                binding.tvProductPrice.text = "Rp ${items.productPrice}"
 
-                binding.tvProductInformation.text = "Ditawar Rp ${items.bidPrice}"
+                binding.tvProductInformation.text = "Ditawar Rp ${items.productBidPrice}"
 
-                binding.tvDateProduct.text = items.transactionDate.toDateFavorite()
+                binding.tvDateProduct.text = items.productTransactionDate.toDateFavorite()
 
                 binding.containerPenawaranP.setOnClickListener {
                     onClickListener.invoke(items.id)

@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="400dp"
     android:id="@+id/BottomSheet"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/card_back_white">
 
         <androidx.cardview.widget.CardView
@@ -118,6 +117,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
+                android:id="@+id/title_tawar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -125,18 +125,30 @@
                 android:textColorHint="@color/black"
                 android:fontFamily="@font/poppins_bold"
                 android:text=""
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
 
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_harga"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_button_edit"
+                android:layout_height="wrap_content"
                 android:hint="Rp 0,00"
-                android:textSize="11sp"
-                android:layout_gravity="center"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
+                app:boxCornerRadiusBottomEnd="@dimen/corner_radius_textfield"
+                app:boxCornerRadiusBottomStart="@dimen/corner_radius_textfield"
+                app:boxCornerRadiusTopEnd="@dimen/corner_radius_textfield"
+                app:boxCornerRadiusTopStart="@dimen/corner_radius_textfield"
+                app:boxStrokeColor="@color/PURPLE04"
+                app:layout_constraintTop_toBottomOf="@id/title_tawar">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_reguler"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textSize="@dimen/text_size_textfield" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_kirim"
@@ -150,7 +162,14 @@
                 android:backgroundTint="@color/purple_500"
                 app:cornerRadius="15dp"
                 android:backgroundTintMode="src_over"
-                android:layout_gravity="center|bottom"/>
+                android:layout_gravity="center|bottom" />
 
         </LinearLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/cl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

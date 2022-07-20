@@ -22,38 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!-- xml if data is empty, a view group for add another product-->
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone"
-                android:background="@drawable/rounded_field_stroke_dash">
-
-                <ImageView
-                    android:id="@+id/iv_empty_data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:src="@drawable/ic_fi_plus" />
-
-                <TextView
-                    android:id="@+id/tv_empty_data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tambah Produk"
-                    android:fontFamily="@font/poppins_reguler"
-                    android:textSize="12sp"
-                    android:textColor="@color/NEUTRAL03"
-                    app:layout_constraintTop_toBottomOf="@id/iv_empty_data"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- Item List on RecyclerView if the data is not empty -->
 

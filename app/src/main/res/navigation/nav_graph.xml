@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/buyer6"
         android:name="id.hikmah.binar.secondhand.presentation.fragment.Buyer6"
         android:label="fragment_buyer6"
-        tools:layout="@layout/fragment_buyer6" >
+        tools:layout="@layout/fragment_buyer6">
         <action
             android:id="@+id/action_buyer6_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -113,7 +113,7 @@
             android:id="@+id/action_infoPenawarFragment_to_saleListFragment"
             app:destination="@id/saleListFragment" />
         <argument
-            android:name="itemId"
+            android:name="orderId"
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>

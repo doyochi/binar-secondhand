@@ -223,13 +223,11 @@ class SaleListFragment : Fragment() {
                     productListAdapter.submitListProduct(result.data!!)
                 }
 
-                Status.ERROR -> {
-
-                }
+                Status.ERROR -> {}
 
             }
 
-            }
+        }
 
     }
     //End
