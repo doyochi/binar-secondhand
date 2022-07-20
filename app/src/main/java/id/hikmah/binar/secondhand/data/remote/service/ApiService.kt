@@ -6,6 +6,8 @@ import id.hikmah.binar.secondhand.data.remote.model.LoginResponse
 import id.hikmah.binar.secondhand.data.remote.model.Product
 import id.hikmah.binar.secondhand.data.remote.model.User
 import id.hikmah.binar.secondhand.data.remote.model.notification.FavoriteProductDto
+import id.hikmah.binar.secondhand.data.remote.model.notification.SoldProductDto
+import id.hikmah.binar.secondhand.data.remote.model.product.ProductSellerDto
 import id.hikmah.binar.secondhand.data.remote.model.sellerorder.SellerOrderDto
 import okhttp3.RequestBody
 import retrofit2.http.*
@@ -20,8 +22,7 @@ interface ApiService {
     //Product
     @GET("buyer/product")
     suspend fun getProduct(
-        @Header("access_token") key: String
-    ): Product
+        @Header("access_token") key: String): Product
 
     //Get Favorite Product
     @GET("notification")
@@ -54,4 +55,9 @@ interface ApiService {
     @Headers("Content-Type: application/json")
     @POST("auth/login")
     suspend fun loginAccount(@Body loginInfo: LoginInfo): LoginResponse
+    suspend fun fetchSellerProduct(@HeaderMap header: Map<String, String>): ProductSellerDto
+
+    //Get Sold list product
+    @GET("history")
+    suspend fun fetchSoldProduct(@HeaderMap header: Map<String, String>): SoldProductDto
 }

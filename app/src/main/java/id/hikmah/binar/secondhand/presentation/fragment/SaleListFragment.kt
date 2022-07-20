@@ -17,6 +17,8 @@ import id.hikmah.binar.secondhand.helper.Status
 import id.hikmah.binar.secondhand.presentation.adapter.FavoriteProductAdapter
 import id.hikmah.binar.secondhand.presentation.adapter.ProductListAdapter
 import id.hikmah.binar.secondhand.presentation.viewmodel.ProductSellerDetailsViewModel
+import id.hikmah.binar.secondhand.presentation.adapter.SoldProductAdapter
+import id.hikmah.binar.secondhand.presentation.viewmodel.SaleListViewModel
 import kotlinx.android.synthetic.main.layout_navbar.view.*
 
 @AndroidEntryPoint
@@ -25,8 +27,9 @@ class SaleListFragment : Fragment() {
     private var _binding: FragmentSaleListBinding? = null
     private val binding get() = _binding!!
 
-    private val favoriteProductAdapter by lazy { FavoriteProductAdapter(::onClickItemFavorite) }
-    private val productListAdapter by lazy { ProductListAdapter() }
+    private lateinit var favoriteProductAdapter: FavoriteProductAdapter
+    private lateinit var soldProductAdapter: SoldProductAdapter
+    private lateinit var productListAdapter: ProductListAdapter
 
     private val viewModel: ProductSellerDetailsViewModel by viewModels()
     private val dataStore: DatastoreViewModel by viewModels()
@@ -46,13 +49,29 @@ class SaleListFragment : Fragment() {
 
         dataStore.getAccessToken().observe(viewLifecycleOwner) { key ->
             cardOnClick(key)
+        binding.cvScrollFavorite.setOnClickListener {
+            initRecyclerViewFavorite()
+            submitFavoriteProduct()
+        }
+
+        binding.cvScrollSold.setOnClickListener {
+            initRecyclerViewSold()
+            submitSoldProduct()
+        }
+
+        binding.cvScrollProduct.setOnClickListener {
+            initRecyclerViewProductSeller()
+            submitProductSeller()
         }
 
         fetchUsers()
 
+
+
         bottomNavBar()
 
         cvClicked()
+
 
     }
 
@@ -68,6 +87,7 @@ class SaleListFragment : Fragment() {
                     }
                     Status.ERROR -> {}
                 }
+
             }
         }
     }
@@ -138,6 +158,8 @@ class SaleListFragment : Fragment() {
                 binding.tvScrollSold.setTextColor(ContextCompat.getColor(requireContext(),
                     R.color.NEUTRAL01
                 ))
+                initRecyclerViewSold()
+                submitSoldProduct()
             } else {
                 binding.cvScrollSold.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
                     R.color.PURPLE01
@@ -208,6 +230,7 @@ class SaleListFragment : Fragment() {
     //Product
     private fun initRecyclerViewProductSeller() {
         binding.rvSaleList.apply {
+            productListAdapter = ProductListAdapter()
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = productListAdapter
         }
@@ -223,18 +246,51 @@ class SaleListFragment : Fragment() {
                     productListAdapter.submitListProduct(result.data!!)
                 }
 
-                Status.ERROR -> {}
+                Status.ERROR -> {
+
+                }
 
             }
 
         }
+    }
 
+    //Favorite
+    private fun initRecyclerViewSold() {
+        binding.rvSaleList.apply {
+            soldProductAdapter = SoldProductAdapter()
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = soldProductAdapter
+        }
+    }
+
+    private fun submitSoldProduct() {
+        viewModel.fetchSoldProduct().observe(viewLifecycleOwner) { resource ->
+
+            when(resource.status) {
+
+                Status.LOADING -> {
+
+                }
+
+                Status.SUCCESS -> {
+                    soldProductAdapter.submitData(resource.data!!)
+                }
+
+                Status.ERROR -> {
+
+                }
+
+        }
+
+        }
     }
     //End
 
 
     //Footer
     private fun bottomNavBar(){
+        moveToDaftarJual()
         moveToJual()
         moveToNotif()
         moveToHome()

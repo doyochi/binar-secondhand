@@ -1,6 +1,7 @@
 package id.hikmah.binar.secondhand.data.remote.service
 
 import id.hikmah.binar.secondhand.BuildConfig
+import id.hikmah.binar.secondhand.data.remote.service.ApiClient.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
