@@ -32,8 +32,15 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager2"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:background="@drawable/background_jam" />
+            android:layout_height="350dp" />
+        <ImageView
+            android:id="@+id/iv_produk"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:scaleType="fitXY"
+            android:background="#d3d3d3"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"/>
         <me.relex.circleindicator.CircleIndicator3
             android:id="@+id/circle_indicator"
             android:layout_width="match_parent"
@@ -55,7 +62,7 @@
         app:cardCornerRadius="10dp">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_nama_barang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="3"
@@ -67,6 +74,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tv_kategori"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="3"
@@ -76,6 +84,7 @@
             android:text="Aksessoris" />
 
         <TextView
+            android:id="@+id/tv_harga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="3"
@@ -100,7 +109,7 @@
         app:cardCornerRadius="10dp">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_nama_penjual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="3"
@@ -112,6 +121,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tv_kota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="3"
@@ -121,7 +131,7 @@
             android:text="Kota" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/iv_seller"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
@@ -143,6 +153,7 @@
         app:cardCornerRadius="10dp">
 
         <TextView
+            android:id="@+id/tv_judul_deskripsi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="3"

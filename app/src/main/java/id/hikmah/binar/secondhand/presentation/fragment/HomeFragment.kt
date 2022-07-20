@@ -78,10 +78,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        productAdapter = ProductAdapter { id_product, pilem: ProductItem ->
+        productAdapter = ProductAdapter { id_product, product: ProductItem ->
             val bundle = Bundle()
             bundle.putInt("product_id", id_product)
-            findNavController().navigate(R.id.action_homeFragment_to_detailProdukFragment, bundle)
+            findNavController().navigate(R.id.action_homeFragment_to_buyer6, bundle)
         }
         binding.apply {
             rvData.adapter = productAdapter

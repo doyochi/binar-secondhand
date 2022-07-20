@@ -4,16 +4,16 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textfield.TextInputLayout
 import id.hikmah.binar.secondhand.R
-import id.hikmah.binar.secondhand.data.common.Status
-import id.hikmah.binar.secondhand.data.common.hideLoading
-import id.hikmah.binar.secondhand.data.common.showLoading
-import id.hikmah.binar.secondhand.data.common.showSnackbar
+import id.hikmah.binar.secondhand.data.common.*
 import id.hikmah.binar.secondhand.data.remote.model.dto.buyer.PostBuyerOrderBody
 import id.hikmah.binar.secondhand.data.repository.DatastoreViewModel
 import id.hikmah.binar.secondhand.databinding.BottomSheetBinding
@@ -44,8 +44,21 @@ class BottomSheetFragment(private val onClicked : (price : String) -> Unit) : Bo
         val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
         val inflater = LayoutInflater.from(context)
         val etHarga = view.findViewById<TextInputLayout>(R.id.et_harga)
+        val ivBarang = view.findViewById<ShapeableImageView>(R.id.iv_item_bid)
         val btnTertarik = view.findViewById<Button>(R.id.btn_tertarik)
         val btnTertarikSuccess = view.findViewById<Button>(R.id.btn_tertarik_success)
+        val namaBarang = view.findViewById<TextView>(R.id.tv_name_item_bid)
+        val hargaBarang = view.findViewById<TextView>(R.id.tv_price_item_bid)
+
+//        viewModel.getProductDetail(productId!!).observe(viewLifecycleOwner){
+//            it.data?.let { data ->
+//                Glide.with(requireContext()).load(data.imageUrl)
+//                    .into(ivBarang)
+//                namaBarang.text = data.namaBarang
+//                hargaBarang.text = data.hargaBarang.toRp()
+//            }
+//        }
+
         _binding = BottomSheetBinding.inflate(inflater)
         dialog.setContentView(binding.root)
         binding.btnKirim.setOnClickListener{

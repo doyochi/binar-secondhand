@@ -11,8 +11,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import id.hikmah.binar.secondhand.R
+import id.hikmah.binar.secondhand.data.common.toRp
 import id.hikmah.binar.secondhand.data.remote.model.domain.BuyerProductDetailMapper
 import id.hikmah.binar.secondhand.data.remote.model.dto.buyer.PostBuyerOrderBody
 import id.hikmah.binar.secondhand.data.remote.service.ApiClient
@@ -30,6 +32,7 @@ class Buyer6 : Fragment() {
 
     private var imagesList = mutableListOf<Int>()
     lateinit var textView: TextView
+    private var productId : Int? = null
 
     private val buyerRepo : BuyerRepo by lazy { BuyerRepo(
         ApiClient.instanceBuyer,
@@ -55,7 +58,8 @@ class Buyer6 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        
+        productId?.let { getData(it) }
         postToList()
 
         textView = binding.deskripsi.findViewById(R.id.deskripsi)
@@ -79,7 +83,16 @@ class Buyer6 : Fragment() {
     private fun getData(id: Int){
         viewModel.getProductDetail(id).observe(viewLifecycleOwner){
             it.data.let { data ->
-
+                Glide.with(requireContext()).load(data?.imageUrl).into(binding.ivProduk)
+                Glide.with(requireContext()).load(data?.imageUser).into(binding.ivSeller)
+                Glide.with(requireContext()).load(data?.imageUrl).into(binding.ivProduk)
+                Glide.with(requireContext()).load(data?.imageUser).into(binding.ivSeller)
+                binding.tvKota.text = data?.lokasi
+                binding.tvNamaBarang.text = data?.namaBarang
+                binding.tvHarga.text = data?.hargaBarang?.toRp()
+                binding.deskripsi.text = data?.deskripsiBarang
+                binding.tvKategori.text = data?.kategori
+                binding.tvNamaPenjual.text = data?.username
             }
         }
     }
