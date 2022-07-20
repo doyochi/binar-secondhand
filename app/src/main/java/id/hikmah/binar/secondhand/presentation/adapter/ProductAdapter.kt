@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import id.hikmah.binar.secondhand.data.remote.model.Product
-import id.hikmah.binar.secondhand.data.remote.model.ProductItem
+import id.hikmah.binar.secondhand.data.remote.model.dto.Product
+import id.hikmah.binar.secondhand.data.remote.model.dto.ProductItem
 import id.hikmah.binar.secondhand.databinding.ItemDataBinding
 
 class ProductAdapter(private val onClickListers: (id: Int, product: ProductItem) -> Unit):

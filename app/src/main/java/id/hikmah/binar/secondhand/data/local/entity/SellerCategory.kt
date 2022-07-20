@@ -1,4 +1,4 @@
-package id.hikmah.binar.secondhand.data.remote.model.domain
+package id.hikmah.binar.secondhand.data.local.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

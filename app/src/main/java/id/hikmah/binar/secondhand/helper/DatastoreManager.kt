@@ -1,4 +1,4 @@
-package id.hikmah.binar.secondhand.data.repository
+package id.hikmah.binar.secondhand.helper
 
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey

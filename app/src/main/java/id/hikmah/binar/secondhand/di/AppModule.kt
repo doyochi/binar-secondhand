@@ -5,10 +5,14 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import id.hikmah.binar.secondhand.data.local.DatabaseSecondHand
 import id.hikmah.binar.secondhand.data.remote.service.ApiClient
 import id.hikmah.binar.secondhand.data.remote.service.ApiService
-import id.hikmah.binar.secondhand.data.remote.service.DatabaseSecondHand
-import id.hikmah.binar.secondhand.data.repository.*
+import id.hikmah.binar.secondhand.data.repository.InfoPenawarRepository
+import id.hikmah.binar.secondhand.data.repository.LoginRepository
+import id.hikmah.binar.secondhand.data.repository.RegisterRepository
+import id.hikmah.binar.secondhand.data.repository.SaleListRepository
+import id.hikmah.binar.secondhand.helper.DatastoreManager
 import javax.inject.Singleton
 
 @Module

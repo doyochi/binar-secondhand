@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import id.hikmah.binar.secondhand.BuildConfig
 import id.hikmah.binar.secondhand.R
-import id.hikmah.binar.secondhand.data.remote.model.ProductItem
+import id.hikmah.binar.secondhand.data.remote.model.dto.ProductItem
 import id.hikmah.binar.secondhand.data.remote.service.ApiClient
 import id.hikmah.binar.secondhand.data.remote.service.ApiService
 import id.hikmah.binar.secondhand.data.repository.ProductRepo

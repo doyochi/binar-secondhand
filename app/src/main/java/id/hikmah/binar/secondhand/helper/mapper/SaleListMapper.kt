@@ -1,7 +1,7 @@
 package id.hikmah.binar.secondhand.helper.mapper
 
-import ProductSellerDto
-import id.hikmah.binar.secondhand.data.local.ProductSellerEntity
+import id.hikmah.binar.secondhand.data.local.entity.ProductSellerEntity
+import id.hikmah.binar.secondhand.data.remote.model.dto.ProductSellerDto
 import id.hikmah.binar.secondhand.domain.ProductSeller
 
 fun ProductSellerDto.toProductSellerEntity() : ProductSellerEntity {

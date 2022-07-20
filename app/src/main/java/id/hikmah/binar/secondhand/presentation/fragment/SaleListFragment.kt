@@ -9,16 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.hikmah.binar.secondhand.R
-import id.hikmah.binar.secondhand.data.repository.DatastoreViewModel
 import id.hikmah.binar.secondhand.databinding.FragmentSaleListBinding
 import id.hikmah.binar.secondhand.helper.Status
-import id.hikmah.binar.secondhand.presentation.adapter.FavoriteProductAdapter
 import id.hikmah.binar.secondhand.presentation.adapter.ProductListAdapter
-import id.hikmah.binar.secondhand.presentation.viewmodel.ProductSellerDetailsViewModel
 import id.hikmah.binar.secondhand.presentation.adapter.SoldProductAdapter
-import id.hikmah.binar.secondhand.presentation.viewmodel.SaleListViewModel
+import id.hikmah.binar.secondhand.presentation.viewmodel.DatastoreViewModel
+import id.hikmah.binar.secondhand.presentation.viewmodel.ProductSellerDetailsViewModel
 import kotlinx.android.synthetic.main.layout_navbar.view.*
 
 @AndroidEntryPoint
@@ -27,9 +26,10 @@ class SaleListFragment : Fragment() {
     private var _binding: FragmentSaleListBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var favoriteProductAdapter: FavoriteProductAdapter
+    //    private val favoriteProductAdapter by lazy { FavoriteProductAdapter(::onClickItemFavorite) }
+    private val productListAdapter by lazy { ProductListAdapter() }
     private lateinit var soldProductAdapter: SoldProductAdapter
-    private lateinit var productListAdapter: ProductListAdapter
+
 
     private val viewModel: ProductSellerDetailsViewModel by viewModels()
     private val dataStore: DatastoreViewModel by viewModels()
@@ -49,34 +49,24 @@ class SaleListFragment : Fragment() {
 
         dataStore.getAccessToken().observe(viewLifecycleOwner) { key ->
             cardOnClick(key)
-        binding.cvScrollFavorite.setOnClickListener {
-            initRecyclerViewFavorite()
-            submitFavoriteProduct()
+
+
+            binding.cvScrollSold.setOnClickListener {
+                initRecyclerViewSold()
+                submitSoldProduct()
+            }
+
+            fetchUsers()
+
+            bottomNavBar()
+
+            cvClicked()
+
         }
-
-        binding.cvScrollSold.setOnClickListener {
-            initRecyclerViewSold()
-            submitSoldProduct()
-        }
-
-        binding.cvScrollProduct.setOnClickListener {
-            initRecyclerViewProductSeller()
-            submitProductSeller()
-        }
-
-        fetchUsers()
-
-
-
-        bottomNavBar()
-
-        cvClicked()
-
-
     }
 
     //Info Seller
-    private fun fetchUsers(){
+    private fun fetchUsers() {
         dataStore.getAccessToken().observe(viewLifecycleOwner) { accessToken ->
             viewModel.fetchUsersDetails(accessToken).observe(viewLifecycleOwner) { result ->
                 when (result.status) {
@@ -87,7 +77,6 @@ class SaleListFragment : Fragment() {
                     }
                     Status.ERROR -> {}
                 }
-
             }
         }
     }
@@ -115,14 +104,20 @@ class SaleListFragment : Fragment() {
                 initRecyclerViewProductSeller()
                 submitProductSeller(accessToken)
             } else {
-                binding.cvScrollProduct.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
-                    R.color.PURPLE01
-                ))
+                binding.cvScrollProduct.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.PURPLE01
+                    )
+                )
                 binding.ivScrollBox.setImageResource(R.drawable.ic_box_unclicked)
-                binding.tvScrollProduct.setTextColor(ContextCompat.getColor(requireContext(),
-                    R.color.NEUTRAL04
-                ))
-                }
+                binding.tvScrollProduct.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.NEUTRAL04
+                    )
+                )
+            }
 
             if (it == 2) {
                 binding.cvScrollFavorite.setCardBackgroundColor(
@@ -141,33 +136,49 @@ class SaleListFragment : Fragment() {
 //                initRecyclerViewFavorite()
 //                submitFavoriteProduct()
             } else {
-                binding.cvScrollFavorite.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
-                    R.color.PURPLE01
-                ))
+                binding.cvScrollFavorite.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.PURPLE01
+                    )
+                )
                 binding.ivScrollFavorite.setImageResource(R.drawable.ic_heart_unclicked)
-                binding.tvScrollFavorite.setTextColor(ContextCompat.getColor(requireContext(),
-                    R.color.NEUTRAL04
-                ))
+                binding.tvScrollFavorite.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.NEUTRAL04
+                    )
+                )
             }
 
-            if(it == 3) {
-                binding.cvScrollSold.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
-                    R.color.PURPLE04
-                ))
+            if (it == 3) {
+                binding.cvScrollSold.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.PURPLE04
+                    )
+                )
                 binding.ivScrollSold.setImageResource(R.drawable.ic_dollar_sign_clicked)
-                binding.tvScrollSold.setTextColor(ContextCompat.getColor(requireContext(),
-                    R.color.NEUTRAL01
-                ))
-                initRecyclerViewSold()
-                submitSoldProduct()
+                binding.tvScrollSold.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.NEUTRAL01
+                    )
+                )
             } else {
-                binding.cvScrollSold.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
-                    R.color.PURPLE01
-                ))
+                binding.cvScrollSold.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.PURPLE01
+                    )
+                )
                 binding.ivScrollSold.setImageResource(R.drawable.ic_dollar_sign_unclicked)
-                binding.tvScrollSold.setTextColor(ContextCompat.getColor(requireContext(),
-                    R.color.NEUTRAL04
-                ))
+                binding.tvScrollSold.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.NEUTRAL04
+                    )
+                )
             }
 
         }
@@ -222,7 +233,7 @@ class SaleListFragment : Fragment() {
     private fun onClickItemFavorite(id: Int) {
         findNavController().navigate(
             SaleListFragmentDirections.actionSaleListFragmentToInfoPenawarFragment(
-                id
+
             )
         )
     }
@@ -230,7 +241,6 @@ class SaleListFragment : Fragment() {
     //Product
     private fun initRecyclerViewProductSeller() {
         binding.rvSaleList.apply {
-            productListAdapter = ProductListAdapter()
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = productListAdapter
         }
@@ -246,9 +256,7 @@ class SaleListFragment : Fragment() {
                     productListAdapter.submitListProduct(result.data!!)
                 }
 
-                Status.ERROR -> {
-
-                }
+                Status.ERROR -> {}
 
             }
 
@@ -267,7 +275,7 @@ class SaleListFragment : Fragment() {
     private fun submitSoldProduct() {
         viewModel.fetchSoldProduct().observe(viewLifecycleOwner) { resource ->
 
-            when(resource.status) {
+            when (resource.status) {
 
                 Status.LOADING -> {
 
@@ -281,7 +289,7 @@ class SaleListFragment : Fragment() {
 
                 }
 
-        }
+            }
 
         }
     }
@@ -289,8 +297,7 @@ class SaleListFragment : Fragment() {
 
 
     //Footer
-    private fun bottomNavBar(){
-        moveToDaftarJual()
+    private fun bottomNavBar() {
         moveToJual()
         moveToNotif()
         moveToHome()
@@ -298,19 +305,19 @@ class SaleListFragment : Fragment() {
     }
 
     private fun moveToHome() {
-        binding.footer.footer_home.setOnClickListener{
+        binding.footer.footer_home.setOnClickListener {
             findNavController().navigate(R.id.action_saleListFragment_to_homeFragment)
         }
     }
 
     private fun moveToNotif() {
-        binding.footer.footer_home.setOnClickListener{
+        binding.footer.footer_home.setOnClickListener {
             findNavController().navigate(R.id.action_saleListFragment_to_notificationFragment)
         }
     }
 
     private fun moveToJual() {
-        binding.footer.footer_jual.setOnClickListener{
+        binding.footer.footer_jual.setOnClickListener {
             findNavController().navigate(R.id.action_saleListFragment_to_detailProdukFragment)
         }
     }

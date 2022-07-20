@@ -1,18 +1,13 @@
 package id.hikmah.binar.secondhand.presentation.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import id.hikmah.binar.secondhand.data.remote.model.notification.FavoriteProductDtoItem
 import id.hikmah.binar.secondhand.data.remote.model.notification.SoldProductDtoItem
-import id.hikmah.binar.secondhand.databinding.FavoriteListBinding
 import id.hikmah.binar.secondhand.databinding.SoldListBinding
-import id.hikmah.binar.secondhand.helper.toDateFavorite
 
 class SoldProductAdapter: RecyclerView.Adapter<SoldProductAdapter.SoldProductViewHolder>() {
 

@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import id.hikmah.binar.secondhand.data.common.viewModelsFactory
-import id.hikmah.binar.secondhand.data.repository.DatastoreManager
-import id.hikmah.binar.secondhand.data.repository.DatastoreViewModel
 import id.hikmah.binar.secondhand.databinding.ActivityMainBinding
+import id.hikmah.binar.secondhand.helper.DatastoreManager
+import id.hikmah.binar.secondhand.presentation.viewmodel.DatastoreViewModel
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

@@ -2,7 +2,7 @@ package id.hikmah.binar.secondhand.data.remote.model.dto.buyer
 
 
 import com.google.gson.annotations.SerializedName
-import id.hikmah.binar.secondhand.data.remote.model.Category
+import id.hikmah.binar.secondhand.data.remote.model.dto.Category
 import id.hikmah.binar.secondhand.data.remote.model.product.User
 
 data class BuyerProductDtoItem(

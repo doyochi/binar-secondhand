@@ -1,30 +1,24 @@
 package id.hikmah.binar.secondhand.presentation.fragment
 
-import android.graphics.Color
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
-import com.google.android.material.snackbar.Snackbar
 import id.hikmah.binar.secondhand.R
 import id.hikmah.binar.secondhand.data.common.toRp
-import id.hikmah.binar.secondhand.data.remote.model.domain.BuyerProductDetailMapper
-import id.hikmah.binar.secondhand.data.remote.model.dto.buyer.PostBuyerOrderBody
+import id.hikmah.binar.secondhand.data.local.DatabaseSecondHand
 import id.hikmah.binar.secondhand.data.remote.service.ApiClient
-import id.hikmah.binar.secondhand.data.remote.service.DatabaseSecondHand
 import id.hikmah.binar.secondhand.data.repository.BuyerRepo
 import id.hikmah.binar.secondhand.databinding.FragmentBuyer6Binding
+import id.hikmah.binar.secondhand.helper.mapper.BuyerProductDetailMapper
 import id.hikmah.binar.secondhand.presentation.adapter.ViewPagerAdapter
 import kotlinx.android.synthetic.main.fragment_buyer6.*
 import me.relex.circleindicator.CircleIndicator3
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class Buyer6 : Fragment() {
     private var _binding: FragmentBuyer6Binding? = null

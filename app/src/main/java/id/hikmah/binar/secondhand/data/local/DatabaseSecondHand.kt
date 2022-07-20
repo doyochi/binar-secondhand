@@ -1,15 +1,14 @@
-package id.hikmah.binar.secondhand.data.remote.service
+package id.hikmah.binar.secondhand.data.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.and2t2.secondhand.data.local.AuthDao
-import com.and2t2.secondhand.data.local.BuyerDao
-import com.and2t2.secondhand.data.local.NotifikasiDao
-import id.hikmah.binar.secondhand.data.local.ProductSellerEntity
-import id.hikmah.binar.secondhand.data.remote.dao.SellerDao
-import id.hikmah.binar.secondhand.data.remote.model.domain.*
+import id.hikmah.binar.secondhand.data.local.dao.AuthDao
+import id.hikmah.binar.secondhand.data.local.dao.BuyerDao
+import id.hikmah.binar.secondhand.data.local.dao.NotifikasiDao
+import id.hikmah.binar.secondhand.data.local.dao.SellerDao
+import id.hikmah.binar.secondhand.data.local.entity.*
 
 @Database(
     entities = [Notifikasi::class, BuyerProduct::class, AuthUser::class, ProductSellerEntity::class, SellerOrder::class, BuyerProductDetail::class, SellerCategory::class],

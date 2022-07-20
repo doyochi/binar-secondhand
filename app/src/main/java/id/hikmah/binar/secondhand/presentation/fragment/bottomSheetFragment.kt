@@ -7,16 +7,18 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
-import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textfield.TextInputLayout
 import id.hikmah.binar.secondhand.R
-import id.hikmah.binar.secondhand.data.common.*
+import id.hikmah.binar.secondhand.data.common.hideLoading
+import id.hikmah.binar.secondhand.data.common.showLoading
+import id.hikmah.binar.secondhand.data.common.showSnackbar
 import id.hikmah.binar.secondhand.data.remote.model.dto.buyer.PostBuyerOrderBody
-import id.hikmah.binar.secondhand.data.repository.DatastoreViewModel
 import id.hikmah.binar.secondhand.databinding.BottomSheetBinding
+import id.hikmah.binar.secondhand.helper.Status
+import id.hikmah.binar.secondhand.presentation.viewmodel.DatastoreViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BottomSheetFragment(private val onClicked : (price : String) -> Unit) : BottomSheetDialogFragment(){

@@ -1,4 +1,4 @@
-package id.hikmah.binar.secondhand.data.remote.model.domain
+package id.hikmah.binar.secondhand.domain
 
 import android.net.Uri
 import android.os.Parcelable

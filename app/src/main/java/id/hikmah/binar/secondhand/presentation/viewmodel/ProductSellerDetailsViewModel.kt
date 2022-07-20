@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import dagger.hilt.android.lifecycle.HiltViewModel
-import id.hikmah.binar.secondhand.data.remote.service.DatabaseSecondHand
+import id.hikmah.binar.secondhand.data.local.DatabaseSecondHand
 import id.hikmah.binar.secondhand.data.repository.SaleListRepository
 import id.hikmah.binar.secondhand.helper.Resource
 import id.hikmah.binar.secondhand.helper.mapper.toProductSeller
@@ -49,6 +49,17 @@ class ProductSellerDetailsViewModel @Inject constructor(
         }
     }
 
+
+    fun fetchSoldProduct() = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            emit(Resource.success(data = repository.getSoldProduct()))
+        } catch (e: Exception) {
+            emit(Resource.error(null, message = e.message ?: "Error Occurred"))
+        }
+    }
+
+
     fun fetchProductSeller(accessToken: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(null))
 
@@ -57,7 +68,7 @@ class ProductSellerDetailsViewModel @Inject constructor(
 
         val shouldLoadFromCache = localData.isNotEmpty()
 
-        if(shouldLoadFromCache) {
+        if (shouldLoadFromCache) {
             return@liveData
         }
 

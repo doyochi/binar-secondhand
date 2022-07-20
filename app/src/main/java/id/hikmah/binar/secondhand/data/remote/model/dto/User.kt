@@ -1,4 +1,4 @@
-package id.hikmah.binar.secondhand.data.remote.model
+package id.hikmah.binar.secondhand.data.remote.model.dto
 
 import com.google.gson.annotations.SerializedName
 

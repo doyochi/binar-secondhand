@@ -1,12 +1,12 @@
-package id.hikmah.binar.secondhand.data.remote.dao
+package id.hikmah.binar.secondhand.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import id.hikmah.binar.secondhand.data.local.ProductSellerEntity
-import id.hikmah.binar.secondhand.data.remote.model.domain.SellerCategory
-import id.hikmah.binar.secondhand.data.remote.model.domain.SellerOrder
+import id.hikmah.binar.secondhand.data.local.entity.ProductSellerEntity
+import id.hikmah.binar.secondhand.data.local.entity.SellerCategory
+import id.hikmah.binar.secondhand.data.local.entity.SellerOrder
 import kotlinx.coroutines.flow.Flow
 
 @Dao

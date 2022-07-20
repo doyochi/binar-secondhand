@@ -1,6 +1,7 @@
-package id.hikmah.binar.secondhand.data.remote.model.domain
+package id.hikmah.binar.secondhand.helper.mapper
 
 import id.hikmah.binar.secondhand.data.common.DomainMapper
+import id.hikmah.binar.secondhand.data.local.entity.BuyerProductDetail
 import id.hikmah.binar.secondhand.data.remote.model.dto.buyer.BuyerProductDtoItem
 
 class BuyerProductDetailMapper : DomainMapper<BuyerProductDtoItem, BuyerProductDetail> {

@@ -1,5 +1,6 @@
+package id.hikmah.binar.secondhand.data.remote.model.dto
+
 import com.google.gson.annotations.SerializedName
-import id.hikmah.binar.secondhand.data.remote.model.Category
 
 data class ProductSellerDto(
     @SerializedName("base_price")

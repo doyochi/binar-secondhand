@@ -1,6 +1,6 @@
 package id.hikmah.binar.secondhand.data.repository
 
-import id.hikmah.binar.secondhand.data.remote.model.LoginInfo
+import id.hikmah.binar.secondhand.data.remote.model.dto.LoginInfo
 import id.hikmah.binar.secondhand.data.remote.service.ApiService
 
 class LoginRepository(private val api: ApiService) {

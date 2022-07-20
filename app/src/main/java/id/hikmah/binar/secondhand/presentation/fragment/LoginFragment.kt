@@ -12,9 +12,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import id.hikmah.binar.secondhand.data.repository.DatastoreViewModel
 import id.hikmah.binar.secondhand.databinding.FragmentLoginBinding
 import id.hikmah.binar.secondhand.helper.Status
+import id.hikmah.binar.secondhand.presentation.viewmodel.DatastoreViewModel
 import id.hikmah.binar.secondhand.presentation.viewmodel.LoginViewModel
 
 @AndroidEntryPoint

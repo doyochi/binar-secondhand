@@ -1,4 +1,4 @@
-package id.hikmah.binar.secondhand.data.local
+package id.hikmah.binar.secondhand.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -2,12 +2,12 @@ package id.hikmah.binar.secondhand.data.repository
 
 import androidx.room.withTransaction
 import id.hikmah.binar.secondhand.data.common.networkBoundResource
-import id.hikmah.binar.secondhand.data.remote.model.domain.BuyerProductDetail
-import id.hikmah.binar.secondhand.data.remote.model.domain.BuyerProductDetailMapper
+import id.hikmah.binar.secondhand.data.local.DatabaseSecondHand
+import id.hikmah.binar.secondhand.data.local.entity.BuyerProductDetail
 import id.hikmah.binar.secondhand.data.remote.model.dto.buyer.PostBuyerOrderBody
 import id.hikmah.binar.secondhand.data.remote.model.dto.buyer.PostBuyerOrderDto
 import id.hikmah.binar.secondhand.data.remote.service.BuyerService
-import id.hikmah.binar.secondhand.data.remote.service.DatabaseSecondHand
+import id.hikmah.binar.secondhand.helper.mapper.BuyerProductDetailMapper
 import retrofit2.Response
 
 class BuyerRepo(

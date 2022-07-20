@@ -1,10 +1,10 @@
-package com.and2t2.secondhand.data.local
+package id.hikmah.binar.secondhand.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import id.hikmah.binar.secondhand.data.remote.model.domain.AuthUser
+import id.hikmah.binar.secondhand.data.local.entity.AuthUser
 import kotlinx.coroutines.flow.Flow
 
 @Dao
