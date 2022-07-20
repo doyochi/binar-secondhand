@@ -9,14 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.hikmah.binar.secondhand.R
+import id.hikmah.binar.secondhand.data.repository.DatastoreViewModel
 import id.hikmah.binar.secondhand.databinding.FragmentSaleListBinding
 import id.hikmah.binar.secondhand.helper.Status
 import id.hikmah.binar.secondhand.presentation.adapter.FavoriteProductAdapter
 import id.hikmah.binar.secondhand.presentation.adapter.ProductListAdapter
-import id.hikmah.binar.secondhand.presentation.viewmodel.SaleListViewModel
+import id.hikmah.binar.secondhand.presentation.viewmodel.ProductSellerDetailsViewModel
 import kotlinx.android.synthetic.main.layout_navbar.view.*
 
 @AndroidEntryPoint
@@ -25,10 +25,11 @@ class SaleListFragment : Fragment() {
     private var _binding: FragmentSaleListBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var favoriteProductAdapter: FavoriteProductAdapter
-    private lateinit var productListAdapter: ProductListAdapter
+    private val favoriteProductAdapter by lazy { FavoriteProductAdapter(::onClickItemFavorite) }
+    private val productListAdapter by lazy { ProductListAdapter() }
 
-    private val viewModel: SaleListViewModel by viewModels()
+    private val viewModel: ProductSellerDetailsViewModel by viewModels()
+    private val dataStore: DatastoreViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,44 +44,30 @@ class SaleListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.cvScrollFavorite.setOnClickListener {
-            initRecyclerViewFavorite()
-            submitFavoriteProduct()
-        }
-
-        binding.cvScrollProduct.setOnClickListener {
-            initRecyclerViewProductSeller()
-            submitProductSeller()
+        dataStore.getAccessToken().observe(viewLifecycleOwner) { key ->
+            cardOnClick(key)
         }
 
         fetchUsers()
 
-
-
         bottomNavBar()
-        cardOnClick()
-        cvClicked()
 
+        cvClicked()
 
     }
 
     //Info Seller
     private fun fetchUsers(){
-        viewModel.fetchUsersDetails().observe(viewLifecycleOwner) {result ->
-            when(result.status) {
-                Status.LOADING -> {
-
+        dataStore.getAccessToken().observe(viewLifecycleOwner) { accessToken ->
+            viewModel.fetchUsersDetails(accessToken).observe(viewLifecycleOwner) { result ->
+                when (result.status) {
+                    Status.LOADING -> {}
+                    Status.SUCCESS -> {
+                        binding.tvSellerName.text = result.data?.fullName
+                        binding.tvSellerCity.text = result.data?.city
+                    }
+                    Status.ERROR -> {}
                 }
-
-                Status.SUCCESS -> {
-                    binding.tvSellerName.text = result.data?.fullName
-                    binding.tvSellerCity.text = result.data?.city
-                }
-
-                Status.ERROR -> {
-
-                }
-
             }
         }
     }
@@ -89,18 +76,24 @@ class SaleListFragment : Fragment() {
 
     //Scroll View
 
-    private fun cardOnClick() {
+    private fun cardOnClick(accessToken: String) {
         viewModel.stateOfCardClicked.observe(viewLifecycleOwner) {
-            if(it == 1){
-                binding.cvScrollProduct.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
-                    R.color.PURPLE04
-                ))
+            if (it == 1) {
+                binding.cvScrollProduct.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.PURPLE04
+                    )
+                )
                 binding.ivScrollBox.setImageResource(R.drawable.ic_box_clicked)
-                binding.tvScrollProduct.setTextColor(ContextCompat.getColor(requireContext(),
-                    R.color.NEUTRAL01
-                ))
+                binding.tvScrollProduct.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.NEUTRAL01
+                    )
+                )
                 initRecyclerViewProductSeller()
-                submitProductSeller()
+                submitProductSeller(accessToken)
             } else {
                 binding.cvScrollProduct.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
                     R.color.PURPLE01
@@ -112,15 +105,21 @@ class SaleListFragment : Fragment() {
                 }
 
             if (it == 2) {
-                binding.cvScrollFavorite.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
-                    R.color.PURPLE04
-                ))
+                binding.cvScrollFavorite.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.PURPLE04
+                    )
+                )
                 binding.ivScrollFavorite.setImageResource(R.drawable.ic_heart_clicked)
-                binding.tvScrollFavorite.setTextColor(ContextCompat.getColor(requireContext(),
-                    R.color.NEUTRAL01
-                ))
-                initRecyclerViewFavorite()
-                submitFavoriteProduct()
+                binding.tvScrollFavorite.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.NEUTRAL01
+                    )
+                )
+//                initRecyclerViewFavorite()
+//                submitFavoriteProduct()
             } else {
                 binding.cvScrollFavorite.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
                     R.color.PURPLE01
@@ -169,71 +168,73 @@ class SaleListFragment : Fragment() {
     //RecyclerView
 
     //Favorite
-    private fun initRecyclerViewFavorite() {
-        binding.rvSaleList.apply {
-            favoriteProductAdapter = FavoriteProductAdapter()
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = favoriteProductAdapter
-        }
-    }
+//    private fun initRecyclerViewFavorite() {
+//        binding.rvSaleList.apply {
+//            layoutManager = LinearLayoutManager(requireContext())
+//            adapter = favoriteProductAdapter
+//        }
+//    }
+//
+//    private fun submitFavoriteProduct() {
+//        viewModel.fetchFavoriteProduct(accessToken).observe(viewLifecycleOwner) { resource ->
+//
+//            when(resource.status) {
+//
+//                Status.LOADING -> {
+//
+//                }
+//
+//                Status.SUCCESS -> {
+//                    favoriteProductAdapter.submitData(resource.data!!)
+//                }
+//
+//                Status.ERROR -> {
+//
+//                }
+//
+//            }
+//
+//        }
+//    }
 
-    private fun submitFavoriteProduct() {
-        viewModel.fetchFavoriteProduct().observe(viewLifecycleOwner) { resource ->
-
-            when(resource.status) {
-
-                Status.LOADING -> {
-
-                }
-
-                Status.SUCCESS -> {
-                    favoriteProductAdapter.submitData(resource.data!!)
-                }
-
-                Status.ERROR -> {
-
-                }
-
-            }
-
-        }
+    private fun onClickItemFavorite(id: Int) {
+        findNavController().navigate(
+            SaleListFragmentDirections.actionSaleListFragmentToInfoPenawarFragment(
+                id
+            )
+        )
     }
 
     //Product
     private fun initRecyclerViewProductSeller() {
         binding.rvSaleList.apply {
-            productListAdapter = ProductListAdapter()
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = productListAdapter
         }
     }
 
-    private fun submitProductSeller() {
-        viewModel.fetchProductSeller().observe(viewLifecycleOwner) {result ->
-            when(result.status){
+    private fun submitProductSeller(accessToken: String) {
+        viewModel.fetchProductSeller(accessToken).observe(viewLifecycleOwner) { result ->
+            when (result.status) {
 
-                Status.LOADING -> {
-
-                }
+                Status.LOADING -> {}
 
                 Status.SUCCESS -> {
                     productListAdapter.submitListProduct(result.data!!)
                 }
 
-                Status.ERROR -> {
-
-                }
+                Status.ERROR -> {}
 
             }
 
         }
+
     }
     //End
 
 
     //Footer
     private fun bottomNavBar(){
-        moveToDaftarJual()
         moveToJual()
         moveToNotif()
         moveToHome()
@@ -248,25 +249,19 @@ class SaleListFragment : Fragment() {
 
     private fun moveToNotif() {
         binding.footer.footer_home.setOnClickListener{
-            findNavController().navigate(R.id.action_homeFragment_to_notificationFragment)
+            findNavController().navigate(R.id.action_saleListFragment_to_notificationFragment)
         }
     }
 
     private fun moveToJual() {
         binding.footer.footer_jual.setOnClickListener{
-            findNavController().navigate(R.id.action_homeFragment_to_detailProdukFragment)
-        }
-    }
-
-    private fun moveToDaftarJual() {
-        binding.footer.footer_daftar_jual.setOnClickListener{
-            findNavController().navigate(R.id.action_homeFragment_to_saleListFragment)
+            findNavController().navigate(R.id.action_saleListFragment_to_detailProdukFragment)
         }
     }
 
     private fun moveToAkun() {
         binding.footer.footer_akun.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_akunSayaFragment)
+            findNavController().navigate(R.id.action_saleListFragment_to_akunSayaFragment)
         }
     }
 }

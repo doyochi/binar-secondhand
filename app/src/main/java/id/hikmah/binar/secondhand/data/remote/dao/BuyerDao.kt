@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface BuyerDao {
     @Query("SELECT * FROM BuyerProductDetail")
-    fun getProductDetail() : Flow<BuyerProductDetail>
+    fun getProductDetail(): Flow<BuyerProductDetail>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertProductDetail(buyerProductDetail: BuyerProductDetail)
@@ -20,7 +20,7 @@ interface BuyerDao {
     fun deleteProductDetail()
 
     @Query("SELECT * FROM BuyerProduct ORDER by id DESC")
-    fun getProduct() : Flow<List<BuyerProduct>>
+    fun getProduct(): Flow<List<BuyerProduct>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertProduct(buyerProduct: List<BuyerProduct>)

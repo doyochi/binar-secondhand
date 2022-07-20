@@ -12,7 +12,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
 import id.hikmah.binar.secondhand.R
 
-fun Snackbar.addAction(@LayoutRes aLayoutId: Int, aListener: View.OnClickListener?) : Snackbar {
+fun Snackbar.addAction(@LayoutRes aLayoutId: Int, aListener: View.OnClickListener?): Snackbar {
     // Add button
     val button = LayoutInflater.from(view.context).inflate(aLayoutId, null) as MaterialButton
     view.findViewById<MaterialButton>(com.google.android.material.R.id.snackbar_action).let {
@@ -22,7 +22,7 @@ fun Snackbar.addAction(@LayoutRes aLayoutId: Int, aListener: View.OnClickListene
     }
     button.typeface
     button.layoutParams.width = 120
-    button.setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_fi_x,0)
+    button.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_fi_x, 0)
     button.setOnClickListener {
         this.dismiss()
         aListener?.onClick(it)

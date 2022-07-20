@@ -1,9 +1,15 @@
 package id.hikmah.binar.secondhand.data.repository
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class DatastoreViewModel(private val pref: DatastoreManager): ViewModel() {
+@HiltViewModel
+class DatastoreViewModel @Inject constructor(private val pref: DatastoreManager) : ViewModel() {
 
     fun saveLoginState(value: Boolean) {
         viewModelScope.launch {
@@ -11,7 +17,7 @@ class DatastoreViewModel(private val pref: DatastoreManager): ViewModel() {
         }
     }
 
-    fun getLoginState() : LiveData<Boolean> {
+    fun getLoginState(): LiveData<Boolean> {
         return pref.readLoginStateFromDataStore().asLiveData()
     }
 
@@ -21,7 +27,7 @@ class DatastoreViewModel(private val pref: DatastoreManager): ViewModel() {
         }
     }
 
-    fun getAccessToken() : LiveData<String> {
+    fun getAccessToken(): LiveData<String> {
         return pref.readAccessTokenFromDataStore().asLiveData()
     }
 
@@ -31,7 +37,7 @@ class DatastoreViewModel(private val pref: DatastoreManager): ViewModel() {
         }
     }
 
-    fun getIdUser() : LiveData<Int> {
+    fun getIdUser(): LiveData<Int> {
         return pref.readIdUserFromDataStore().asLiveData()
     }
 
@@ -41,7 +47,7 @@ class DatastoreViewModel(private val pref: DatastoreManager): ViewModel() {
         }
     }
 
-    fun getMsgSnackbar() : LiveData<String> {
+    fun getMsgSnackbar(): LiveData<String> {
         return pref.readMsgSnackbarFromDataStore().asLiveData()
     }
 
@@ -51,7 +57,7 @@ class DatastoreViewModel(private val pref: DatastoreManager): ViewModel() {
         }
     }
 
-    fun getTriggerUpdateProduct() : LiveData<Boolean> {
+    fun getTriggerUpdateProduct(): LiveData<Boolean> {
         return pref.readTriggerUpdateProducteFromDataStore().asLiveData()
     }
 
@@ -61,7 +67,7 @@ class DatastoreViewModel(private val pref: DatastoreManager): ViewModel() {
         }
     }
 
-    fun getIsUserProfileComplete() : LiveData<Boolean> {
+    fun getIsUserProfileComplete(): LiveData<Boolean> {
         return pref.getProfileComplete().asLiveData()
     }
 

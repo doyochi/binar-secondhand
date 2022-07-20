@@ -6,7 +6,7 @@ import id.hikmah.binar.secondhand.R
 
 private lateinit var isdialog: AlertDialog
 
-fun showLoading(mActivity: Activity){
+fun showLoading(mActivity: Activity) {
     /**set View*/
     val inflater = mActivity.layoutInflater
     val dialogView = inflater.inflate(R.layout.loading_dialog, null)
@@ -19,6 +19,6 @@ fun showLoading(mActivity: Activity){
     isdialog.show()
 }
 
-fun hideLoading(){
+fun hideLoading() {
     isdialog.dismiss()
 }

@@ -12,9 +12,9 @@ class BuyerProductDetailMapper : DomainMapper<BuyerProductDtoItem, BuyerProductD
             hargaBarang = modelDto.basePrice,
             imageUrl = modelDto.imageUrl,
             lokasi = modelDto.location,
-            kategori = if(modelDto.categories.isNullOrEmpty()){
+            kategori = if (modelDto.categories.isNullOrEmpty()) {
                 "Kategori"
-            }else{
+            } else {
                 modelDto.categories[0].name
             },
             imageUser = modelDto.user.imageUrl,
@@ -22,8 +22,8 @@ class BuyerProductDetailMapper : DomainMapper<BuyerProductDtoItem, BuyerProductD
         )
     }
 
-    fun toDomainList(initial : List<BuyerProductDtoItem>) : List<BuyerProductDetail>{
-        return initial.map{
+    fun toDomainList(initial: List<BuyerProductDtoItem>): List<BuyerProductDetail> {
+        return initial.map {
             mapToDomainModel(it)
         }
     }

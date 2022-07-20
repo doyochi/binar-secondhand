@@ -18,13 +18,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Loading ..."
         android:fontFamily="@font/poppins_medium"
-        android:textSize="18sp"
+        android:text="Loading ..."
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/pb"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pb" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
