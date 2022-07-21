@@ -1,9 +1,10 @@
 package id.hikmah.binar.secondhand.data.remote.service
 
 import id.hikmah.binar.secondhand.data.remote.model.dto.*
-import id.hikmah.binar.secondhand.data.remote.model.notification.FavoriteProductDto
+import id.hikmah.binar.secondhand.data.remote.model.notification.NotificationDto
 import id.hikmah.binar.secondhand.data.remote.model.notification.SoldProductDto
 import id.hikmah.binar.secondhand.data.remote.model.sellerorder.SellerOrderDto
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
 
@@ -17,15 +18,35 @@ interface ApiService {
     //Product
     @GET("buyer/product")
     suspend fun getProduct(
-        @Header("access_token") key: String): Product
+        @Header("access_token") key: String
+    ): Product
 
     //Get Favorite Product
     @GET("notification")
-    suspend fun fetchFavoriteProduct(@HeaderMap header: Map<String, String>): FavoriteProductDto
+    suspend fun fetchFavoriteProduct(@HeaderMap header: Map<String, String>): NotificationDto
 
     //Get Product Seller
     @GET("seller/product")
     suspend fun fetchSellerProduct(@HeaderMap header: Map<String, String>): List<ProductSellerDto>
+
+    @GET("seller/product/{id}")
+    suspend fun fetchSellerProduct(
+        @HeaderMap header: Map<String, String>,
+        @Path("id") id: Int
+    ): ProductSellerDto
+
+    @Multipart
+    @PUT("seller/product/{id}")
+    suspend fun editSellerProduct(
+        @Header("access_token") accessToken: String,
+        @Path("id") id: Int,
+        @Part("name") productName: RequestBody?,
+        @Part("description") productDescription: RequestBody?,
+        @Part("base_price") productBasePrice: RequestBody?,
+        @Part("category_ids") productCategory: RequestBody?,
+        @Part("location") productLocation: RequestBody?,
+        @Part image: MultipartBody.Part?
+    )
 
     //Seller Order Patch by Id
     @PATCH("seller/order/{id}")
@@ -51,6 +72,17 @@ interface ApiService {
     @POST("auth/login")
     suspend fun loginAccount(@Body loginInfo: LoginInfo): LoginResponse
 
+    //notification
+    @GET("notification")
+    suspend fun fetchNotification(
+        @Header("access_token") token: String
+    ): List<NotificationDto>
+
+    @GET("notification/{id}")
+    suspend fun fetchNotification(
+        @Header("access_token") token: String,
+        @Path("id") id: Int
+    ): NotificationDto
 
     //Get Sold list product
     @GET("history")

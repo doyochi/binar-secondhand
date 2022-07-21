@@ -37,7 +37,7 @@ class InfoPenawarFragment : Fragment() {
 
         btnPenawarBack()
 
-        val productId = InfoPenawarFragmentArgs.fromBundle(arguments as Bundle).orderId
+//        val productId = InfoPenawarFragmentArgs.fromBundle(arguments as Bundle).orderId
 
     }
 

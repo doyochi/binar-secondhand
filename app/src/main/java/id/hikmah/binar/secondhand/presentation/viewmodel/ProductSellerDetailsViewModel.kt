@@ -50,10 +50,10 @@ class ProductSellerDetailsViewModel @Inject constructor(
     }
 
 
-    fun fetchSoldProduct() = liveData(Dispatchers.IO) {
+    fun fetchSoldProduct(accessToken: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(null))
         try {
-            emit(Resource.success(data = repository.getSoldProduct()))
+            emit(Resource.success(data = repository.getSoldProduct(accessToken)))
         } catch (e: Exception) {
             emit(Resource.error(null, message = e.message ?: "Error Occurred"))
         }
@@ -92,6 +92,17 @@ class ProductSellerDetailsViewModel @Inject constructor(
                 data = productDao.getProductSellerDetail().map { it.toProductSeller() }
             ))
         }
+    }
 
+    fun fetchProductSellerById(accessToken: String, id: Int) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+
+        try {
+            emit(Resource.success(data = repository.fetchProductSellerDetails(accessToken, id)))
+        } catch (e: IOException) {
+            emit(Resource.error(null, e.message ?: "Error Occurred!"))
+        } catch (e: HttpException) {
+            emit(Resource.error(null, e.message() ?: "Error Occurred from Remote!"))
+        }
     }
 }

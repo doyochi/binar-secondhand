@@ -27,9 +27,8 @@ class SaleListFragment : Fragment() {
     private val binding get() = _binding!!
 
     //    private val favoriteProductAdapter by lazy { FavoriteProductAdapter(::onClickItemFavorite) }
-    private val productListAdapter by lazy { ProductListAdapter() }
+    private lateinit var productListAdapter: ProductListAdapter
     private lateinit var soldProductAdapter: SoldProductAdapter
-
 
     private val viewModel: ProductSellerDetailsViewModel by viewModels()
     private val dataStore: DatastoreViewModel by viewModels()
@@ -50,35 +49,29 @@ class SaleListFragment : Fragment() {
         dataStore.getAccessToken().observe(viewLifecycleOwner) { key ->
             cardOnClick(key)
 
-
-            binding.cvScrollSold.setOnClickListener {
-                initRecyclerViewSold()
-                submitSoldProduct()
-            }
-
-            fetchUsers()
-
-            bottomNavBar()
-
-            cvClicked()
+            fetchUsers(key)
 
         }
+
+        bottomNavBar()
+
+        cvClicked()
     }
 
     //Info Seller
-    private fun fetchUsers() {
-        dataStore.getAccessToken().observe(viewLifecycleOwner) { accessToken ->
-            viewModel.fetchUsersDetails(accessToken).observe(viewLifecycleOwner) { result ->
-                when (result.status) {
-                    Status.LOADING -> {}
-                    Status.SUCCESS -> {
-                        binding.tvSellerName.text = result.data?.fullName
-                        binding.tvSellerCity.text = result.data?.city
-                    }
-                    Status.ERROR -> {}
+    private fun fetchUsers(accessToken: String) {
+
+        viewModel.fetchUsersDetails(accessToken).observe(viewLifecycleOwner) { result ->
+            when (result.status) {
+                Status.LOADING -> {}
+                Status.SUCCESS -> {
+                    binding.tvSellerName.text = result.data?.fullName
+                    binding.tvSellerCity.text = result.data?.city
                 }
+                Status.ERROR -> {}
             }
         }
+
     }
     //End
 
@@ -165,6 +158,8 @@ class SaleListFragment : Fragment() {
                         R.color.NEUTRAL01
                     )
                 )
+                initRecyclerViewSold()
+                submitSoldProduct(accessToken)
             } else {
                 binding.cvScrollSold.setCardBackgroundColor(
                     ContextCompat.getColor(
@@ -241,6 +236,18 @@ class SaleListFragment : Fragment() {
     //Product
     private fun initRecyclerViewProductSeller() {
         binding.rvSaleList.apply {
+            productListAdapter = ProductListAdapter(
+                onClickButton = {
+                    findNavController().navigate(SaleListFragmentDirections.actionSaleListFragmentToDetailProdukFragment())
+                },
+                onClickItem = { id ->
+                    findNavController().navigate(
+                        SaleListFragmentDirections.actionSaleListFragmentToDetailProdukFragment(
+                            id
+                        )
+                    )
+                }
+            )
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = productListAdapter
         }
@@ -272,8 +279,8 @@ class SaleListFragment : Fragment() {
         }
     }
 
-    private fun submitSoldProduct() {
-        viewModel.fetchSoldProduct().observe(viewLifecycleOwner) { resource ->
+    private fun submitSoldProduct(accessToken: String) {
+        viewModel.fetchSoldProduct(accessToken).observe(viewLifecycleOwner) { resource ->
 
             when (resource.status) {
 
@@ -298,33 +305,35 @@ class SaleListFragment : Fragment() {
 
     //Footer
     private fun bottomNavBar() {
+
+        fun moveToHome() {
+            binding.footer.footer_home.setOnClickListener {
+                findNavController().navigate(R.id.action_saleListFragment_to_homeFragment)
+            }
+        }
+
+        fun moveToNotif() {
+            binding.footer.footer_home.setOnClickListener {
+                findNavController().navigate(R.id.action_saleListFragment_to_notificationFragment)
+            }
+        }
+
+        fun moveToJual() {
+            binding.footer.footer_jual.setOnClickListener {
+                findNavController().navigate(R.id.action_saleListFragment_to_detailProdukFragment)
+            }
+        }
+
+        fun moveToAkun() {
+            binding.footer.footer_akun.setOnClickListener {
+                findNavController().navigate(R.id.action_saleListFragment_to_akunSayaFragment)
+            }
+        }
+
         moveToJual()
         moveToNotif()
         moveToHome()
         moveToAkun()
     }
 
-    private fun moveToHome() {
-        binding.footer.footer_home.setOnClickListener {
-            findNavController().navigate(R.id.action_saleListFragment_to_homeFragment)
-        }
-    }
-
-    private fun moveToNotif() {
-        binding.footer.footer_home.setOnClickListener {
-            findNavController().navigate(R.id.action_saleListFragment_to_notificationFragment)
-        }
-    }
-
-    private fun moveToJual() {
-        binding.footer.footer_jual.setOnClickListener {
-            findNavController().navigate(R.id.action_saleListFragment_to_detailProdukFragment)
-        }
-    }
-
-    private fun moveToAkun() {
-        binding.footer.footer_akun.setOnClickListener {
-            findNavController().navigate(R.id.action_saleListFragment_to_akunSayaFragment)
-        }
-    }
 }

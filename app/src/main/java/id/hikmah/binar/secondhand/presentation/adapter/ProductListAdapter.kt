@@ -6,11 +6,15 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import id.hikmah.binar.secondhand.R
 import id.hikmah.binar.secondhand.databinding.AddButtonForProductSellerBinding
 import id.hikmah.binar.secondhand.databinding.ProductListBinding
 import id.hikmah.binar.secondhand.domain.ProductSeller
 
-class ProductListAdapter: RecyclerView.Adapter<ProductListAdapter.ProductListViewHolder>() {
+class ProductListAdapter(
+    private val onClickButton: () -> Unit,
+    private val onClickItem: (id: Int) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val diffCallBack = object : DiffUtil.ItemCallback<ProductSeller>() {
         override fun areItemsTheSame(
@@ -32,39 +36,82 @@ class ProductListAdapter: RecyclerView.Adapter<ProductListAdapter.ProductListVie
 
     fun submitListProduct(items: List<ProductSeller>) = differ.submitList(items)
 
-    inner class ProductListViewHolder(private val binding: ProductListBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(items: ProductSeller) {
-            Glide.with(itemView.context)
-                .load(items.productImage)
-                .override(1000, 1000)
-                .into(binding.ivProduct)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-            binding.tvProduct.text = items.productName
+        return when (viewType) {
+            R.layout.product_list -> {
+                val binding =
+                    ProductListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ProductListViewHolder(binding)
+            }
 
-            binding.tvProductType.text = items.productCategories
+            R.layout.add_button_for_product_seller -> {
+                val binding = AddButtonForProductSellerBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+                AddButtonProductSeller(binding)
+            }
 
-            binding.tvPrice.text = "Rp ${items.productPrice}"
+            else -> {
+                throw IllegalArgumentException("unknown view type $viewType")
+            }
+
         }
+
     }
-
-    inner class AddButtonProductSeller(private val binding: AddButtonForProductSellerBinding) :
-        RecyclerView.ViewHolder(binding.root)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListViewHolder {
-        val binding = ProductListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ProductListViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: ProductListViewHolder, position: Int) {
-        holder.bind(differ.currentList[position])
-    }
-
 
     override fun getItemCount(): Int {
         return differ.currentList.size + 1
     }
 
     override fun getItemViewType(position: Int): Int {
-        return super.getItemViewType(position) + 1
+        return when (position) {
+            0 -> {
+                R.layout.add_button_for_product_seller
+            }
+            else -> {
+                R.layout.product_list
+            }
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (getItemViewType(position)) {
+            R.layout.product_list -> (holder as ProductListViewHolder).bindProductList(differ.currentList[position - 1])
+            R.layout.add_button_for_product_seller -> (holder as AddButtonProductSeller).bindAddButton()
+        }
+    }
+
+    inner class ProductListViewHolder(private val binding: ProductListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bindProductList(items: ProductSeller) {
+
+            binding.cvProductList.setOnClickListener {
+                onClickItem.invoke(items.productId)
+            }
+
+            Glide.with(itemView.context)
+                .load(items.productImage)
+                .override(1000, 1000)
+                .into(binding.ivProductList)
+
+            binding.tvProductList.text = items.productName
+
+            binding.tvProductTypeList.text = items.productCategories
+
+            binding.tvPriceList.text = "Rp ${items.productPrice}"
+        }
+    }
+
+    inner class AddButtonProductSeller(private val binding: AddButtonForProductSellerBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bindAddButton() {
+            binding.btnAddProductList.setOnClickListener {
+                onClickButton.invoke()
+            }
+        }
     }
 }
