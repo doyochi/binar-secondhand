@@ -3,7 +3,7 @@ package id.hikmah.binar.secondhand.data.remote.model.notification
 
 import com.google.gson.annotations.SerializedName
 
-data class ProductFav(
+data class ProductNot(
     @SerializedName("base_price")
     val basePrice: Int,
     @SerializedName("id")

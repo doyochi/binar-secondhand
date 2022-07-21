@@ -3,7 +3,7 @@ package id.hikmah.binar.secondhand.data.remote.model.notification
 
 import com.google.gson.annotations.SerializedName
 
-data class FavoriteProductDto(
+data class NotificationDto(
     @SerializedName("bid_price")
     val bidPrice: Int,
     @SerializedName("buyer_name")
@@ -15,7 +15,7 @@ data class FavoriteProductDto(
     @SerializedName("image_url")
     val imageUrl: String,
     @SerializedName("Product")
-    val productFav: ProductFav,
+    val productNot: ProductNot,
     @SerializedName("product_id")
     val productId: Int,
     @SerializedName("product_name")
