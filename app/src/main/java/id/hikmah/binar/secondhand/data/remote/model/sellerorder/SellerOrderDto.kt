@@ -2,6 +2,7 @@ package id.hikmah.binar.secondhand.data.remote.model.sellerorder
 
 
 import com.google.gson.annotations.SerializedName
+import id.hikmah.binar.secondhand.data.remote.model.dto.User
 
 data class SellerOrderDto(
     @SerializedName("base_price")
@@ -13,7 +14,7 @@ data class SellerOrderDto(
     @SerializedName("id")
     val id: Int,
     @SerializedName("image_product")
-    val imageProduct: Any,
+    val imageProduct: String,
     @SerializedName("price")
     val price: Int,
     @SerializedName("Product")
@@ -29,5 +30,5 @@ data class SellerOrderDto(
     @SerializedName("updatedAt")
     val updatedAt: String,
     @SerializedName("User")
-    val user: UserX
+    val user: User
 )
