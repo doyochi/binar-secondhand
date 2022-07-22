@@ -39,11 +39,11 @@ class DetailProdukFragment : Fragment() {
 
         moveToHome()
 
-        val productId = DetailProdukFragmentArgs.fromBundle(arguments as Bundle).productId
-
-        if (productId != 0) {
-            fetchProductSellerFromDaftarJual(productId)
-        }
+//        val productId = DetailProdukFragmentArgs.fromBundle(arguments as Bundle).productId
+//
+//        if (productId != 0) {
+//            fetchProductSellerFromDaftarJual(productId)
+//        }
 
     }
 

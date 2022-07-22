@@ -17,29 +17,25 @@ class Buyer6ViewModel(private val buyerRepo: BuyerRepo) : ViewModel() {
 
     fun getProductDetail(id: Int) = buyerRepo.getProductDetail(id).asLiveData()
 
-    fun setBuyerOrder(postBuyerOrderBody: PostBuyerOrderBody, accessToken: String) =
-        liveData(Dispatchers.IO) {
-            emit(Resource.loading(null))
-            try {
-                val response = buyerRepo.setBuyerOrder(postBuyerOrderBody, accessToken)
-                if (response.isSuccessful) {
-                    emit(Resource.success(response.body()))
-                } else {
-                    val gson = Gson()
-                    val errorMsg = response.errorBody()?.string()
-                    val data = gson.fromJson(errorMsg, ApiError::class.java)
-                    response.errorBody()?.close()
-                    emit(Resource.error(null, data.message.toString()))
-                }
-            } catch (ex: HttpException) {
-                emit(Resource.error(null, ex.message() ?: "Something went wrong"))
-            } catch (ex: IOException) {
-                emit(Resource.error(null, "Please check your network connection"))
-            } catch (ex: Exception) {
-                emit(Resource.error(null, "Something went wrong!"))
+    fun setBuyerOrder(postBuyerOrderBody: PostBuyerOrderBody,accessToken : String) = liveData(Dispatchers.IO){
+        emit(Resource.loading(null))
+        try {
+            val response = buyerRepo.setBuyerOrder(postBuyerOrderBody,accessToken)
+            if(response.isSuccessful){
+                emit(Resource.success(response.body()))
+            }else{
+                val gson = Gson()
+                val errorMsg = response.errorBody()?.string()
+                val data = gson.fromJson(errorMsg,ApiError::class.java)
+                response.errorBody()?.close()
+                emit(Resource.error(null, data.message.toString()))
             }
-
+        } catch (ex : HttpException){
+            emit(Resource.error(null,ex.message() ?: "Something went wrong"))
+        } catch (ex : IOException){
+            emit(Resource.error(null,"Please check your network connection"))
+        } catch (ex : Exception){
+            emit(Resource.error(null,"Something went wrong!"))
         }
-
-
+    }
 }

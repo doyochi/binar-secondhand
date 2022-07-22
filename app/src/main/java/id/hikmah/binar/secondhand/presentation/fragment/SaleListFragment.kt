@@ -243,7 +243,7 @@ class SaleListFragment : Fragment() {
                 onClickItem = { id ->
                     findNavController().navigate(
                         SaleListFragmentDirections.actionSaleListFragmentToDetailProdukFragment(
-                            id
+//                            id
                         )
                     )
                 }

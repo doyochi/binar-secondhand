@@ -21,10 +21,6 @@ interface ApiService {
         @Header("access_token") key: String
     ): Product
 
-    //Get Favorite Product
-    @GET("notification")
-    suspend fun fetchFavoriteProduct(@HeaderMap header: Map<String, String>): NotificationDto
-
     //Get Product Seller
     @GET("seller/product")
     suspend fun fetchSellerProduct(@HeaderMap header: Map<String, String>): List<ProductSellerDto>
@@ -61,7 +57,13 @@ interface ApiService {
     suspend fun fetchOrderById(
         @HeaderMap header: Map<String, String>,
         @Path("id") id: Int
-    ): List<SellerOrderDto>
+    ): SellerOrderDto
+
+    @GET("seller/order/product/{product_id}")
+    suspend fun fetchSellerOrderByProductId(
+        @Header("access_token") token: String,
+        @Path("product_id") productId: Int
+    ): SellerOrderDto
 
     //Register
     @POST("auth/register")
@@ -83,6 +85,12 @@ interface ApiService {
         @Header("access_token") token: String,
         @Path("id") id: Int
     ): NotificationDto
+
+    @PATCH("notification/{id}")
+    suspend fun patchNotification(
+        @Header("access_token") token: String,
+        @Path("id") notificationId: Int
+    )
 
     //Get Sold list product
     @GET("history")

@@ -11,6 +11,9 @@ class InfoPenawarRepository(private val api: ApiService) {
     suspend fun fetchProduct(accessToken: String, id: Int) =
         api.fetchOrderById(getHeaderMap(accessToken), id)
 
+    suspend fun fetchSellerOrderByProductId(accessToken: String, productId: Int) =
+        api.fetchSellerOrderByProductId(accessToken, productId)
+
     private fun getHeaderMap(accessToken: String): Map<String, String> {
         val headerMap = mutableMapOf<String, String>()
         headerMap["Connection"] = "keep-alive"
