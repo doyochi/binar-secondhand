@@ -36,7 +36,36 @@ fun ProductSellerDto.toProductSellerEntity() : ProductSellerEntity {
     )
 }
 
-fun ProductSellerEntity.toProductSeller() : ProductSeller {
+fun ProductSellerDto.toProductSeller(): ProductSeller {
+    var categories = ""
+
+    if (this.categories != null) {
+        val sizeOfCategory = this.categories.indices
+        val lastIndexOfCategory = sizeOfCategory.last
+
+        for (i in sizeOfCategory) {
+            categories += if (i == lastIndexOfCategory) {
+                this.categories[i].name
+            } else {
+                this.categories[i].name + ", "
+            }
+        }
+    } else {
+        categories = ""
+    }
+    return ProductSeller(
+        productImage = this.imageUrl,
+        productName = this.name,
+        productId = this.id,
+        productDescription = this.description,
+        productCategories = categories,
+        productPrice = this.basePrice,
+        userId = this.userId,
+        location = this.location
+    )
+}
+
+fun ProductSellerEntity.toProductSeller(): ProductSeller {
     return ProductSeller(
         productDescription = this.productDescription,
         userId = this.userId,

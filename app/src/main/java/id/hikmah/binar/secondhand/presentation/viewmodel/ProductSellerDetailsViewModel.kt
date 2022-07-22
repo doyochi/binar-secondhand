@@ -8,7 +8,6 @@ import id.hikmah.binar.secondhand.data.local.DatabaseSecondHand
 import id.hikmah.binar.secondhand.data.repository.SaleListRepository
 import id.hikmah.binar.secondhand.helper.Resource
 import id.hikmah.binar.secondhand.helper.mapper.toProductSeller
-import id.hikmah.binar.secondhand.helper.mapper.toProductSellerEntity
 import kotlinx.coroutines.Dispatchers
 import retrofit2.HttpException
 import java.io.IOException
@@ -63,15 +62,6 @@ class ProductSellerDetailsViewModel @Inject constructor(
     fun fetchProductSeller(accessToken: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(null))
 
-        val localData = productDao.getProductSellerDetail()
-        emit(Resource.success(data = localData.map { it.toProductSeller() }))
-
-        val shouldLoadFromCache = localData.isNotEmpty()
-
-        if (shouldLoadFromCache) {
-            return@liveData
-        }
-
         val remoteData = try {
             val response = repository.fetchProductSeller(accessToken)
             response
@@ -84,12 +74,9 @@ class ProductSellerDetailsViewModel @Inject constructor(
         }
 
         remoteData?.let { result ->
-            productDao.insertProductSellerDetail(
-                result.map { it.toProductSellerEntity() }
-            )
 
             emit(Resource.success(
-                data = productDao.getProductSellerDetail().map { it.toProductSeller() }
+                result.map { it.toProductSeller() }
             ))
         }
     }
