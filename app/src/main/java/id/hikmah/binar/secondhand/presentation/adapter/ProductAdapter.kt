@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import id.hikmah.binar.secondhand.data.remote.model.dto.Product
 import id.hikmah.binar.secondhand.data.remote.model.dto.ProductItem
 import id.hikmah.binar.secondhand.databinding.ItemDataBinding
+import id.hikmah.binar.secondhand.helper.Converter
 
 class ProductAdapter(private val onClickListers: (id: Int, product: ProductItem) -> Unit):
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(){
@@ -47,6 +48,8 @@ class ProductAdapter(private val onClickListers: (id: Int, product: ProductItem)
             Glide.with(itemView.context)
                 .load(item.imageUrl)
                 .into(binding.idImg)
+
+            binding.idHarga.text = Converter.rupiah(item.basePrice)
 
             binding.itemData.setOnClickListener {
                 onClickListers.invoke(item.id, item)
