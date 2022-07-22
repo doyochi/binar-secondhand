@@ -146,9 +146,9 @@ class InfoPenawarFragment : Fragment() {
         val dialog = BottomSheetDialog(requireContext())
 
         val dialogBinding =
-            BottomSheetInfoPenawarBinding.inflate(LayoutInflater.from(requireContext()))
+            BottomSheetInfoPenawarBinding.inflate(LayoutInflater.from(context), null, false)
 
-        dialog.setContentView(binding.root)
+        dialog.setContentView(dialogBinding.root)
 
         dialog.show()
 
@@ -174,12 +174,13 @@ class InfoPenawarFragment : Fragment() {
                 Status.ERROR -> {}
             }
         }
+        dialog.show()
     }
 
     private fun statusButton(token: String, id: Int) {
         val dialog = BottomSheetDialog(requireContext())
 
-        val dialogBinding = LayoutStatusBinding.inflate(LayoutInflater.from(requireContext()))
+        val dialogBinding = LayoutStatusBinding.inflate(LayoutInflater.from(context), null, false)
 
         dialog.setContentView(dialogBinding.root)
         dialog.show()
