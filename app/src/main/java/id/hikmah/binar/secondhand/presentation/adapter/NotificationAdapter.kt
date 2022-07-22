@@ -59,6 +59,8 @@ class NotificationAdapter(
 
             if (item.status == "bid") {
                 binding.tvProductInformation.text = "Ditawar Rp ${item.productBidPrice}"
+            } else {
+                binding.tvProductInformation.text = ""
             }
 
             binding.tvProductTitle.text = item.productName
