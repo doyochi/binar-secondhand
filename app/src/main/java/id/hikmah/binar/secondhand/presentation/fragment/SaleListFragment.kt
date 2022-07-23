@@ -14,6 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.hikmah.binar.secondhand.R
 import id.hikmah.binar.secondhand.databinding.FragmentSaleListBinding
 import id.hikmah.binar.secondhand.helper.Status
+import id.hikmah.binar.secondhand.presentation.adapter.FavoriteProductAdapter
 import id.hikmah.binar.secondhand.presentation.adapter.ProductListAdapter
 import id.hikmah.binar.secondhand.presentation.adapter.SoldProductAdapter
 import id.hikmah.binar.secondhand.presentation.viewmodel.DatastoreViewModel

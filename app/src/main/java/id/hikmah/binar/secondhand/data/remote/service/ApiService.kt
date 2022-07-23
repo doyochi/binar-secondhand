@@ -11,14 +11,16 @@ import retrofit2.http.*
 
 interface ApiService {
     @GET("auth/user")
-    suspend fun getUser(@Header("access_token") key: String): User
+    suspend fun getUser(@HeaderMap header: Map<String, String>): User
 
+    @Multipart
     @PUT("auth/user")
-    suspend fun putUser(@Header("access_token") key: String,
-                        @Part("full_name") name: RequestBody?,
-                        @Part("city") kota: RequestBody?,
-                        @Part("address") alamat: RequestBody?,
-                        @Part ("phone_number")noHP: RequestBody?)
+    suspend fun editUser(@HeaderMap header: Map<String, String>,
+                        @Part("full_name") fullName: RequestBody?,
+                        @Part("city") city: RequestBody?,
+                        @Part("address") address: RequestBody?,
+                        @Part ("phone_number") phoneNumber: RequestBody?,
+                        @Part image: MultipartBody.Part?): User
 
     //Product
     @GET("buyer/product")

@@ -9,7 +9,7 @@ class SaleListRepository(private val api: ApiService) {
     suspend fun fetchFavProduct(accessToken: String) =
         api.fetchFavProduct(getHeaderMap(accessToken))
 
-    suspend fun fetchUsers(accessToken: String) = api.getUser(accessToken)
+    suspend fun fetchUsers(accessToken: String) = api.getUser(getHeaderMap(accessToken))
     suspend fun fetchProductSeller(accessToken: String) =
         api.fetchSellerProduct(getHeaderMap(accessToken))
 

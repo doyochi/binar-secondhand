@@ -12,7 +12,7 @@ data class User(
     val phoneNumber: String,
     @SerializedName("address")
     val address: String,
-    @SerializedName("image")
+    @SerializedName("image_url")
     val image: String,
     @SerializedName("city")
     val city: String
