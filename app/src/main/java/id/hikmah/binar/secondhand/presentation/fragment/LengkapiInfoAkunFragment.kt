@@ -41,6 +41,7 @@ import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
+import java.util.*
 
 
 class LengkapiInfoAkunFragment : Fragment() {
@@ -92,10 +93,12 @@ class LengkapiInfoAkunFragment : Fragment() {
     }
 
     private fun updateProfile(){
-        val image = uri?.let { prepareFilePart(it) }
 
         var file = File(uri?.path)
-        var reqFile : RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), file)
+        val photoBody = file.asRequestBody("image/jpg".toMediaType())
+        var partPhoto = MultipartBody.Part.createFormData("image", file.name, photoBody)
+
+        val image = partPhoto
 
 
         val etFullName = binding.namaEt.text.toString()
@@ -128,17 +131,6 @@ class LengkapiInfoAkunFragment : Fragment() {
                     }
                 }
         }
-    }
-
-    private fun prepareFilePart(fileUri: Uri): MultipartBody.Part {
-        val file = File(fileUri.path!!)
-        Log.i("PATH IMAGE", file.absolutePath)
-
-        val requestFile: RequestBody = file.asRequestBody("image/*".toMediaTypeOrNull())
-
-//        val requestFile: RequestBody = file.asRequestBody("image_url".toMediaTypeOrNull())
-
-        return MultipartBody.Part.createFormData("image", file.name, requestFile)
     }
 
     private fun observeData() {
