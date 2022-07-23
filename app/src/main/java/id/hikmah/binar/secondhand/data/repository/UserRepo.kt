@@ -7,5 +7,4 @@ class UserRepo (private val apiService: ApiService) {
 
     suspend fun getUser(key: String) = apiService.getUser(key)
 
-    suspend fun putUser(user: User, key: String) = apiService.putUser(user,key)
 }

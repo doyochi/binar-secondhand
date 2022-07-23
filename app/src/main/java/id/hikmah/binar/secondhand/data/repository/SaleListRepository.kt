@@ -4,8 +4,10 @@ import id.hikmah.binar.secondhand.data.remote.service.ApiService
 
 class SaleListRepository(private val api: ApiService) {
 
-    suspend fun getSoldProduct(accessToken: String) =
+    suspend fun fetchSoldProduct(accessToken: String) =
         api.fetchSoldProduct(getHeaderMap(accessToken))
+    suspend fun fetchFavProduct(accessToken: String) =
+        api.fetchFavProduct(getHeaderMap(accessToken))
 
     suspend fun fetchUsers(accessToken: String) = api.getUser(accessToken)
     suspend fun fetchProductSeller(accessToken: String) =

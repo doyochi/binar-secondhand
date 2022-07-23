@@ -14,6 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.hikmah.binar.secondhand.R
 import id.hikmah.binar.secondhand.databinding.FragmentSaleListBinding
 import id.hikmah.binar.secondhand.helper.Status
+import id.hikmah.binar.secondhand.presentation.adapter.FavoriteProductAdapter
 import id.hikmah.binar.secondhand.presentation.adapter.ProductListAdapter
 import id.hikmah.binar.secondhand.presentation.adapter.SoldProductAdapter
 import id.hikmah.binar.secondhand.presentation.viewmodel.DatastoreViewModel
@@ -29,6 +30,7 @@ class SaleListFragment : Fragment() {
     //    private val favoriteProductAdapter by lazy { FavoriteProductAdapter(::onClickItemFavorite) }
     private lateinit var productListAdapter: ProductListAdapter
     private lateinit var soldProductAdapter: SoldProductAdapter
+    private lateinit var favProductAdapter: FavoriteProductAdapter
 
     private val viewModel: ProductSellerDetailsViewModel by viewModels()
     private val dataStore: DatastoreViewModel by viewModels()
@@ -126,8 +128,8 @@ class SaleListFragment : Fragment() {
                         R.color.NEUTRAL01
                     )
                 )
-//                initRecyclerViewFavorite()
-//                submitFavoriteProduct()
+                initRecyclerViewFavorite()
+                submitFavoriteProduct(accessToken)
             } else {
                 binding.cvScrollFavorite.setCardBackgroundColor(
                     ContextCompat.getColor(
@@ -195,35 +197,36 @@ class SaleListFragment : Fragment() {
 
     //RecyclerView
 
-    //Favorite
-//    private fun initRecyclerViewFavorite() {
-//        binding.rvSaleList.apply {
-//            layoutManager = LinearLayoutManager(requireContext())
-//            adapter = favoriteProductAdapter
-//        }
-//    }
-//
-//    private fun submitFavoriteProduct() {
-//        viewModel.fetchFavoriteProduct(accessToken).observe(viewLifecycleOwner) { resource ->
-//
-//            when(resource.status) {
-//
-//                Status.LOADING -> {
-//
-//                }
-//
-//                Status.SUCCESS -> {
-//                    favoriteProductAdapter.submitData(resource.data!!)
-//                }
-//
-//                Status.ERROR -> {
-//
-//                }
-//
-//            }
-//
-//        }
-//    }
+//    Favorite
+    private fun initRecyclerViewFavorite() {
+        binding.rvSaleList.apply {
+            favProductAdapter = FavoriteProductAdapter()
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = favProductAdapter
+        }
+    }
+
+    private fun submitFavoriteProduct(accessToken: String) {
+        viewModel.fetchFavProduct(accessToken).observe(viewLifecycleOwner) { resource ->
+
+            when(resource.status) {
+
+                Status.LOADING -> {
+
+                }
+
+                Status.SUCCESS -> {
+                    favProductAdapter.submitData(resource.data!!)
+                }
+
+                Status.ERROR -> {
+
+                }
+
+            }
+
+        }
+    }
 
     private fun onClickItemFavorite(id: Int) {
         findNavController().navigate(
@@ -243,7 +246,6 @@ class SaleListFragment : Fragment() {
                 onClickItem = { id ->
                     findNavController().navigate(
                         SaleListFragmentDirections.actionSaleListFragmentToDetailProdukFragment(
-                            id
                         )
                     )
                 }
@@ -270,7 +272,7 @@ class SaleListFragment : Fragment() {
         }
     }
 
-    //Favorite
+    //Sold
     private fun initRecyclerViewSold() {
         binding.rvSaleList.apply {
             soldProductAdapter = SoldProductAdapter()
