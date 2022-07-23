@@ -15,6 +15,19 @@ class InfoPenawarViewModel @Inject constructor(
     private val repository: InfoPenawarRepository
 ) : ViewModel() {
 
+    fun fetchOrderByProductId(accessToken: String, productId: Int) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+
+        try {
+            emit(Resource.success(repository.fetchSellerOrderByProductId(accessToken, productId)))
+        } catch (e: HttpException) {
+            emit(Resource.error(null, e.message() ?: "Error Occurred from Remote!"))
+        } catch (e: IOException) {
+            emit(Resource.error(null, e.message ?: "Error Occurred!"))
+        }
+    }
+
+
     fun fetchOrderById(accessToken: String, id: Int) = liveData(Dispatchers.IO) {
         emit(Resource.loading(null))
 

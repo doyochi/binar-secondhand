@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import id.hikmah.binar.secondhand.R
@@ -52,9 +53,11 @@ class Buyer6 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
+
+        productId = arguments?.getInt("product_key")!!
         productId?.let { getData(it) }
         postToList()
+        onBackPressed()
 
         textView = binding.deskripsi.findViewById(R.id.deskripsi)
         val text: String = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -99,6 +102,12 @@ class Buyer6 : Fragment() {
     private fun postToList(){
         for (i in 1..5){
             addToList(R.drawable.background_jam)
+        }
+    }
+
+    private fun onBackPressed(){
+        binding.fabBtnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

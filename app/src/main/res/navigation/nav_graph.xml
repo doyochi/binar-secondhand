@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_buyer6_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_buyer6_to_infoPenawarFragment"
+            app:destination="@id/infoPenawarFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -100,18 +103,25 @@
         <action
             android:id="@+id/action_notificationFragment_to_akunSayaFragment"
             app:destination="@id/akunSayaFragment" />
+        <action
+            android:id="@+id/action_notificationFragment_to_infoPenawarFragment"
+            app:destination="@id/infoPenawarFragment" />
     </fragment>
     <fragment
         android:id="@+id/infoPenawarFragment"
         android:name="id.hikmah.binar.secondhand.presentation.fragment.InfoPenawarFragment"
         android:label="fragment_info_penawar"
-        tools:layout="@layout/fragment_info_penawar" >
+        tools:layout="@layout/fragment_info_penawar">
         <action
             android:id="@+id/action_infoPenawarFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
         <action
             android:id="@+id/action_infoPenawarFragment_to_saleListFragment"
             app:destination="@id/saleListFragment" />
+        <argument
+            android:name="productId"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/saleListFragment"
@@ -137,7 +147,7 @@
     <fragment
         android:id="@+id/detailProdukFragment"
         android:name="id.hikmah.binar.secondhand.presentation.fragment.DetailProdukFragment"
-        android:label="DetailProdukFragment" >
+        android:label="DetailProdukFragment">
         <action
             android:id="@+id/action_detailProdukFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -147,5 +157,9 @@
         <action
             android:id="@+id/action_detailProdukFragment_to_saleListFragment"
             app:destination="@id/saleListFragment" />
+        <argument
+            android:name="productId"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 </navigation>

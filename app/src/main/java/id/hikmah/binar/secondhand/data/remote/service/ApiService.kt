@@ -62,7 +62,13 @@ interface ApiService {
     suspend fun fetchOrderById(
         @HeaderMap header: Map<String, String>,
         @Path("id") id: Int
-    ): List<SellerOrderDto>
+    ): SellerOrderDto
+
+    @GET("seller/order/product/{product_id}")
+    suspend fun fetchSellerOrderByProductId(
+        @Header("access_token") token: String,
+        @Path("product_id") productId: Int
+    ): SellerOrderDto
 
     //Register
     @POST("auth/register")
@@ -84,6 +90,12 @@ interface ApiService {
         @Header("access_token") token: String,
         @Path("id") id: Int
     ): NotificationDto
+
+    @PATCH("notification/{id}")
+    suspend fun patchNotification(
+        @Header("access_token") token: String,
+        @Path("id") notificationId: Int
+    )
 
     //Get Sold list product
     @GET("history")
