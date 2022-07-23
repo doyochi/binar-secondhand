@@ -315,7 +315,7 @@ class SaleListFragment : Fragment() {
         }
 
         fun moveToNotif() {
-            binding.footer.footer_home.setOnClickListener {
+            binding.footer.footer_notif.setOnClickListener {
                 findNavController().navigate(R.id.action_saleListFragment_to_notificationFragment)
             }
         }

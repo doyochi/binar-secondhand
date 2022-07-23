@@ -31,6 +31,13 @@ class AkunSayaFragment : Fragment() {
         moveNotif()
         moveToJual()
         moveToDaftarJual()
+        toLogin()
+    }
+
+    private fun toLogin(){
+        binding.ivLogin.setOnClickListener{
+            findNavController().navigate(R.id.action_akunSayaFragment_to_loginFragment)
+        }
     }
 
     private fun moveToHome() {
