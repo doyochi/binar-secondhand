@@ -6,6 +6,7 @@ import id.hikmah.binar.secondhand.data.remote.model.notification.SoldProductDto
 import id.hikmah.binar.secondhand.data.remote.model.sellerorder.SellerOrderDto
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiService {
@@ -52,6 +53,18 @@ interface ApiService {
         @Part("location") productLocation: RequestBody?,
         @Part image: MultipartBody.Part?
     )
+
+    @Multipart
+    @PUT("seller/product")
+    suspend fun terbitkanSellerProduct(
+        @Header("access_token") accessToken: String,
+        @Part("name") productName: RequestBody?,
+        @Part("description") productDescription: RequestBody,
+        @Part("base_price") productBasePrice: RequestBody,
+        @Part("category_ids") productCategory: Int,
+        @Part("location") productLocation: RequestBody,
+        @Part image: MultipartBody.Part?
+    ): Response<ProductPostDto>
 
     //Seller Order Patch by Id
     @PATCH("seller/order/{id}")
