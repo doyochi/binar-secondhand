@@ -19,16 +19,22 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import androidx.navigation.fragment.findNavController
 import id.hikmah.binar.secondhand.R
 import id.hikmah.binar.secondhand.data.common.*
 import id.hikmah.binar.secondhand.data.remote.service.ApiClient
 import id.hikmah.binar.secondhand.data.remote.service.ApiService
 import id.hikmah.binar.secondhand.data.repository.UserRepo
 import id.hikmah.binar.secondhand.databinding.FragmentLengkapiInfoAkunBinding
+import id.hikmah.binar.secondhand.helper.DatastoreManager
 import id.hikmah.binar.secondhand.helper.Status
 import id.hikmah.binar.secondhand.helper.viewModelsFactory
 import id.hikmah.binar.secondhand.presentation.viewmodel.DatastoreViewModel
 import id.hikmah.binar.secondhand.presentation.viewmodel.UserViewModel
+import kotlinx.android.synthetic.main.fragment_lengkapi_info_akun.*
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.parse
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -53,7 +59,8 @@ class LengkapiInfoAkunFragment : Fragment() {
     private val userRepo: UserRepo by lazy { UserRepo(api) }
     private val viewModel: UserViewModel by viewModelsFactory { UserViewModel(userRepo) }
 
-    private val dataStore: DatastoreViewModel by viewModels()
+    private val pref: DatastoreManager by lazy { DatastoreManager(requireContext()) }
+    private val dataStore: DatastoreViewModel by viewModelsFactory { DatastoreViewModel(pref) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,18 +83,6 @@ class LengkapiInfoAkunFragment : Fragment() {
         saveProfile()
     }
 
-    private fun observeData(){
-        viewModel.getUser(accessToken!!).observe(viewLifecycleOwner){
-            if (it != null){
-                binding.apply {
-                    namaEt.setText(it.data?.fullName)
-                    alamatEt.setText(it.data?.address)
-                    nomorHpEt.setText(it.data?.phoneNumber)
-                }
-            }
-        }
-    }
-
     private fun saveProfile(){
         binding.apply {
             simpanProfileBtn.setOnClickListener{
@@ -99,10 +94,14 @@ class LengkapiInfoAkunFragment : Fragment() {
     private fun updateProfile(){
         val image = uri?.let { prepareFilePart(it) }
 
+        var file = File(uri?.path)
+        var reqFile : RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), file)
+
+
         val etFullName = binding.namaEt.text.toString()
         val etCity = binding.kotaEt.text.toString()
         val etAddress = binding.alamatEt.text.toString()
-        val etPhoneNumber = "+62" + binding.nomorHpEt.text.toString()
+        val etPhoneNumber = binding.nomorHpEt.text.toString()
 
         val fullName = etFullName.toRequestBody("full_name".toMediaTypeOrNull())
         val phoneNumber = etPhoneNumber.toRequestBody("phone_humber".toMediaTypeOrNull())
@@ -119,17 +118,10 @@ class LengkapiInfoAkunFragment : Fragment() {
                 when (it.status) {
                     Status.SUCCESS -> {
                         hideLoading()
-                        showSnackbar(
-                            requireContext(),
-                            requireView(),
-                            "Berhasil Update Profile",
-                            R.color.SUCCESS
-                        )
-                        observeDataFromNetwork()
+                        observeData()
                     }
                     Status.ERROR -> {
                         hideLoading()
-                        showSnackbar(requireContext(), requireView(), it.message!!, R.color.DANGER)
                     }
                     Status.LOADING -> {
                         showLoading(requireActivity())
@@ -139,21 +131,23 @@ class LengkapiInfoAkunFragment : Fragment() {
     }
 
     private fun prepareFilePart(fileUri: Uri): MultipartBody.Part {
-        val file = File(fileUri.path)
+        val file = File(fileUri.path!!)
         Log.i("PATH IMAGE", file.absolutePath)
 
-        val requestFile: RequestBody = file.asRequestBody("image/jpg".toMediaTypeOrNull())
+        val requestFile: RequestBody = file.asRequestBody("image/*".toMediaTypeOrNull())
+
+//        val requestFile: RequestBody = file.asRequestBody("image_url".toMediaTypeOrNull())
 
         return MultipartBody.Part.createFormData("image", file.name, requestFile)
     }
 
-    private fun observeDataFromNetwork() {
+    private fun observeData() {
         dataStore.getAccessToken().observe(viewLifecycleOwner) { token ->
             accessToken = token
             viewModel.getUser(accessToken!!).observe(viewLifecycleOwner) {
                 it.data?.let { data ->
                     binding.apply {
-                        val phoneNumber = data.phoneNumber?.drop(3)
+
                         if (data.image != null) {
                             fotoAkun.setPadding(0,0,0,0)
                             Glide.with(requireContext())
@@ -164,7 +158,7 @@ class LengkapiInfoAkunFragment : Fragment() {
                         namaEt.setText(data.fullName)
                         kotaEt.setText(data.city)
                         alamatEt.setText(data.address)
-                        nomorHpEt.setText(phoneNumber)
+                        nomorHpEt.setText(data.phoneNumber)
                     }
                 }
             }
@@ -282,6 +276,7 @@ class LengkapiInfoAkunFragment : Fragment() {
                 uri = Uri.parse(imgPath)
             }
         }
+
 
 
 

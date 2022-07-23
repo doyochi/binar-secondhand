@@ -31,6 +31,7 @@ class AkunSayaFragment : Fragment() {
         moveNotif()
         moveToJual()
         moveToDaftarJual()
+        moveToLengkapiInfoAkun()
         toLogin()
     }
 
@@ -61,6 +62,12 @@ class AkunSayaFragment : Fragment() {
     private fun moveToDaftarJual() {
         binding.footer.footer_daftar_jual.setOnClickListener{
             findNavController().navigate(R.id.action_akunSayaFragment_to_saleListFragment)
+        }
+    }
+
+    private fun moveToLengkapiInfoAkun() {
+        binding.tvEditAcc.setOnClickListener{
+            findNavController().navigate(R.id.action_akunSayaFragment_to_lengkapiInfoAkunFragment)
         }
     }
 
