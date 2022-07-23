@@ -31,6 +31,15 @@ interface ApiService {
         @Path("id") id: Int
     ): ProductSellerDto
 
+    //category
+    @GET("seller/category")
+    suspend fun getSellerCategory() : List<CategoryItem>
+
+    @GET("seller/category/{id}")
+    fun getSellerCategoryId(
+        @Path("id") id : Int
+    ) : CategoryItem
+
     @Multipart
     @PUT("seller/product/{id}")
     suspend fun editSellerProduct(
