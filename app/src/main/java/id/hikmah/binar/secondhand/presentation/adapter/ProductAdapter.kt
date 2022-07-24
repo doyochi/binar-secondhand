@@ -10,6 +10,7 @@ import id.hikmah.binar.secondhand.data.remote.model.dto.Product
 import id.hikmah.binar.secondhand.data.remote.model.dto.ProductItem
 import id.hikmah.binar.secondhand.databinding.ItemDataBinding
 import id.hikmah.binar.secondhand.helper.Converter
+import id.hikmah.binar.secondhand.helper.mapper.toProductSellerEntity
 
 class ProductAdapter(private val onClickListers: (id: Int, product: ProductItem) -> Unit):
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(){
@@ -50,6 +51,25 @@ class ProductAdapter(private val onClickListers: (id: Int, product: ProductItem)
                 .into(binding.idImg)
 
             binding.idHarga.text = Converter.rupiah(item.basePrice)
+
+            var categoriesa = ""
+
+            if(item.categories != null) {
+                val sizeOfCategory = item.categories.indices
+                val lastIndexOfCategory = sizeOfCategory.last
+
+                for (i in sizeOfCategory) {
+                    categoriesa += if(i == lastIndexOfCategory) {
+                        item.categories[i].name
+                    } else {
+                        item.categories[i].name + ", "
+                    }
+                }
+            } else {
+                categoriesa = ""
+            }
+
+            binding.idKategori.text = categoriesa
 
             binding.itemData.setOnClickListener {
                 onClickListers.invoke(item.id, item)
