@@ -91,6 +91,7 @@
         android:textSize="14dp"
         android:textColorHint="@color/NEUTRAL03"
         android:background="@drawable/rounded_field_stroke"
+        android:inputType="number"
         android:hint="RP 0,00"/>
 
     <TextView

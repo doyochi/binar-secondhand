@@ -86,6 +86,7 @@ class DetailProdukFragment : Fragment() {
         spinnerCategory()
         reqPermission()
         terbitkanBarang()
+        toPreview()
 
         val productId = DetailProdukFragmentArgs.fromBundle(arguments as Bundle).productId
 
@@ -215,7 +216,7 @@ class DetailProdukFragment : Fragment() {
         val kategoriBarang = binding.kategoriSpinner.selectedItem.toString().toRequestBody("categoriIds".toMediaTypeOrNull())
         val getCategory = binding.kategoriSpinner.selectedItem
         val idCategory = arrayOf(R.array.category_array).indexOf(getCategory)
-        val descBarang = binding.deskripsiEt.toString().toRequestBody()
+        val descBarang = binding.deskripsiEt.toString().toRequestBody("description".toMediaTypeOrNull())
         val location = "Malang".toRequestBody()
 
         binding.btnTerbitkan.setOnClickListener{
@@ -242,27 +243,27 @@ class DetailProdukFragment : Fragment() {
     private fun orgFilePart(fileUri: Uri): MultipartBody.Part {
         val file = File(fileUri.path)
         Log.i("PATH IMAGE", file.absolutePath)
-        // Create RequestBody instance from file
         val requestFile: RequestBody = file.asRequestBody("image/jpg".toMediaTypeOrNull())
-
-        // MultipartBody.Part is used to send also the actual file name
         return MultipartBody.Part.createFormData("image", file.name, requestFile)
     }
 
     private fun toPreview() {
-        val imgUri = uri!!
-        val namaBarang = binding.namaProdukEt.toString()
-        val hargaBarang = binding.hargaProdukEt.toString()
-        val kategoriBarang = binding.kategoriSpinner.selectedItem.toString()
-        val descBarang = binding.deskripsiEt.toString()
+        binding.btnPreview.setOnClickListener{
+            val imgUri = uri!!
+            val namaBarang = binding.namaProdukEt.toString()
+            val hargaBarang = binding.hargaProdukEt.toString()
+            val kategoriBarang = binding.kategoriSpinner.selectedItem.toString()
+            val descBarang = binding.deskripsiEt.toString()
 
-        val bundleProduct = PreviewSellerProduct(accessToken,namaBarang,idCategory, imgUri, kategoriBarang, hargaBarang, descBarang, imgSellerUrl, sellerName, city)
+            val bundleProduct = PreviewSellerProduct(accessToken,namaBarang,idCategory, imgUri, kategoriBarang, hargaBarang, descBarang, imgSellerUrl, sellerName, city)
 
-        val bundle = Bundle()
-        bundle.putParcelable("key_preview", bundleProduct)
-        setFragmentResult("previewreq", bundle)
+            val bundle = Bundle()
+            bundle.putParcelable("key_preview", bundleProduct)
+            setFragmentResult("previewreq", bundle)
 
-        findNavController().navigate(R.id.action_detailProdukFragment_to_previewProdukFragment)
+            findNavController().navigate(R.id.action_detailProdukFragment_to_previewProdukFragment)
+
+        }
     }
 
     private fun fetchUsers(){
