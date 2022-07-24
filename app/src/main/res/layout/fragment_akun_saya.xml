@@ -141,17 +141,23 @@
         android:clickable="true"/>
 
 <!--    login coba-->
-    <ImageView
-        android:id="@+id/iv_login"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_fi_log_out"
-        app:layout_constraintTop_toBottomOf="@id/tv_logout"
+    <TextView
+        android:id="@+id/btn_login"
+        android:layout_width="156dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/line_setting"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:clickable="true"
-        android:background="?android:selectableItemBackground"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_primary_normal_default"
+        android:text="Login"
+        android:textColor="@color/NEUTRAL01"
+        android:textAllCaps="false"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14dp"/>
 
     <View
         android:id="@+id/line_logout"
@@ -168,14 +174,14 @@
         android:id="@+id/tv_version_apps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/line_logout"
+        app:layout_constraintTop_toBottomOf="@id/tv_setting"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Version 1.0.0"
         android:fontFamily="@font/poppins_reguler"
         android:textSize="12sp"
         android:textColor="@color/NEUTRAL03"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="86dp"/>
 
     <!--footer-->
     <androidx.constraintlayout.widget.ConstraintLayout

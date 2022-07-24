@@ -4,6 +4,7 @@ import id.hikmah.binar.secondhand.data.remote.model.dto.*
 import id.hikmah.binar.secondhand.data.remote.model.notification.FavoriteProductDto
 import id.hikmah.binar.secondhand.data.remote.model.notification.NotificationDto
 import id.hikmah.binar.secondhand.data.remote.model.notification.SoldProductDto
+import id.hikmah.binar.secondhand.data.remote.model.notification.UserError
 import id.hikmah.binar.secondhand.data.remote.model.sellerorder.SellerOrderDto
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -22,6 +23,16 @@ interface ApiService {
                         @Part("address") address: RequestBody?,
                         @Part ("phone_number") phoneNumber: RequestBody?,
                         @Part image: MultipartBody.Part?): User
+
+    @Multipart
+    @PUT("auth/change-password")
+    suspend fun changePassword(
+        @HeaderMap header: Map<String, String>,
+        @Part("current_password") currentPassword: RequestBody,
+        @Part("new_password") newPassword: RequestBody,
+        @Part("confirm_password") confirmPassword: RequestBody,
+    ): UserError
+
 
     //Product
     @GET("buyer/product")

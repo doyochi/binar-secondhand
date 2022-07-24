@@ -12,6 +12,8 @@ data class FavoriteProductDtoItem(
     val Product: ProductFav,
     @SerializedName("user_id")
     val userId: String,
+    @SerializedName("name")
+    val name: String
 ){
     data class ProductFav(
         @SerializedName("id")
