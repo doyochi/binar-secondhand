@@ -5,25 +5,34 @@ import androidx.lifecycle.liveData
 import id.hikmah.binar.secondhand.data.repository.UserRepo
 import id.hikmah.binar.secondhand.helper.Resource
 import kotlinx.coroutines.Dispatchers
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 class UserViewModel(private val repo: UserRepo) : ViewModel() {
 
-    fun getUser() = liveData(Dispatchers.IO) {
+    fun getUser(access_token: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(null))
         try {
-            emit(Resource.success(repo.getUser("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvbGlwb3BAZ21haWwuY29tIiwiaWF0IjoxNjU2Njc1Mjk4fQ.XJ-iifm6kdlVd4aTBv3KGtCeE7jiq51CzeKp1z3SsvQ")))
+            emit(Resource.success(repo.getUser(access_token)))
         } catch (e: Exception) {
             emit(Resource.error(data = null, message = e.message ?: "Error Occurred!"))
         }
     }
 
-//    fun putUser() = liveData(Dispatchers.IO) {
-//        emit(Resource.loading(null))
-//        try {
-//            emit(Resource.success(repo.putUser(,))
-//        } catch (e: Exception) {
-//            emit(Resource.error(data = null, message = e.message ?: "Error Occurred!"))
-//        }
-//    }
+    fun editUser(access_token: String,
+                 fullName: RequestBody?,
+                 phoneNumber: RequestBody?,
+                 address: RequestBody?,
+                 city: RequestBody?,
+                 image: MultipartBody.Part?
+    ) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            val response = repo.editUser(access_token, fullName, phoneNumber, address, city, image)
+            emit(Resource.success(response))
+        } catch (e: Exception) {
+            emit(Resource.error(data = null, message = e.message ?: "Error Occurred!"))
+        }
+    }
 
 }

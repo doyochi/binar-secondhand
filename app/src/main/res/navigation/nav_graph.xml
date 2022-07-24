@@ -85,6 +85,9 @@
         <action
             android:id="@+id/action_akunSayaFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_akunSayaFragment_to_lengkapiInfoAkunFragment"
+            app:destination="@id/lengkapiInfoAkunFragment" />
     </fragment>
     <fragment
         android:id="@+id/notificationFragment"
@@ -176,5 +179,13 @@
         <action
             android:id="@+id/action_previewProdukFragment_to_detailProdukFragment"
             app:destination="@id/detailProdukFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lengkapiInfoAkunFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.LengkapiInfoAkunFragment"
+        android:label="LengkapiInfoAkunFragment" >
+        <action
+            android:id="@+id/action_lengkapiInfoAkunFragment_to_akunSayaFragment"
+            app:destination="@id/akunSayaFragment" />
     </fragment>
 </navigation>

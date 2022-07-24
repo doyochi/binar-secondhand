@@ -48,11 +48,19 @@ class ProductSellerDetailsViewModel @Inject constructor(
         }
     }
 
+    fun fetchFavProduct(accessToken: String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            emit(Resource.success(data = repository.fetchFavProduct(accessToken)))
+        } catch (e: Exception) {
+            emit(Resource.error(null, message = e.message ?: "Error Occurred"))
+        }
+    }
 
     fun fetchSoldProduct(accessToken: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(null))
         try {
-            emit(Resource.success(data = repository.getSoldProduct(accessToken)))
+            emit(Resource.success(data = repository.fetchSoldProduct(accessToken)))
         } catch (e: Exception) {
             emit(Resource.error(null, message = e.message ?: "Error Occurred"))
         }

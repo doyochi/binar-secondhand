@@ -90,18 +90,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nama_et" />
 
-    <Spinner
-        android:id="@+id/kota_spinner"
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/kota_et"
         app:layout_constraintStart_toStartOf="@id/kota_tv"
         app:layout_constraintTop_toBottomOf="@id/kota_tv"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="4dp"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
-        android:background="@drawable/style_spinner"
-        android:popupBackground="@drawable/rounded_field_solid"
-        android:spinnerMode="dropdown" />
+        android:paddingLeft="16dp"
+        android:textSize="14dp"
+        android:textColorHint="@color/NEUTRAL03"
+        android:background="@drawable/rounded_field_stroke"
+        android:hint="Kota"/>
 
     <TextView
         android:id="@+id/alamat_tv"
@@ -115,7 +117,7 @@
         android:textColor="@color/NEUTRAL05"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/kota_spinner" />
+        app:layout_constraintTop_toBottomOf="@id/kota_et" />
 
     <EditText
         android:id="@+id/alamat_et"

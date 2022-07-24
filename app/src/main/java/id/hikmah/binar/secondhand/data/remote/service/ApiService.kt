@@ -1,6 +1,7 @@
 package id.hikmah.binar.secondhand.data.remote.service
 
 import id.hikmah.binar.secondhand.data.remote.model.dto.*
+import id.hikmah.binar.secondhand.data.remote.model.notification.FavoriteProductDto
 import id.hikmah.binar.secondhand.data.remote.model.notification.NotificationDto
 import id.hikmah.binar.secondhand.data.remote.model.notification.SoldProductDto
 import id.hikmah.binar.secondhand.data.remote.model.sellerorder.SellerOrderDto
@@ -11,10 +12,16 @@ import retrofit2.http.*
 
 interface ApiService {
     @GET("auth/user")
-    suspend fun getUser(@Header("access_token") key: String): User
+    suspend fun getUser(@HeaderMap header: Map<String, String>): User
 
+    @Multipart
     @PUT("auth/user")
-    suspend fun putUser(@Body request: User, @Header("access_token") key: String): User
+    suspend fun editUser(@HeaderMap header: Map<String, String>,
+                        @Part("full_name") fullName: RequestBody?,
+                        @Part("city") city: RequestBody?,
+                        @Part("address") address: RequestBody?,
+                        @Part ("phone_number") phoneNumber: RequestBody?,
+                        @Part image: MultipartBody.Part?): User
 
     //Product
     @GET("buyer/product")
@@ -117,4 +124,8 @@ interface ApiService {
     //Get Sold list product
     @GET("history")
     suspend fun fetchSoldProduct(@HeaderMap header: Map<String, String>): SoldProductDto
+
+    //Get fav list product
+    @GET("buyer/wishlist")
+    suspend fun fetchFavProduct(@HeaderMap header: Map<String, String>): FavoriteProductDto
 }
