@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/buyer6"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.Buyer6"
+        android:label="fragment_buyer6"
+        tools:layout="@layout/fragment_buyer6" >
+        <action
+            android:id="@+id/action_buyer6_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_buyer6_to_infoPenawarFragment"
+            app:destination="@id/infoPenawarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_akunSayaFragment"
+            app:destination="@id/akunSayaFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_infoPenawarFragment"
+            app:destination="@id/infoPenawarFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_saleListFragment"
+            app:destination="@id/saleListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_buyer6"
+            app:destination="@id/buyer6" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailProdukFragment"
+            app:destination="@id/detailProdukFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/akunSayaFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.AkunSayaFragment"
+        android:label="fragment_akun_saya"
+        tools:layout="@layout/fragment_akun_saya" >
+        <action
+            android:id="@+id/action_akunSayaFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_akunSayaFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_akunSayaFragment_to_detailProdukFragment"
+            app:destination="@id/detailProdukFragment" />
+        <action
+            android:id="@+id/action_akunSayaFragment_to_saleListFragment"
+            app:destination="@id/saleListFragment" />
+        <action
+            android:id="@+id/action_akunSayaFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_akunSayaFragment_to_lengkapiInfoAkunFragment"
+            app:destination="@id/lengkapiInfoAkunFragment" />
+        <action
+            android:id="@+id/action_akunSayaFragment_to_pengaturanAkunFragment"
+            app:destination="@id/pengaturanAkunFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" >
+        <action
+            android:id="@+id/action_notificationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_notificationFragment_to_detailProdukFragment"
+            app:destination="@id/detailProdukFragment" />
+        <action
+            android:id="@+id/action_notificationFragment_to_saleListFragment"
+            app:destination="@id/saleListFragment" />
+        <action
+            android:id="@+id/action_notificationFragment_to_saleListFragment2"
+            app:destination="@id/saleListFragment" />
+        <action
+            android:id="@+id/action_notificationFragment_to_akunSayaFragment"
+            app:destination="@id/akunSayaFragment" />
+        <action
+            android:id="@+id/action_notificationFragment_to_infoPenawarFragment"
+            app:destination="@id/infoPenawarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoPenawarFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.InfoPenawarFragment"
+        android:label="fragment_info_penawar"
+        tools:layout="@layout/fragment_info_penawar">
+        <action
+            android:id="@+id/action_infoPenawarFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_infoPenawarFragment_to_saleListFragment"
+            app:destination="@id/saleListFragment" />
+        <argument
+            android:name="productId"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/saleListFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.SaleListFragment"
+        android:label="fragment_sale_list"
+        tools:layout="@layout/fragment_sale_list" >
+        <action
+            android:id="@+id/action_saleListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_saleListFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_saleListFragment_to_infoPenawarFragment"
+            app:destination="@id/infoPenawarFragment" />
+        <action
+            android:id="@+id/action_saleListFragment_to_akunSayaFragment"
+            app:destination="@id/akunSayaFragment" />
+        <action
+            android:id="@+id/action_saleListFragment_to_detailProdukFragment"
+            app:destination="@id/detailProdukFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailProdukFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.DetailProdukFragment"
+        android:label="DetailProdukFragment">
+        <action
+            android:id="@+id/action_detailProdukFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_detailProdukFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_detailProdukFragment_to_saleListFragment"
+            app:destination="@id/saleListFragment" />
+        <argument
+            android:name="productId"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_detailProdukFragment_to_previewProdukFragment"
+            app:destination="@id/previewProdukFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/previewProdukFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.PreviewProdukFragment"
+        android:label="fragment_preview_produk"
+        tools:layout="@layout/fragment_preview_produk" >
+        <action
+            android:id="@+id/action_previewProdukFragment_to_detailProdukFragment"
+            app:destination="@id/detailProdukFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lengkapiInfoAkunFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.LengkapiInfoAkunFragment"
+        android:label="LengkapiInfoAkunFragment" >
+        <action
+            android:id="@+id/action_lengkapiInfoAkunFragment_to_akunSayaFragment"
+            app:destination="@id/akunSayaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pengaturanAkunFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.PengaturanAkunFragment"
+        android:label="fragment_pengaturan_akun"
+        tools:layout="@layout/fragment_pengaturan_akun" >
+        <action
+            android:id="@+id/action_pengaturanAkunFragment_to_akunSayaFragment"
+            app:destination="@id/akunSayaFragment" />
+    </fragment>
+</navigation>
