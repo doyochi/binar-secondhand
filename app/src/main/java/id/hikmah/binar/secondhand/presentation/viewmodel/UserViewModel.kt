@@ -35,4 +35,19 @@ class UserViewModel(private val repo: UserRepo) : ViewModel() {
         }
     }
 
+    fun changePasswordUser(access_token: String,
+                           oldPass: RequestBody,
+                           newPass: RequestBody,
+                           newPassConfirm: RequestBody
+    ) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            val response = repo.changePasswordUser(access_token, oldPass, newPass, newPassConfirm)
+            emit(Resource.success(response))
+        } catch (e: Exception) {
+            emit(Resource.error(data = null, message = e.message ?: "Error Occurred!"))
+        }
+    }
+
+
 }

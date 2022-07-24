@@ -2,6 +2,7 @@ package id.hikmah.binar.secondhand.data.repository
 
 import android.media.Image
 import id.hikmah.binar.secondhand.data.remote.model.dto.User
+import id.hikmah.binar.secondhand.data.remote.model.notification.UserError
 import id.hikmah.binar.secondhand.data.remote.service.ApiService
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -11,6 +12,15 @@ import retrofit2.http.Multipart
 class UserRepo (private val apiService: ApiService) {
 
     suspend fun getUser(accessToken: String) = apiService.getUser(getHeaderMap(accessToken))
+
+    suspend fun changePasswordUser(accessToken: String,
+                                   oldPass: RequestBody,
+                                   newPass: RequestBody,
+                                   newPassConfirm: RequestBody
+    ) : UserError {
+        return apiService.changePassword(getHeaderMap(accessToken), oldPass, newPass, newPassConfirm)
+    }
+
 
     suspend fun editUser(accessToken: String,
                          fullName: RequestBody?,

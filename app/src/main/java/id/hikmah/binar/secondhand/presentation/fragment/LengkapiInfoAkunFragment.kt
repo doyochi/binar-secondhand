@@ -82,6 +82,7 @@ class LengkapiInfoAkunFragment : Fragment() {
         observeData()
         pickImgAndRequestPermission()
         saveProfile()
+        onButtonIsPressed()
     }
 
     private fun saveProfile(){
@@ -269,9 +270,11 @@ class LengkapiInfoAkunFragment : Fragment() {
             }
         }
 
-
-
-
+    private fun onButtonIsPressed() {
+        binding.backBtn.setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
 
 
 
