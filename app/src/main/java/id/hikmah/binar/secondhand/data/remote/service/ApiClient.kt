@@ -40,5 +40,7 @@ object ApiClient {
 
         retrofit.create(BuyerService::class.java)
     }
+
+
 }
 

@@ -118,7 +118,8 @@
         android:layout_marginLeft="16dp"
         android:background="@drawable/style_spinner"
         android:popupBackground="@drawable/rounded_field_solid"
-        android:spinnerMode="dropdown" />
+        android:spinnerMode="dropdown"
+        android:entries="@array/category_array"/>
 
     <TextView
         android:id="@+id/deskripsi_tv"

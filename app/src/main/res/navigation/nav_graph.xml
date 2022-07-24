@@ -82,6 +82,9 @@
         <action
             android:id="@+id/action_akunSayaFragment_to_saleListFragment"
             app:destination="@id/saleListFragment" />
+        <action
+            android:id="@+id/action_akunSayaFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/notificationFragment"
@@ -161,5 +164,17 @@
             android:name="productId"
             android:defaultValue="0"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_detailProdukFragment_to_previewProdukFragment"
+            app:destination="@id/previewProdukFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/previewProdukFragment"
+        android:name="id.hikmah.binar.secondhand.presentation.fragment.PreviewProdukFragment"
+        android:label="fragment_preview_produk"
+        tools:layout="@layout/fragment_preview_produk" >
+        <action
+            android:id="@+id/action_previewProdukFragment_to_detailProdukFragment"
+            app:destination="@id/detailProdukFragment" />
     </fragment>
 </navigation>
