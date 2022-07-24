@@ -31,22 +31,19 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Masukkan Harga Tawarmu"
-                android:textColorHint="@color/black"
-                android:fontFamily="@font/poppins_bold"
-                android:text=""
+                android:text="Masukkan Harga Tawarmu"
+                android:textColor="@color/NEUTRAL05"
+                android:fontFamily="@font/poppins_medium"
                 android:textStyle="bold"
-                android:textSize="17sp"/>
+                android:textSize="14sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Harga tawaranmu akan diketahui penjual, jika penjual cocok kamu akan segera dihubungi penjual."
+                android:text="Harga tawaranmu akan diketahui penjual, jika penjual cocok kamu akan segera dihubungi penjual."
                 android:fontFamily="@font/poppins_reguler"
-                android:textColor="@color/black"
-                android:text=""
-                android:textStyle="bold"
+                android:textColor="@color/NEUTRAL03"
                 android:textSize="16sp"/>
 
             <com.google.android.material.card.MaterialCardView
@@ -97,11 +94,9 @@
                             android:layout_marginStart="20dp"
                             android:textSize="14sp"
                             android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppins_bold"
-                            android:text=""
-                            android:hint="Jam Tangan Casio"
-                            android:textColorHint="@color/black"/>
+                            android:textColor="@color/NEUTRAL05"
+                            android:fontFamily="@font/poppins_reguler"
+                            android:text="Jam Tangan Casio"/>
 
                         <TextView
                             android:id="@+id/tv_price_item_bid"
@@ -109,9 +104,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:textSize="14sp"
-                            android:text=""
                             android:fontFamily="@font/poppins_reguler"
-                            android:hint="Rp 250.000"/>
+                            android:text="Rp 250.000"
+                            android:textColor="@color/NEUTRAL05"/>
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -121,10 +116,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Harga Tawar"
-                android:textColorHint="@color/black"
+                android:text="Harga Tawar"
+                android:textColor="@color/NEUTRAL05"
                 android:fontFamily="@font/poppins_bold"
-                android:text=""
                 android:textSize="14sp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -155,12 +149,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
-                android:hint="Kirim"
+                android:text="Kirim"
+                android:textAllCaps="false"
                 android:textColorHint="@color/white"
-                android:text=""
                 android:textSize="14sp"
                 android:backgroundTint="@color/purple_500"
                 app:cornerRadius="15dp"
+                android:fontFamily="@font/poppins_medium"
                 android:backgroundTintMode="src_over"
                 android:layout_gravity="center|bottom" />
 
