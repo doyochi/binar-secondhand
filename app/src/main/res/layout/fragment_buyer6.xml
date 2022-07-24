@@ -81,10 +81,10 @@
             android:layout_row="3"
             android:layout_marginStart="25dp"
             android:layout_marginTop="15dp"
-            android:fontFamily="@font/poppins_bold"
+            android:fontFamily="@font/poppins_medium"
             android:text="Jam Tangan Casio"
-            android:textSize="19dp"
-            android:textStyle="bold" />
+            android:textSize="14sp"
+            android:textColor="@color/NEUTRAL05"/>
 
         <TextView
             android:id="@+id/tv_kategori"
@@ -94,7 +94,9 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="40dp"
             android:fontFamily="@font/poppins_reguler"
-            android:text="Aksessoris" />
+            android:textSize="11sp"
+            android:text="Aksessoris"
+            android:textColor="@color/NEUTRAL03"/>
 
         <TextView
             android:id="@+id/tv_harga"
@@ -103,10 +105,10 @@
             android:layout_row="3"
             android:layout_marginStart="25dp"
             android:layout_marginTop="65dp"
-            android:fontFamily="@font/poppins_bold"
+            android:fontFamily="@font/poppins_medium"
             android:text="Rp. 250.000"
-            android:textSize="19dp"
-            android:textStyle="bold" />
+            android:textSize="14sp"
+            android:textColor="@color/NEUTRAL05"/>
 
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
@@ -128,10 +130,10 @@
             android:layout_row="3"
             android:layout_marginStart="80dp"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/poppins_bold"
+            android:fontFamily="@font/poppins_medium"
             android:text="Nama Penjual"
-            android:textSize="19dp"
-            android:textStyle="bold" />
+            android:textSize="14dp"
+            android:textColor="@color/NEUTRAL05"/>
 
         <TextView
             android:id="@+id/tv_kota"
@@ -141,7 +143,9 @@
             android:layout_marginStart="80dp"
             android:fontFamily="@font/poppins_reguler"
             android:layout_marginTop="45dp"
-            android:text="Kota" />
+            android:text="Kota"
+            android:textSize="14sp"
+            android:textColor="@color/NEUTRAL03"/>
 
         <ImageView
             android:id="@+id/iv_seller"
@@ -172,10 +176,10 @@
             android:layout_row="3"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/poppins_bold"
+            android:fontFamily="@font/poppins_medium"
             android:text="Deskripsi"
-            android:textSize="19dp"
-            android:textStyle="bold" />
+            android:textSize="14sp"
+            android:textColor="@color/NEUTRAL05"/>
 
         <TextView
             android:id="@+id/deskripsi"
@@ -186,7 +190,8 @@
             android:layout_marginTop="35dp"
             android:fontFamily="@font/poppins_reguler"
             android:scrollbars="vertical"
-            android:textSize="18dp" />
+            android:textSize="14sp"
+            android:textColor="@color/NEUTRAL03"/>
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.button.MaterialButton
@@ -198,7 +203,11 @@
         android:layout_marginTop="680dp"
         android:layout_marginEnd="10dp"
         android:text="Saya Tertarik dan Ingin Nego"
-        app:cornerRadius="15dp" />
+        app:cornerRadius="15dp"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppins_medium"
+        android:backgroundTint="@color/PURPLE04"
+        android:textAllCaps="false"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_tertarik_success"
